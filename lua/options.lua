@@ -3,7 +3,7 @@
 -- NOTE: You can change these options as you wish!
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
@@ -43,5 +43,12 @@ vim.o.termguicolors = true
 
 vim.cmd.colorscheme "catppuccin"
 
+if vim.fn.has("nvim-0.10") == 1 then
+  vim.opt.smoothscroll = true
+end
+
+vim.opt.foldlevel = 99
+vim.opt.foldmethod = 'marker'
+vim.opt.foldenable = true
 -- will hidden cmd line
 -- vim.opt.cmdheight=0

@@ -90,6 +90,27 @@ local servers = {
       -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
+  volar = {
+    -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
+    formatting = false,
+  },
+  yamlls = {
+    settings = {
+      yaml = {
+        keyOrdering = false,
+      },
+    },
+  },
+  tsserver = {
+    init_options = {
+      plugins = {
+        {
+          name = "typescript-vue-plugin",
+          location = "/home/feng/.local/share/pnpm/global/5/node_modules/typescript-vue-plugin"
+        }
+      }
+    }
+  }
 }
 
 -- Setup neovim lua configuration
@@ -105,7 +126,8 @@ local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
-
+-- TODO: complete it
+-- https://github.com/LazyVim/LazyVim/blob/a50f92f7550fb6e9f21c0852e6cb190e6fcd50f5/lua/lazyvim/plugins/lsp/init.lua#L158
 mason_lspconfig.setup_handlers {
   function(server_name)
     require('lspconfig')[server_name].setup {
@@ -113,6 +135,7 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+      init_options = (servers[server_name] or {}).init_options
     }
   end,
 }
