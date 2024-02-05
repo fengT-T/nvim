@@ -142,7 +142,6 @@ require('lazy').setup({
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {}
   },
   {
     "catppuccin/nvim",
@@ -244,7 +243,6 @@ require('lazy').setup({
   },
   {
     "windwp/nvim-ts-autotag",
-    opts = {},
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -275,11 +273,14 @@ require('lazy').setup({
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
-    config = function()
-      require('dashboard').setup {
+    opts = {
+      config = {
+        header = require "logo"
       }
-    end,
-    dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    },
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons' }
+    }
   },
   {
     "folke/noice.nvim",
