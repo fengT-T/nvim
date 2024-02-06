@@ -114,7 +114,7 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     opts = require('util').lualine_opts,
     dependencies = {
-      'folke/noice.nvim',
+      -- 'folke/noice.nvim',
       'nvim-tree/nvim-web-devicons',
     },
   },
@@ -221,7 +221,7 @@ require('lazy').setup({
   },
   {
     'folke/noice.nvim',
-    event = 'VeryLazy',
+    opts = {},
     dependencies = {
       'MunifTanjim/nui.nvim',
       'rcarriga/nvim-notify',
