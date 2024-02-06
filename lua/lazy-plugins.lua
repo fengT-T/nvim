@@ -21,7 +21,8 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+      { 'j-hui/fidget.nvim', opts = {} },
+      { 'folke/neodev.nvim' },
     },
   },
   {
@@ -107,14 +108,24 @@ require('lazy').setup({
       },
     },
   },
-
   {
     -- Set lualine as statusline
     -- See `:help lualine.txt`
     'nvim-lualine/lualine.nvim',
-    opts = require('util').lualine_opts,
+    -- opts = require('util').lualine_opts,
+    opts = {
+      options = {
+        theme = 'auto',
+        globalstatus = true,
+        disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
+      },
+      sections = {
+        lualine_c = { 'filename' },
+        lualine_x = { 'searchcount', 'fileformat', 'filetype' },
+        lualine_z = { 'tabs' },
+      },
+    },
     dependencies = {
-      -- 'folke/noice.nvim',
       'nvim-tree/nvim-web-devicons',
     },
   },
@@ -217,14 +228,6 @@ require('lazy').setup({
     },
     dependencies = {
       { 'nvim-tree/nvim-web-devicons' },
-    },
-  },
-  {
-    'folke/noice.nvim',
-    opts = {},
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
     },
   },
 }, {})
