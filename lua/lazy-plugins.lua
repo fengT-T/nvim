@@ -32,7 +32,39 @@ require('lazy').setup({
       'folke/neodev.nvim',
     },
   },
-
+  {
+    'stevearc/conform.nvim',
+    dependencies = { 'mason.nvim' },
+    lazy = true,
+    cmd = 'ConformInfo',
+    keys = {
+      {
+        '<leader>cf',
+        function()
+          require('conform').format { async = true, lsp_fallback = true }
+        end,
+        mode = '',
+        desc = 'Format buffer',
+      },
+    },
+    -- Everything in opts will be passed to setup()
+    opts = {
+      -- Define your formatters
+      formatters_by_ft = {
+        lua = { 'stylua' },
+        javascript = { { 'prettierd', 'prettier' } },
+        vue = { 'prettier' },
+        typescript = { 'prettier' },
+      },
+      -- Set up format-on-save
+      format_on_save = { timeout_ms = 500, lsp_fallback = true },
+      -- Customize formatters
+      formatters = {},
+    },
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
+  },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -51,19 +83,19 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  { 'folke/which-key.nvim', opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
     opts = {
       -- See `:help gitsigns.txt`
       signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '▎' },
+        untracked = { text = '▎' },
       },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -136,26 +168,26 @@ require('lazy').setup({
   },
   {
     'projekt0n/github-nvim-theme',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
   },
   {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
   },
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    'catppuccin/nvim',
+    name = 'catppuccin',
     lazy = true,
     opts = {
-      flavour = "latte",
+      flavour = 'latte',
       color_overrides = {
         transparent_background = true,
         latte = {
-          base = "#ffffff",
+          base = '#ffffff',
         },
       },
-    }
+    },
   },
 
   {
@@ -171,7 +203,7 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
   {
-    "echasnovski/mini.bufremove",
+    'echasnovski/mini.bufremove',
   },
   -- {
   --   -- Add indentation guides even on blank lines
@@ -188,11 +220,11 @@ require('lazy').setup({
   --   },
   -- },
   {
-    "echasnovski/mini.indentscope",
+    'echasnovski/mini.indentscope',
     version = false, -- wait till new 0.7.0 release to put it back on semver
     opts = {
       -- symbol = "▏",
-      symbol = "│",
+      symbol = '│',
       options = { try_as_border = true },
     },
   },
@@ -222,12 +254,22 @@ require('lazy').setup({
   },
 
   {
-    "RRethy/vim-illuminate",
+    'RRethy/vim-illuminate',
   },
   {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {
+      signs = {
+        -- icons / text used for a diagnostic
+        error = '',
+        warning = '',
+        hint = '',
+        information = '',
+        other = '',
+      },
+      icons = true,
+      -- use_diagnostic_signs = true
       -- your configuration comes here
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
@@ -242,61 +284,61 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
   {
-    "windwp/nvim-ts-autotag",
+    'windwp/nvim-ts-autotag',
   },
   {
-    "nvim-treesitter/nvim-treesitter-context",
+    'nvim-treesitter/nvim-treesitter-context',
   },
   {
     'echasnovski/mini.files',
     version = '*',
     dependencies = {
-      'nvim-tree/nvim-web-devicons'
-    }
+      'nvim-tree/nvim-web-devicons',
+    },
   },
 
   -- auto pairs
   {
-    "echasnovski/mini.pairs",
+    'echasnovski/mini.pairs',
     config = function()
-      require("mini.pairs").setup()
-    end
+      require('mini.pairs').setup()
+    end,
   },
   {
-    "folke/persistence.nvim",
+    'folke/persistence.nvim',
     -- this will only start session saving when an actual file was opened
-    event = "BufReadPre",
+    event = 'BufReadPre',
     opts = {
-      dir = vim.fn.expand(vim.fn.stdpath("state") .. "/sessions/"), -- directory where session files are saved
-    }
+      dir = vim.fn.expand(vim.fn.stdpath 'state' .. '/sessions/'), -- directory where session files are saved
+    },
   },
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
     opts = {
       config = {
-        header = require "logo"
-      }
+        header = require 'logo',
+      },
     },
     dependencies = {
-      { 'nvim-tree/nvim-web-devicons' }
-    }
+      { 'nvim-tree/nvim-web-devicons' },
+    },
   },
   {
-    "folke/noice.nvim",
-    event = "VeryLazy",
+    'folke/noice.nvim',
+    event = 'VeryLazy',
     opts = {
       -- add any options here
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
+      'MunifTanjim/nui.nvim',
       -- OPTIONAL:
       --   `nvim-notify` is only needed, if you want to use the notification view.
       --   If not available, we use `mini` as the fallback
-      "rcarriga/nvim-notify",
-    }
-  }
+      'rcarriga/nvim-notify',
+    },
+  },
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
   --       Uncomment any of the lines below to enable them.

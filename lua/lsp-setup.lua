@@ -1,12 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -25,14 +19,13 @@ local on_attach = function(_, bufnr)
   nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-  -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
   -- Lesser used LSP functionality
   nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch [S]ymbols')
   nmap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics')
   -- format
-  nmap('<leader>cf', '<Cmd>Format<CR>', 'Format buffer')
+  -- nmap('<leader>cf', '<Cmd>Format<CR>', 'Format buffer')
   nmap('<leader>cd', vim.diagnostic.open_float, 'Open floating diagnostic message')
   nmap('<leader>cq', vim.diagnostic.setloclist, 'Open diagnostics list')
   -- workspace
@@ -44,9 +37,9 @@ local on_attach = function(_, bufnr)
   end, '[W]orkspace [L]ist Folders')
 
   -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
+  -- vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+  --   vim.lsp.buf.format()
+  -- end, { desc = 'Format current buffer with LSP' })
 end
 
 -- document existing key chains
@@ -59,6 +52,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+  ['<leader>q'] = { name = 'Persistence' },
 }
 -- register which-key VISUAL mode
 -- required for visual <leader>hs (hunk stage) to work
@@ -67,39 +61,37 @@ require('which-key').register({
   ['<leader>h'] = { 'Git [H]unk' },
 }, { mode = 'v' })
 
+for name, icon in pairs { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' } do
+  name = 'DiagnosticSign' .. name
+  vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
+end
+
 -- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
 require('mason-lspconfig').setup()
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
+-- @type lspconfig.options
 local servers = {
   -- clangd = {},
   -- gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
-
   lua_ls = {
-    Lua = {
-      workspace = { checkThirdParty = false },
-      telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = {git@github.com:fengT-T/nvim.git disable = { 'missing-fields' } },
+    settings = {
+      Lua = {
+        workspace = { checkThirdParty = false },
+        telemetry = { enable = false },
+      },
     },
   },
+
   volar = {
     -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     formatting = false,
   },
+
   yamlls = {
     settings = {
       yaml = {
@@ -107,16 +99,17 @@ local servers = {
       },
     },
   },
+
   tsserver = {
     init_options = {
       plugins = {
         {
-          name = "typescript-vue-plugin",
-          location = "/home/feng/.local/share/pnpm/global/5/node_modules/typescript-vue-plugin"
-        }
-      }
-    }
-  }
+          name = 'typescript-vue-plugin',
+          location = '/home/feng/.local/share/pnpm/global/5/node_modules/typescript-vue-plugin',
+        },
+      },
+    },
+  },
 }
 
 -- Setup neovim lua configuration
@@ -132,18 +125,16 @@ local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
--- TODO: complete it
--- https://github.com/LazyVim/LazyVim/blob/a50f92f7550fb6e9f21c0852e6cb190e6fcd50f5/lua/lazyvim/plugins/lsp/init.lua#L158
+
 mason_lspconfig.setup_handlers {
+  -- :h mason-lspconfig.setup_handlers()
+  -- default lsp haldlers
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    -- copy from lazy.nvim
+    require('lspconfig')[server_name].setup(vim.tbl_deep_extend('force', {
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-      init_options = (servers[server_name] or {}).init_options
-    }
+    }, servers[server_name] or {}))
   end,
 }
-
 -- vim: ts=2 sts=2 sw=2 et
