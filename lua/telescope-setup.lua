@@ -6,6 +6,10 @@ require('telescope').setup {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ['<C-y>'] = require('telescope.actions.layout').toggle_preview,
+      },
+      n = {
+        ['<C-y>'] = require('telescope.actions.layout').toggle_preview,
       },
     },
   },
@@ -55,12 +59,10 @@ vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc =
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(
-    require('telescope.themes').get_dropdown {
-      winblend = 10,
-      previewer = false,
-    }
-  )
+  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+    winblend = 10,
+    previewer = false,
+  })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
 local function telescope_live_grep_open_files()
@@ -79,5 +81,4 @@ vim.keymap.set('n', '<leader>sg', require('telescope.builtin').grep_string, { de
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = '[S]earch [R]esume' })
-
 -- vim: ts=2 sts=2 sw=2 et

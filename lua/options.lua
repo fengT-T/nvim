@@ -41,9 +41,9 @@ vim.o.termguicolors = true
 
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme 'catppuccin'
 
-if vim.fn.has("nvim-0.10") == 1 then
+if vim.fn.has 'nvim-0.10' == 1 then
   vim.opt.smoothscroll = true
 end
 
@@ -51,4 +51,4 @@ vim.opt.foldlevel = 99
 vim.opt.foldmethod = 'marker'
 vim.opt.foldenable = true
 -- will hidden cmd line
--- vim.opt.cmdheight=0
+-- vim.opt.cmdheight = 0
