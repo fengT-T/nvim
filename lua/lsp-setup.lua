@@ -20,6 +20,7 @@ local on_attach = function(_, bufnr)
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
+  vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, { buffer = bufnr, desc = 'Signature Documentation' })
 
   -- Lesser used LSP functionality
   nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch [S]ymbols')
