@@ -4,7 +4,26 @@
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash', 'vue', 'json' },
+    ensure_installed = {
+      'c',
+      'cpp',
+      'go',
+      'lua',
+      'python',
+      'rust',
+      'tsx',
+      'javascript',
+      'typescript',
+      'vimdoc',
+      'vim',
+      'bash',
+      'vue',
+      'json',
+      'scss',
+      'css',
+      'glsl',
+      'wgsl',
+    },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
@@ -69,6 +88,10 @@ vim.defer_fn(function()
         },
       },
     },
+  }
+
+  require('Comment').setup {
+    pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
   }
 end, 0)
 
