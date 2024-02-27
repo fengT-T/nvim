@@ -21,7 +21,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- Additional lua configuration, makes nvim stuff amazing!
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
       { 'folke/neodev.nvim' },
     },
   },
@@ -87,7 +87,7 @@ require('lazy').setup({
   },
   {
     'projekt0n/github-nvim-theme',
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
   },
   {
@@ -103,7 +103,7 @@ require('lazy').setup({
       color_overrides = {
         transparent_background = true,
         latte = {
-          base = '#ffffff',
+          -- base = '#ffffff',
         },
       },
     },
@@ -207,12 +207,21 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter-context',
   },
+  -- {
+  --   'echasnovski/mini.files',
+  --   version = '*',
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  -- },
   {
-    'echasnovski/mini.files',
-    version = '*',
+    "nvim-tree/nvim-tree.lua",
+    version = "*",
+    lazy = false,
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      "nvim-tree/nvim-web-devicons",
     },
+    opts = {}
   },
 
   -- auto pairs

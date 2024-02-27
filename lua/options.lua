@@ -54,6 +54,8 @@ vim.opt.foldenable = true
 -- will hidden cmd line
 vim.opt.cmdheight = 0
 
+vim.opt.fileformats = 'unix,dos'
+
 vim.api.nvim_create_autocmd({ 'RecordingEnter' }, {
   callback = function()
     vim.opt.cmdheight = 1

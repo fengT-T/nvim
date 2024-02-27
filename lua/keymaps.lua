@@ -13,13 +13,8 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous dia
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 
 -- file tree
-vim.keymap.set('n', '<leader>e', function()
-  local mf = require 'mini.files'
-  if mf.close() == nil then
-    mf.open()
-  end
-end, { desc = 'Mini File Exporer' })
-vim.keymap.set('n', '<C-c>', require('mini.files').close, { desc = 'close mini files' })
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<cr>')
+vim.keymap.set('n', '<leader>E', '<cmd>NvimTreeFindFile<cr>')
 
 -- save
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
