@@ -86,6 +86,13 @@ local servers = {
   volar = {
     -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     formatting = false,
+    capabilities = {
+      workspace = {
+        didChangeWatchedFiles = {
+          dynamicRegistration = true,
+        },
+      },
+    },
   },
 
   yamlls = {
@@ -133,4 +140,5 @@ mason_lspconfig.setup_handlers {
     }, servers[server_name] or {}))
   end,
 }
+-- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et
