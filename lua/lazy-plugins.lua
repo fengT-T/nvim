@@ -100,8 +100,8 @@ require('lazy').setup({
     lazy = true,
     opts = {
       flavour = 'latte',
+      transparent_background = true,
       color_overrides = {
-        transparent_background = true,
         latte = {
           -- base = '#ffffff',
         },
