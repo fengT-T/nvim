@@ -48,13 +48,23 @@ if vim.fn.has 'nvim-0.10' == 1 then
   vim.opt.smoothscroll = true
 end
 
-vim.opt.foldlevel = 99
+vim.opt.foldlevel = 0
 vim.opt.foldmethod = 'marker'
 vim.opt.foldenable = true
 -- will hidden cmd line
 vim.opt.cmdheight = 0
 
 vim.opt.fileformats = 'unix,dos'
+vim.opt.termguicolors = true
+
+vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13'
+if vim.g.neovide then
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_cursor_antialiasing = true
+  vim.g.neovide_scroll_animation_length = 0.1
+  vim.g.neovide_scroll_animation_far_lines = 1
+  vim.g.neovide_transparency = 0.95
+end
 
 vim.api.nvim_create_autocmd({ 'RecordingEnter' }, {
   callback = function()
