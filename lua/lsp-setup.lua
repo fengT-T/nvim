@@ -74,11 +74,6 @@ require('mason-lspconfig').setup()
 
 -- @type lspconfig.options
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   lua_ls = {
     settings = {
       Lua = {
@@ -106,7 +101,7 @@ local servers = {
       plugins = {
         {
           name = 'typescript-vue-plugin',
-          location = '/home/feng/.local/share/pnpm/global/5/node_modules/typescript-vue-plugin',
+          location = 'C:\\Users\\feng\\AppData\\Local\\pnpm\\global\\5\\node_modules\\typescript-vue-plugin',
         },
       },
     },

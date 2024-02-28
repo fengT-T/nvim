@@ -12,6 +12,7 @@ require('telescope').setup {
         ['<C-y>'] = require('telescope.actions.layout').toggle_preview,
       },
     },
+    path_display = { "smart" }
   },
   extensions = {
     ['ui-select'] = {

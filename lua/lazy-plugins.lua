@@ -101,11 +101,6 @@ require('lazy').setup({
     opts = {
       flavour = 'latte',
       transparent_background = true,
-      color_overrides = {
-        latte = {
-          -- base = '#ffffff',
-        },
-      },
     },
   },
   {
@@ -192,6 +187,11 @@ require('lazy').setup({
       },
       icons = true,
     },
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {}
   },
   {
     -- Highlight, edit, and navigate code
