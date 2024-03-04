@@ -63,7 +63,8 @@ if vim.g.neovide then
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_scroll_animation_far_lines = 1
-  vim.g.neovide_transparency = 0.95
+  vim.g.neovide_padding_left = 2
+  -- vim.g.neovide_transparency = 0.95
 end
 
 vim.api.nvim_create_autocmd({ 'RecordingEnter' }, {
