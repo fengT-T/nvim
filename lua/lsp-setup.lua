@@ -98,6 +98,14 @@ local servers = {
   yamlls = {
     settings = {
       yaml = {
+        schemaStore = {
+          -- You must disable built-in schemaStore support if you want to use
+          -- this plugin and its advanced options like `ignore`.
+          enable = false,
+          -- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+          url = "",
+        },
+        schemas = require('schemastore').yaml.schemas(),
         keyOrdering = false,
       },
     },
@@ -110,6 +118,15 @@ local servers = {
           name = 'typescript-vue-plugin',
           location = 'C:\\Users\\feng\\AppData\\Local\\pnpm\\global\\5\\node_modules\\typescript-vue-plugin',
         },
+      },
+    },
+  },
+
+  jsonls = {
+    settings = {
+      json = {
+        schemas = require('schemastore').json.schemas(),
+        validate = { enable = true },
       },
     },
   },

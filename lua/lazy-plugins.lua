@@ -25,6 +25,7 @@ require('lazy').setup({
       { 'folke/neodev.nvim' },
     },
   },
+  { "b0o/schemastore.nvim" },
   {
     'stevearc/conform.nvim',
     dependencies = { 'mason.nvim' },
