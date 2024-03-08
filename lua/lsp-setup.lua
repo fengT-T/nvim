@@ -25,8 +25,6 @@ local on_attach = function(_, bufnr)
   -- Lesser used LSP functionality
   nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch [S]ymbols')
   nmap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics')
-  -- format
-  -- nmap('<leader>cf', '<Cmd>Format<CR>', 'Format buffer')
   nmap('<leader>cd', vim.diagnostic.open_float, 'Open floating diagnostic message')
   nmap('<leader>cq', vim.diagnostic.setloclist, 'Open diagnostics list')
   -- workspace
@@ -46,10 +44,7 @@ end
 -- document existing key chains
 require('which-key').register {
   ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  -- ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  -- ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
   ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
   ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
@@ -131,6 +126,12 @@ local servers = {
     },
   },
 }
+
+-- volar take over mode
+if #vim.fs.find({ 'vite.config.ts', 'vite.config.js' }, {}) > 0 then
+  servers.tsserver.autostart = false
+  servers.volar.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+end
 
 -- Setup neovim lua configuration
 require('neodev').setup()
