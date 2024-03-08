@@ -62,6 +62,7 @@ local servers = {
     formatting = false,
     capabilities = {
       workspace = {
+        -- make volar auto reload
         didChangeWatchedFiles = {
           dynamicRegistration = true,
         },
@@ -85,16 +86,7 @@ local servers = {
     },
   },
 
-  tsserver = {
-    init_options = {
-      plugins = {
-        {
-          name = 'typescript-vue-plugin',
-          location = 'C:\\Users\\feng\\AppData\\Local\\pnpm\\global\\5\\node_modules\\typescript-vue-plugin',
-        },
-      },
-    },
-  },
+  tsserver = {},
 
   jsonls = {
     settings = {
@@ -107,17 +99,15 @@ local servers = {
 }
 
 -- volar take over mode
+-- https://github.com/vuejs/language-tools/discussions/471
+-- just change to your vue project config file. example vue.config.json
 if #vim.fs.find({ 'vite.config.ts', 'vite.config.js' }, {}) > 0 then
   servers.tsserver.autostart = false
-  servers.volar.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
+  servers.volar.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 end
 
--- mason-lspconfig requires that these setup functions are called in this order
 -- before setting up the servers.
 require('mason').setup()
--- Setup neovim lua configuration
-require('neodev').setup()
-
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
@@ -131,11 +121,14 @@ mason_lspconfig.setup_handlers {
   -- :h mason-lspconfig.setup_handlers()
   -- default lsp haldlers
   function(server_name)
-    -- copy from lazy.nvim
-    require('lspconfig')[server_name].setup(vim.tbl_deep_extend('force', {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }, servers[server_name] or {}))
+    require('lspconfig')[server_name].setup(
+      vim.tbl_deep_extend('force', {
+        capabilities = capabilities,
+        on_attach = on_attach,
+      }, servers[server_name] or {}))
   end,
 }
+
+-- Setup neovim lua configuration
+require('neodev').setup()
 -- vim: ts=2 sts=2 sw=2 et

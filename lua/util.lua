@@ -9,7 +9,6 @@ end
 
 return {
   get_fg,
-  -- copy from lazyvim
   lualine_opts = {
     options = {
       theme = 'auto',
