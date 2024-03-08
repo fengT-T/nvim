@@ -1,6 +1,6 @@
 local function get_fg(name)
   ---@type {foreground?:number}?
-  ---@diagnostic disable-next-line: deprecated
+  ---@diagnostic disable-next-line: undefined-field
   local hl = vim.api.nvim_get_hl and vim.api.nvim_get_hl(0, { name = name }) or vim.api.nvim_get_hl_by_name(name, true)
   ---@diagnostic disable-next-line: undefined-field
   local fg = hl and (hl.fg or hl.foreground)
@@ -10,57 +10,18 @@ end
 return {
   get_fg,
   -- copy from lazyvim
-  lualine_opts = function()
-    -- PERF: we don't need this lualine require madness 🤷
-    local lualine_require = require 'lualine_require'
-    lualine_require.require = require
-
-    vim.o.laststatus = vim.g.lualine_laststatus
-
-    return {
-      options = {
-        theme = 'auto',
-        globalstatus = true,
-        disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
-      },
-      sections = {
-        lualine_x = {
-          {
-            function()
-              return require('noice').api.status.command.get()
-            end,
-            cond = function()
-              return package.loaded['noice'] and require('noice').api.status.command.has()
-            end,
-            color = get_fg 'Function',
-          },
-          {
-            function()
-              return require('noice').api.status.mode.get()
-            end,
-            cond = function()
-              return package.loaded['noice'] and require('noice').api.status.mode.has()
-            end,
-            color = get_fg 'Constant',
-          },
-          {
-            function()
-              return '  ' .. require('dap').status()
-            end,
-            cond = function()
-              return package.loaded['dap'] and require('dap').status() ~= ''
-            end,
-            color = get_fg 'Debug',
-          },
-          {
-            require('lazy.status').updates,
-            cond = require('lazy.status').has_updates,
-            color = get_fg 'Special',
-          },
-        },
-      },
-    }
-  end,
+  lualine_opts = {
+    options = {
+      theme = 'auto',
+      globalstatus = true,
+      disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
+    },
+    sections = {
+      lualine_c = { 'filename' },
+      lualine_x = { 'searchcount', 'fileformat', 'filetype' },
+      lualine_z = { 'tabs' },
+    },
+  },
   gitsign_opt = {
     -- See `:help gitsigns.txt`
     signs = {
@@ -132,4 +93,15 @@ return {
       map({ 'o', 'x' }, 'ih', ':<C-U>Gitsigns select_hunk<CR>', { desc = 'select git hunk' })
     end,
   },
+
+  confirm_opts = {
+    formatters_by_ft = {
+      lua = { 'stylua' },
+      javascript = { 'prettier' },
+      vue = { 'prettier' },
+      typescript = { 'prettier' },
+    },
+    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+    formatters = {},
+  }
 }

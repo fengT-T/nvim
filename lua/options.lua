@@ -51,13 +51,11 @@ end
 vim.opt.foldlevel = 0
 vim.opt.foldmethod = 'marker'
 vim.opt.foldenable = true
--- will hidden cmd line
-vim.opt.cmdheight = 0
-
 vim.opt.fileformats = 'unix,dos'
 vim.opt.termguicolors = true
 
 vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13'
+--- neovide config
 if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_cursor_antialiasing = true
@@ -67,6 +65,9 @@ if vim.g.neovide then
   -- vim.g.neovide_transparency = 0.95
 end
 
+-- will hidden cmd line
+vim.opt.cmdheight = 0
+-- auto hide cmdline
 vim.api.nvim_create_autocmd({ 'RecordingEnter' }, {
   callback = function()
     vim.opt.cmdheight = 1

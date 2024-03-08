@@ -31,26 +31,7 @@ require('lazy').setup({
     dependencies = { 'mason.nvim' },
     lazy = true,
     cmd = 'ConformInfo',
-    keys = {
-      {
-        '<leader>cf',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = 'Format buffer',
-      },
-    },
-    opts = {
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        javascript = { 'prettier' },
-        vue = { 'prettier' },
-        typescript = { 'prettier' },
-      },
-      format_on_save = { timeout_ms = 500, lsp_fallback = true },
-      formatters = {},
-    },
+    opts = require('util').confirm_opts,
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
@@ -105,22 +86,8 @@ require('lazy').setup({
     },
   },
   {
-    -- Set lualine as statusline
-    -- See `:help lualine.txt`
     'nvim-lualine/lualine.nvim',
-    -- opts = require('util').lualine_opts,
-    opts = {
-      options = {
-        theme = 'auto',
-        globalstatus = true,
-        disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
-      },
-      sections = {
-        lualine_c = { 'filename' },
-        lualine_x = { 'searchcount', 'fileformat', 'filetype' },
-        lualine_z = { 'tabs' },
-      },
-    },
+    opts = require('util').lualine_opts,
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
@@ -151,8 +118,6 @@ require('lazy').setup({
       enable_autocmd = false,
     },
   },
-
-  -- Fuzzy Finder (files, lsp, etc)
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -175,6 +140,7 @@ require('lazy').setup({
   {
     'RRethy/vim-illuminate',
   },
+
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -195,7 +161,6 @@ require('lazy').setup({
     opts = {}
   },
   {
-    -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
       'nvim-treesitter/nvim-treesitter-textobjects',
@@ -208,13 +173,6 @@ require('lazy').setup({
   {
     'nvim-treesitter/nvim-treesitter-context',
   },
-  -- {
-  --   'echasnovski/mini.files',
-  --   version = '*',
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons',
-  --   },
-  -- },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",

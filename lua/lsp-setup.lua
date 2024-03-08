@@ -41,31 +41,11 @@ local on_attach = function(_, bufnr)
   -- end, { desc = 'Format current buffer with LSP' })
 end
 
--- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-  ['<leader>q'] = { name = 'Persistence' },
-}
--- register which-key VISUAL mode
--- required for visual <leader>hs (hunk stage) to work
-require('which-key').register({
-  ['<leader>'] = { name = 'VISUAL <leader>' },
-  ['<leader>h'] = { 'Git [H]unk' },
-}, { mode = 'v' })
-
+-- diagnostic icon
 for name, icon in pairs { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' } do
   name = 'DiagnosticSign' .. name
   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
 end
-
--- mason-lspconfig requires that these setup functions are called in this order
--- before setting up the servers.
-require('mason').setup()
-require('mason-lspconfig').setup()
 
 -- @type lspconfig.options
 local servers = {
@@ -79,7 +59,6 @@ local servers = {
   },
 
   volar = {
-    -- filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
     formatting = false,
     capabilities = {
       workspace = {
@@ -130,9 +109,12 @@ local servers = {
 -- volar take over mode
 if #vim.fs.find({ 'vite.config.ts', 'vite.config.js' }, {}) > 0 then
   servers.tsserver.autostart = false
-  servers.volar.filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'}
+  servers.volar.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' }
 end
 
+-- mason-lspconfig requires that these setup functions are called in this order
+-- before setting up the servers.
+require('mason').setup()
 -- Setup neovim lua configuration
 require('neodev').setup()
 
@@ -142,11 +124,9 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
-
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
 }
-
 mason_lspconfig.setup_handlers {
   -- :h mason-lspconfig.setup_handlers()
   -- default lsp haldlers
@@ -158,5 +138,4 @@ mason_lspconfig.setup_handlers {
     }, servers[server_name] or {}))
   end,
 }
--- vim: ts=2 sts=2 sw=2 et
 -- vim: ts=2 sts=2 sw=2 et
