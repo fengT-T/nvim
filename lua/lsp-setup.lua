@@ -101,7 +101,7 @@ local servers = {
 -- volar take over mode
 -- https://github.com/vuejs/language-tools/discussions/471
 -- just change to your vue project config file. example vue.config.json
-if #vim.fs.find({ 'vite.config.ts', 'vite.config.js' }, {}) > 0 then
+if #vim.fs.find({ 'App.vue' }, { limit = 1 }) > 0 then
   servers.tsserver.autostart = false
   servers.volar.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
 end
