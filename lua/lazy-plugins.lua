@@ -22,7 +22,7 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
       -- Additional lua configuration, makes nvim stuff amazing!
       { 'j-hui/fidget.nvim',       opts = {} },
-      { 'folke/neodev.nvim' },
+      { 'folke/neodev.nvim',       opts = {} },
     },
   },
   { "b0o/schemastore.nvim" },

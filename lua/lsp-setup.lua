@@ -128,7 +128,4 @@ mason_lspconfig.setup_handlers {
       }, servers[server_name] or {}))
   end,
 }
-
--- Setup neovim lua configuration
-require('neodev').setup()
 -- vim: ts=2 sts=2 sw=2 et
