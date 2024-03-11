@@ -86,7 +86,18 @@ local servers = {
     },
   },
 
-  tsserver = {},
+  tsserver = {
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = "C:\\Users\\feng\\AppData\\Local\\pnpm\\global\\5\\node_modules\\@vue\\typescript-plugin",
+          languages = { "javascript", "typescript", "vue" },
+        },
+      },
+    },
+  },
 
   jsonls = {
     settings = {
@@ -97,14 +108,6 @@ local servers = {
     },
   },
 }
-
--- volar take over mode
--- https://github.com/vuejs/language-tools/discussions/471
--- just change to your vue project config file. example vue.config.json
-if #vim.fs.find({ 'App.vue' }, { limit = 1 }) > 0 then
-  servers.tsserver.autostart = false
-  servers.volar.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
-end
 
 -- before setting up the servers.
 require('mason').setup()
