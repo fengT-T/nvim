@@ -47,6 +47,10 @@ for name, icon in pairs { Error = ' ', Warn = ' ', Hint = ' ', Info = '
   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
 end
 
+local mason_registry = require('mason-registry')
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+    '/node_modules/@vue/language-server'
+
 -- @type lspconfig.options
 local servers = {
   lua_ls = {
@@ -60,12 +64,17 @@ local servers = {
 
   volar = {
     formatting = false,
-    capabilities = {
-      workspace = {
-        -- make volar auto reload
-        didChangeWatchedFiles = {
-          dynamicRegistration = true,
-        },
+    -- capabilities = {
+    --   workspace = {
+    --     -- make volar auto reload
+    --     didChangeWatchedFiles = {
+    --       dynamicRegistration = true,
+    --     },
+    --   },
+    -- },
+    init_options = {
+      vue = {
+        -- hybridMode = false,
       },
     },
   },
@@ -92,8 +101,8 @@ local servers = {
       plugins = {
         {
           name = "@vue/typescript-plugin",
-          location = "C:\\Users\\feng\\AppData\\Local\\pnpm\\global\\5\\node_modules\\@vue\\typescript-plugin",
-          languages = { "javascript", "typescript", "vue" },
+          location = vue_language_server_path,
+          languages = { "vue" },
         },
       },
     },
@@ -108,6 +117,11 @@ local servers = {
     },
   },
 }
+
+-- if #vim.fs.find({ 'App.vue' }, { limit = 1 }) > 0 then
+--   servers.tsserver.autostart = false
+--   servers.volar.filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' }
+-- end
 
 -- before setting up the servers.
 require('mason').setup()
