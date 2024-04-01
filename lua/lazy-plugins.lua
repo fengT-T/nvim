@@ -82,7 +82,7 @@ require('lazy').setup({
     lazy = true,
     opts = {
       flavour = 'latte',
-      transparent_background = true,
+      transparent_background = false,
     },
   },
   {
