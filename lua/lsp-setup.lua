@@ -116,6 +116,7 @@ local servers = {
       },
     },
   },
+  clangd = {},
 }
 
 -- if #vim.fs.find({ 'App.vue' }, { limit = 1 }) > 0 then
