@@ -48,8 +48,10 @@ for name, icon in pairs { Error = ' ', Warn = ' ', Hint = ' ', Info = '
 end
 
 local mason_registry = require('mason-registry')
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() ..
+local vue_package_path = mason_registry.get_package('vue-language-server'):get_install_path()
+local vue_language_server_path = vue_package_path ..
     '/node_modules/@vue/language-server'
+local vue_ts_path = vue_package_path .. '/node_modules/typescript'
 
 -- @type lspconfig.options
 local servers = {
@@ -74,7 +76,10 @@ local servers = {
     -- },
     init_options = {
       vue = {
-        -- hybridMode = false,
+        -- hybridMode = true,
+        typescript = {
+          tssdk = vue_ts_path -- delete this will use project ts version
+        }
       },
     },
   },
@@ -116,7 +121,6 @@ local servers = {
       },
     },
   },
-  clangd = {},
 }
 
 -- if #vim.fs.find({ 'App.vue' }, { limit = 1 }) > 0 then
@@ -133,7 +137,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
+  ensure_installed = vim.tbl_extend("keep", vim.tbl_keys(servers), { "clangd", "rust_analyzer" }),
 }
 mason_lspconfig.setup_handlers {
   -- :h mason-lspconfig.setup_handlers()
