@@ -82,7 +82,7 @@ require('lazy').setup({
     lazy = true,
     opts = {
       flavour = 'latte',
-      transparent_background = false,
+      transparent_background = true,
     },
   },
   {
@@ -210,6 +210,19 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons' },
     },
   },
+  -- {
+  --   'nanozuki/tabby.nvim',
+  --   event = 'VimEnter',
+  --   dependencies = 'nvim-tree/nvim-web-devicons',
+  --   config = function()
+  --     -- configs...
+  --   end,
+  -- }
+  -- {
+  --   "lukas-reineke/headlines.nvim",
+  --   dependencies = "nvim-treesitter/nvim-treesitter",
+  --   opts = {}
+  -- },
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
