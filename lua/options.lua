@@ -59,10 +59,10 @@ vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13'
 if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_cursor_antialiasing = true
-  vim.g.neovide_scroll_animation_length = 0.2
+  vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_scroll_animation_far_lines = 1
   vim.g.neovide_padding_left = 2
-  vim.g.neovide_transparency = 0.95
+  -- vim.g.neovide_transparency = 0.95
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_hide_mouse_when_typing = false
 end
