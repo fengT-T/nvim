@@ -102,7 +102,8 @@ return {
       html = { 'prettier' },
       css = { 'prettier' },
     },
-    format_on_save = { timeout_ms = 500, lsp_fallback = true },
+     -- just disable auto save
+    -- format_on_save = { timeout_ms = 500, lsp_fallback = true },
     formatters = {},
   }
 }
