@@ -41,10 +41,20 @@ require('lazy').setup({
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
+      -- 'L3MON4D3/LuaSnip',
+      {
+        "garymjr/nvim-snippets",
+        opts = {
+          friendly_snippets = true,
+          global_snippets = { "all", "global" },
+          create_cmp_source = true
+        },
+        dependencies = { "rafamadriz/friendly-snippets" },
+      },
+
+      -- 'saadparwaiz1/cmp_luasnip',
       -- Adds a number of user-friendly snippets
-      'rafamadriz/friendly-snippets',
+      -- 'rafamadriz/friendly-snippets',
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
@@ -210,19 +220,22 @@ require('lazy').setup({
       { 'nvim-tree/nvim-web-devicons' },
     },
   },
-  -- {
-  --   'nanozuki/tabby.nvim',
-  --   event = 'VimEnter',
-  --   dependencies = 'nvim-tree/nvim-web-devicons',
-  --   config = function()
-  --     -- configs...
-  --   end,
-  -- }
-  -- {
-  --   "lukas-reineke/headlines.nvim",
-  --   dependencies = "nvim-treesitter/nvim-treesitter",
-  --   opts = {}
-  -- },
+  {
+    "akinsho/bufferline.nvim",
+    event = "VeryLazy",
+    opts = require 'util'.bufferline_options.opts,
+    keys = require 'util'.bufferline_options.keys,
+    config = require 'util'.bufferline_options.config,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    vscode = true,
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
+    keys = require 'util'.flash_keys,
+  }
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

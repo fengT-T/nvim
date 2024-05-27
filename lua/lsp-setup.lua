@@ -42,7 +42,8 @@ local on_attach = function(_, bufnr)
 end
 
 -- diagnostic icon
-for name, icon in pairs { Error = ' ', Warn = ' ', Hint = ' ', Info = ' ' } do
+local diagnostic_icon = require('util').diagnostics_icon
+for name, icon in pairs(diagnostic_icon) do
   name = 'DiagnosticSign' .. name
   vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
 end
