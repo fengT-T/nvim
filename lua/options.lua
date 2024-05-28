@@ -42,14 +42,31 @@ vim.o.termguicolors = true
 
 -- vim: ts=2 sts=2 sw=2 et
 
-vim.cmd.colorscheme 'catppuccin'
+-- vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'bluloco-light'
 
-if vim.fn.has 'nvim-0.10' == 1 then
+vim.opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
+if vim.fn.has("nvim-0.10") == 1 then
   vim.opt.smoothscroll = true
+  vim.opt.foldexpr = "v:lua.require'util'.foldexpr()"
+  vim.opt.foldmethod = "expr"
+  vim.opt.foldtext = ""
+else
+  vim.opt.foldmethod = "indent"
+  vim.opt.foldtext = "v:lua.require'util'.foldtext()"
 end
 
-vim.opt.foldlevel = 0
-vim.opt.foldmethod = 'marker'
+
+vim.opt.foldlevel = 99
+-- vim.opt.foldlevel = 0
+-- vim.opt.foldmethod = 'marker'
 vim.opt.foldenable = true
 vim.opt.fileformats = 'unix,dos'
 vim.opt.termguicolors = true
@@ -61,7 +78,7 @@ if vim.g.neovide then
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_scroll_animation_far_lines = 1
-  vim.g.neovide_padding_left = 2
+  vim.g.neovide_padding_left = 5
   -- vim.g.neovide_transparency = 0.95
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_hide_mouse_when_typing = false

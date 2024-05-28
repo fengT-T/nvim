@@ -71,17 +71,17 @@ require('lazy').setup({
     opts = require('util').gitsign_opt,
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    lazy = false,
-  },
-  {
-    'projekt0n/github-nvim-theme',
-    lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
-  },
+  -- {
+  --   -- Theme inspired by Atom
+  --   'navarasu/onedark.nvim',
+  --   priority = 1000,
+  --   lazy = false,
+  -- },
+  -- {
+  --   'projekt0n/github-nvim-theme',
+  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+  --   priority = 1000, -- make sure to load this before all the other start plugins
+  -- },
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
@@ -91,9 +91,23 @@ require('lazy').setup({
     name = 'catppuccin',
     lazy = true,
     opts = {
-      flavour = 'latte',
-      transparent_background = true,
+      flavour         = 'latte',
+      color_overrides = {
+        transparent_background = false,
+        latte = {
+          base = "#ffffff",
+        },
+      },
     },
+  },
+  {
+    'uloco/bluloco.nvim',
+    lazy = false,
+    priority = 1000,
+    dependencies = { 'rktjmp/lush.nvim' },
+    opts = {
+      transparent = false,
+    }
   },
   {
     'nvim-lualine/lualine.nvim',
@@ -102,9 +116,9 @@ require('lazy').setup({
       'nvim-tree/nvim-web-devicons',
     },
   },
-  {
-    'echasnovski/mini.bufremove',
-  },
+  -- {
+  --   'echasnovski/mini.bufremove',
+  -- },
   {
     'echasnovski/mini.indentscope',
     version = false, -- wait till new 0.7.0 release to put it back on semver
