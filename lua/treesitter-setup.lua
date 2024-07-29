@@ -23,6 +23,7 @@ vim.defer_fn(function()
       'css',
       'glsl',
       'wgsl',
+      'yaml',
     },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)

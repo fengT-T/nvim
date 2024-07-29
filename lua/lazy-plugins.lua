@@ -21,41 +21,50 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- Additional lua configuration, makes nvim stuff amazing!
-      { 'j-hui/fidget.nvim',       opts = {} },
-      { 'folke/neodev.nvim',       opts = {} },
+      { 'j-hui/fidget.nvim', opts = {} },
+    },
+    config = require 'lsp-setup',
+  },
+
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    cmd = 'LazyDev',
+    opts = {
+      library = {
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        { path = 'LazyVim', words = { 'LazyVim' } },
+        { path = 'lazy.nvim', words = { 'LazyVim' } },
+      },
     },
   },
-  { "b0o/schemastore.nvim" },
+
+  { 'b0o/schemastore.nvim' },
   {
     'stevearc/conform.nvim',
     dependencies = { 'mason.nvim' },
     lazy = true,
     cmd = 'ConformInfo',
-    opts = require('util').confirm_opts,
+    opts = require 'plugin.comfirm',
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
       -- Snippet Engine & its associated nvim-cmp source
-      -- 'L3MON4D3/LuaSnip',
       {
-        "garymjr/nvim-snippets",
+        'garymjr/nvim-snippets',
         opts = {
           friendly_snippets = true,
-          global_snippets = { "all", "global" },
-          create_cmp_source = true
+          global_snippets = { 'all', 'global' },
+          create_cmp_source = true,
         },
-        dependencies = { "rafamadriz/friendly-snippets" },
+        dependencies = { 'rafamadriz/friendly-snippets' },
       },
-
-      -- 'saadparwaiz1/cmp_luasnip',
-      -- Adds a number of user-friendly snippets
-      -- 'rafamadriz/friendly-snippets',
-
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
@@ -65,83 +74,20 @@ require('lazy').setup({
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim', opts = {} },
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = require('util').gitsign_opt,
-  },
-
-  -- {
-  --   -- Theme inspired by Atom
-  --   'navarasu/onedark.nvim',
-  --   priority = 1000,
-  --   lazy = false,
-  -- },
-  -- {
-  --   'projekt0n/github-nvim-theme',
-  --   lazy = false,    -- make sure we load this during startup if it is your main colorscheme
-  --   priority = 1000, -- make sure to load this before all the other start plugins
-  -- },
-  {
-    'folke/todo-comments.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    lazy = true,
-    opts = {
-      flavour         = 'latte',
-      color_overrides = {
-        transparent_background = false,
-        latte = {
-          base = "#ffffff",
-        },
-      },
-    },
-  },
-  {
-    'uloco/bluloco.nvim',
-    lazy = false,
-    priority = 1000,
-    dependencies = { 'rktjmp/lush.nvim' },
-    opts = {
-      transparent = false,
-    }
-  },
+  { 'lewis6991/gitsigns.nvim', opts = require 'plugin.gitsigins' },
+  { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   {
     'nvim-lualine/lualine.nvim',
-    opts = require('util').lualine_opts,
+    opts = require 'plugin.lualine',
     dependencies = {
       'nvim-tree/nvim-web-devicons',
     },
   },
-  -- {
-  --   'echasnovski/mini.bufremove',
-  -- },
-  {
-    'echasnovski/mini.indentscope',
-    version = false, -- wait till new 0.7.0 release to put it back on semver
-    opts = {
-      -- symbol = "▏",
-      symbol = '│',
-      options = { try_as_border = true },
-    },
-  },
 
+  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
-  {
-    'numToStr/Comment.nvim',
-    lazy = false,
-    -- init in treesitter
-  },
-  {
-    'JoosepAlviste/nvim-ts-context-commentstring',
-    lazy = true,
-    opts = {
-      enable_autocmd = false,
-    },
-  },
+  { 'numToStr/Comment.nvim', lazy = false },
+
   {
     'nvim-telescope/telescope.nvim',
     branch = '0.1.x',
@@ -159,11 +105,10 @@ require('lazy').setup({
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
     },
+    config = require 'telescope-setup',
   },
 
-  {
-    'RRethy/vim-illuminate',
-  },
+  { 'RRethy/vim-illuminate' },
 
   {
     'folke/trouble.nvim',
@@ -179,11 +124,9 @@ require('lazy').setup({
       icons = true,
     },
   },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {}
-  },
+
+  { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
+
   {
     'nvim-treesitter/nvim-treesitter',
     dependencies = {
@@ -191,20 +134,21 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  { 'nvim-treesitter/nvim-treesitter-context' },
+  { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true, opts = {
+    enable_autocmd = false,
+  } },
+
+  { 'windwp/nvim-ts-autotag' },
+
   {
-    'windwp/nvim-ts-autotag',
-  },
-  {
-    'nvim-treesitter/nvim-treesitter-context',
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
+    'nvim-tree/nvim-tree.lua',
+    version = '*',
     lazy = false,
     dependencies = {
-      "nvim-tree/nvim-web-devicons",
+      'nvim-tree/nvim-web-devicons',
     },
-    opts = {}
+    opts = {},
   },
 
   -- auto pairs
@@ -214,6 +158,7 @@ require('lazy').setup({
       require('mini.pairs').setup()
     end,
   },
+
   {
     'folke/persistence.nvim',
     -- this will only start session saving when an actual file was opened
@@ -225,31 +170,31 @@ require('lazy').setup({
   {
     'nvimdev/dashboard-nvim',
     event = 'VimEnter',
-    opts = {
-      config = {
-        header = require 'logo',
-      },
-    },
+    opts = require 'plugin.dashboard',
     dependencies = {
       { 'nvim-tree/nvim-web-devicons' },
     },
   },
+
   {
-    "akinsho/bufferline.nvim",
-    event = "VeryLazy",
-    opts = require 'util'.bufferline_options.opts,
-    keys = require 'util'.bufferline_options.keys,
-    config = require 'util'.bufferline_options.config,
+    'akinsho/bufferline.nvim',
+    event = 'VeryLazy',
+    opts = require('plugin.bufferline').opts,
+    keys = require('plugin.bufferline').keys,
+    config = require('plugin.bufferline').config,
   },
   {
-    "folke/flash.nvim",
-    event = "VeryLazy",
+    'folke/flash.nvim',
+    event = 'VeryLazy',
     vscode = true,
     ---@type Flash.Config
     opts = {},
-    -- stylua: ignore
-    keys = require 'util'.flash_keys,
-  }
+    keys = require 'plugin.flash',
+  },
+
+  require('plugin.theme').bluloco,
+  require('plugin.theme').github,
+  require('plugin.theme').catppuccin,
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
