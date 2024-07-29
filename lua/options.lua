@@ -63,7 +63,6 @@ else
   vim.opt.foldtext = "v:lua.require'util'.foldtext()"
 end
 
-
 vim.opt.foldlevel = 99
 -- vim.opt.foldlevel = 0
 -- vim.opt.foldmethod = 'marker'
@@ -96,4 +95,11 @@ vim.api.nvim_create_autocmd({ 'RecordingLeave' }, {
   callback = function()
     vim.opt.cmdheight = 0
   end,
+})
+
+vim.filetype.add({
+  extension = {
+    frag = "glsl",
+    vert = "glsl",
+  },
 })
