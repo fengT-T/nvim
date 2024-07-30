@@ -42,8 +42,9 @@ vim.o.termguicolors = true
 
 -- vim: ts=2 sts=2 sw=2 et
 
--- vim.cmd.colorscheme 'catppuccin'
-vim.cmd.colorscheme 'bluloco-light'
+vim.cmd.colorscheme 'catppuccin'
+-- vim.cmd.colorscheme 'bluloco-light'
+-- vim.cmd.colorscheme 'github_light_colorblind'
 
 vim.opt.fillchars = {
   foldopen = "",

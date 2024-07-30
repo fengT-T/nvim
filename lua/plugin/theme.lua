@@ -30,7 +30,7 @@ return {
     priority = 1000,
     dependencies = { 'rktjmp/lush.nvim' },
     opts = {
-      transparent = false,
+      transparent = true,
     },
   },
 }
