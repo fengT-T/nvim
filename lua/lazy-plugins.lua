@@ -21,7 +21,7 @@ require('lazy').setup({
       { 'williamboman/mason.nvim', config = true },
       'williamboman/mason-lspconfig.nvim',
       -- Additional lua configuration, makes nvim stuff amazing!
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
     },
     config = require 'lsp-setup',
   },
@@ -33,8 +33,8 @@ require('lazy').setup({
     opts = {
       library = {
         { path = 'luvit-meta/library', words = { 'vim%.uv' } },
-        { path = 'LazyVim', words = { 'LazyVim' } },
-        { path = 'lazy.nvim', words = { 'LazyVim' } },
+        { path = 'LazyVim',            words = { 'LazyVim' } },
+        { path = 'lazy.nvim',          words = { 'LazyVim' } },
       },
     },
   },
@@ -73,8 +73,8 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
-  { 'lewis6991/gitsigns.nvim', opts = require 'plugin.gitsigins' },
+  { 'folke/which-key.nvim',     opts = {} },
+  { 'lewis6991/gitsigns.nvim',  opts = require 'plugin.gitsigins' },
   { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
   {
     'nvim-lualine/lualine.nvim',
@@ -86,7 +86,7 @@ require('lazy').setup({
 
   { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', lazy = false },
+  { 'numToStr/Comment.nvim',               lazy = false },
 
   {
     'nvim-telescope/telescope.nvim',
@@ -135,9 +135,13 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
   { 'nvim-treesitter/nvim-treesitter-context' },
-  { 'JoosepAlviste/nvim-ts-context-commentstring', lazy = true, opts = {
-    enable_autocmd = false,
-  } },
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+    lazy = true,
+    opts = {
+      enable_autocmd = false,
+    }
+  },
 
   { 'windwp/nvim-ts-autotag' },
 
@@ -190,6 +194,15 @@ require('lazy').setup({
     ---@type Flash.Config
     opts = {},
     keys = require 'plugin.flash',
+  },
+
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      open_mapping = [[<c-\>]],
+      direction = 'float'
+    }
   },
 
   require('plugin.theme').bluloco,
