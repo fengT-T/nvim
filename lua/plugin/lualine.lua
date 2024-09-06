@@ -6,7 +6,7 @@ return {
   },
   sections = {
     lualine_c = { 'filename' },
-    lualine_x = { 'searchcount', 'fileformat', 'filetype' },
-    lualine_z = { 'tabs' },
+    lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype' },
+    lualine_z = { { 'datetime', style = '%I:%M %p' } },
   },
 }
