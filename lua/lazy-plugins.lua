@@ -143,7 +143,7 @@ require('lazy').setup({
     }
   },
 
-  { 'windwp/nvim-ts-autotag' },
+  { 'windwp/nvim-ts-autotag',                 opts = {} },
 
   {
     'nvim-tree/nvim-tree.lua',
@@ -203,6 +203,11 @@ require('lazy').setup({
       open_mapping = [[<c-\>]],
       direction = 'float'
     }
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {}
   },
 
   require('plugin.theme').bluloco,

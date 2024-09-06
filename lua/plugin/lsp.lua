@@ -1,7 +1,7 @@
 local mason_registry = require 'mason-registry'
 local vue_package_path = mason_registry.get_package('vue-language-server'):get_install_path()
 local vue_language_server_path = vue_package_path .. '/node_modules/@vue/language-server'
-local vue_ts_path = vue_package_path .. '/node_modules/typescript'
+-- local vue_ts_path = vue_package_path .. '/node_modules/typescript'
 
 -- @type lspconfig.options
 local servers = {
@@ -27,9 +27,9 @@ local servers = {
     init_options = {
       vue = {
         -- hybridMode = true,
-        typescript = {
-          tssdk = vue_ts_path, -- delete this will use project ts version
-        },
+        -- typescript = {
+        --   tssdk = vue_ts_path, -- delete this will use project ts version
+        -- },
       },
     },
   },
