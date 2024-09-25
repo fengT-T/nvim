@@ -209,6 +209,11 @@ require('lazy').setup({
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {}
   },
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 
   require('plugin.theme').bluloco,
   require('plugin.theme').github,
