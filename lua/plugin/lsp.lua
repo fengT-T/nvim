@@ -92,7 +92,7 @@ local servers = {
       complete_function_calls = true,
       vtsls = {
         enableMoveToFileCodeAction = true,
-        -- autoUseWorkspaceTsdk = true, // just use vtsls built-in tsdk
+        -- autoUseWorkspaceTsdk = true, -- just use vtsls built-in tsdk
         experimental = {
           completion = {
             enableServerSideFuzzyMatch = true,
@@ -105,7 +105,7 @@ local servers = {
               location = vue_language_server_path,
               languages = { "vue" },
               configNamespace = "typescript",
-              enableForWorkspaceTypeScriptVersions = true,
+              enableForWorkspaceTypeScriptVersions = true, -- allow workspace typescipt load vue plugin
             },
           }
         }
