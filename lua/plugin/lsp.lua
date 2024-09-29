@@ -52,7 +52,7 @@ local servers = {
     },
   },
 
-  tsserver = {
+  ts_ls = {
     enabled = false,
     filetypes = {},
     -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
