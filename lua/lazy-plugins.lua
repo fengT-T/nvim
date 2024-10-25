@@ -214,6 +214,10 @@ require('lazy').setup({
     event = "VeryLazy",
     opts = {},
   },
+  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter'
+  },
 
   require('plugin.theme').bluloco,
   require('plugin.theme').github,

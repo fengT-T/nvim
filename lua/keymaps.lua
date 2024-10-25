@@ -77,7 +77,7 @@ require('which-key').add {
   { '<leader>b', group = 'Buffer' },
   { '<leader>t', group = 'Toggle' },
   { '<leader>w', group = 'Workspace' },
-  { '<leader>q', group = 'Project', name = 'Project Persistence' },
+  { '<leader>q', group = 'Project',  name = 'Project Persistence' },
 }
 
 -- See `:help vim.highlight.on_yank()`
