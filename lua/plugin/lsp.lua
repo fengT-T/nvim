@@ -89,6 +89,7 @@ local servers = {
       'vue'
     },
     settings = {
+      formatting = false,
       complete_function_calls = true,
       vtsls = {
         enableMoveToFileCodeAction = true,

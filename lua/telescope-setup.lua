@@ -9,9 +9,11 @@ return function()
           ['<C-u>'] = false,
           ['<C-d>'] = false,
           ['<C-y>'] = require('telescope.actions.layout').toggle_preview,
+          ['<C-t>'] = require("trouble.sources.telescope").open,
         },
         n = {
           ['<C-y>'] = require('telescope.actions.layout').toggle_preview,
+          ['<C-t>'] = require("trouble.sources.telescope").open,
         },
       },
       path_display = { 'smart' }, -- when path is long, you need short path

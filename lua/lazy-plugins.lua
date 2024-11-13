@@ -113,6 +113,7 @@ require('lazy').setup({
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    cmd = "Trouble",
     opts = {
       signs = {
         error = '',
@@ -121,7 +122,7 @@ require('lazy').setup({
         information = '',
         other = '',
       },
-      icons = true,
+      -- icons = true,
     },
   },
 
