@@ -17,6 +17,9 @@ return function()
         },
       },
       path_display = { 'smart' }, -- when path is long, you need short path
+      preview = {
+        filesize_limit = 1,
+      }
     },
     extensions = {
       ['ui-select'] = {
