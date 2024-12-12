@@ -73,8 +73,8 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',     opts = {} },
-  { 'lewis6991/gitsigns.nvim',  opts = require 'plugin.gitsigins' },
+  { 'folke/which-key.nvim',    opts = {} },
+  { 'lewis6991/gitsigns.nvim', opts = require 'plugin.gitsigins' },
   {
     'nvim-lualine/lualine.nvim',
     opts = require 'plugin.lualine',
@@ -83,9 +83,9 @@ require('lazy').setup({
     },
   },
 
-  { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
+  -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',               lazy = false },
+  { 'numToStr/Comment.nvim', lazy = false },
 
   {
     'nvim-telescope/telescope.nvim',
@@ -125,7 +125,7 @@ require('lazy').setup({
     },
   },
 
-  { 'folke/todo-comments.nvim', dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
+  { 'folke/todo-comments.nvim',               dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -143,7 +143,7 @@ require('lazy').setup({
     }
   },
 
-  { 'windwp/nvim-ts-autotag',                 opts = {} },
+  { 'windwp/nvim-ts-autotag', opts = {} },
 
   {
     'nvim-tree/nvim-tree.lua',
@@ -169,14 +169,6 @@ require('lazy').setup({
     event = 'BufReadPre',
     opts = {
       dir = vim.fn.expand(vim.fn.stdpath 'state' .. '/sessions/'), -- directory where session files are saved
-    },
-  },
-  {
-    'nvimdev/dashboard-nvim',
-    event = 'VimEnter',
-    opts = require 'plugin.dashboard',
-    dependencies = {
-      { 'nvim-tree/nvim-web-devicons' },
     },
   },
 
@@ -205,14 +197,26 @@ require('lazy').setup({
     }
   },
   {
-    "m4xshen/hardtime.nvim",
-    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    opts = {}
-  },
-  {
     "chentoast/marks.nvim",
     event = "VeryLazy",
     opts = {},
+  },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bufdelete    = { enabled = true },
+      input        = { enabled = true },
+      bigfile      = { enabled = true },
+      dashboard    = require "plugin.dashboard",
+      lazygit      = { enabled = true },
+      indent       = { enabled = true },
+      quickfile    = { enabled = true },
+      scope        = { enabled = true },
+      statuscolumn = { enabled = true },
+      toggle       = { enabled = true },
+    }
   },
   {
     'Exafunction/codeium.vim',

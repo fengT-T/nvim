@@ -20,7 +20,7 @@ vim.keymap.set('n', '<leader>E', '<cmd>NvimTreeFindFile<cr>', { desc = 'nvim tre
 vim.keymap.set({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 
 -- remove buffer copy from lazyvim
-vim.keymap.set('n', '<leader>d', require('util').bfm, { desc = 'Delete Buffer' })
+vim.keymap.set('n', '<leader>d', function() Snacks.bufdelete() end, { desc = 'Delete Buffer' })
 
 -- restore the session for the current directory
 vim.keymap.set('n', '<leader>qs', require('persistence').load, { desc = 'restore current session' })
@@ -75,16 +75,46 @@ vim.keymap.set('n', '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.posit
 vim.keymap.set('n', '<leader>cQ', '<cmd>Trouble qflist toggle<cr>', { desc = "Quickfix list (Trouble)" })
 vim.keymap.set('n', '<leader>cL', '<cmd>Trouble loclist toggle<cr>', { desc = "Location list (Trouble)" })
 vim.keymap.set('n', '<leader>cX', '<cmd>Trouble diagnostics toggle<cr>', { desc = "Diagnostics (Trouble)" })
-vim.keymap.set('n', '<leader>cx', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>', { desc = "Buffer Diagnostics (Trouble)" })
+vim.keymap.set('n', '<leader>cx', '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
+  { desc = "Buffer Diagnostics (Trouble)" })
+
+-- lazygit
+if vim.fn.executable("lazygit") == 1 then
+  vim.keymap.set("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Lazygit (cwd)" })
+  vim.keymap.set("n", "<leader>gf", function() Snacks.lazygit.log_file() end, { desc = "Lazygit Current File History" })
+  vim.keymap.set("n", "<leader>gl", function() Snacks.lazygit.log() end, { desc = "Lazygit Log (cwd)" })
+end
+
+-- toggle options
+-- LazyVim.format.snacks_toggle():map("<leader>uf")
+-- LazyVim.format.snacks_toggle(true):map("<leader>uF")
+Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
+Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
+Snacks.toggle.diagnostics():map("<leader>ud")
+Snacks.toggle.line_number():map("<leader>ul")
+Snacks.toggle.option("conceallevel", {
+  off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level"
+}):map("<leader>uc")
+Snacks.toggle.option("showtabline", {
+  off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline"
+}):map("<leader>uA")
+Snacks.toggle.treesitter():map("<leader>uT")
+Snacks.toggle.option("background", {
+  off = "light", on = "dark", name = "Dark Background"
+}):map("<leader>ub")
+if vim.lsp.inlay_hint then
+  Snacks.toggle.inlay_hints():map("<leader>uh")
+end
 
 require('which-key').add {
   { '<leader>c', group = 'Code' },
-  { '<leader>h', group = 'Git' },
+  { '<leader>g', group = 'Git' },
   { '<leader>s', group = 'Search' },
   { '<leader>b', group = 'Buffer' },
-  { '<leader>t', group = 'Toggle' },
+  { '<leader>u', group = 'UI Toggle' },
   { '<leader>w', group = 'Workspace' },
-  { '<leader>q', group = 'Project',  name = 'Project Persistence' },
+  { '<leader>q', group = 'Project' },
 }
 
 -- See `:help vim.highlight.on_yank()`
