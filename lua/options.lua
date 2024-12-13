@@ -71,6 +71,7 @@ vim.opt.foldenable = true
 vim.opt.fileformats = 'unix,dos'
 vim.opt.termguicolors = true
 
+vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13'
 --- neovide config
 if vim.g.neovide then
   vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13:e-subpixelantialias'

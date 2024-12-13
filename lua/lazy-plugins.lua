@@ -162,6 +162,12 @@ require('lazy').setup({
       require('mini.pairs').setup()
     end,
   },
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    opts = {}
+  },
 
   {
     'folke/persistence.nvim',
@@ -216,6 +222,8 @@ require('lazy').setup({
       scope        = { enabled = true },
       statuscolumn = { enabled = true },
       toggle       = { enabled = true },
+      notifier     = { enabled = true },
+      notify       = { enabled = true }
     }
   },
   {
