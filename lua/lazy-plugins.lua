@@ -45,7 +45,7 @@ require('lazy').setup({
     dependencies = { 'mason.nvim' },
     lazy = true,
     cmd = 'ConformInfo',
-    opts = require 'plugin.comfirm',
+    opts = require 'plugin.conform',
     init = function()
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
@@ -114,18 +114,16 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     cmd = "Trouble",
     opts = {
-      signs = {
-        error = '',
-        warning = '',
-        hint = '',
-        information = '',
-        other = '',
-      },
+      signs = { error = '', warning = '', hint = '', information = '', other = '' },
       -- icons = true,
     },
   },
 
-  { 'folke/todo-comments.nvim',               dependencies = { 'nvim-lua/plenary.nvim' }, opts = {} },
+  {
+    'folke/todo-comments.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    opts = {}
+  },
 
   {
     'nvim-treesitter/nvim-treesitter',
@@ -138,29 +136,23 @@ require('lazy').setup({
   {
     'JoosepAlviste/nvim-ts-context-commentstring',
     lazy = true,
-    opts = {
-      enable_autocmd = false,
-    }
+    opts = { enable_autocmd = false }
   },
 
-  { 'windwp/nvim-ts-autotag', opts = {} },
+  { 'windwp/nvim-ts-autotag',                 opts = {} },
 
   {
     'nvim-tree/nvim-tree.lua',
     version = '*',
     lazy = false,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     opts = {},
   },
 
   -- auto pairs
   {
     'echasnovski/mini.pairs',
-    config = function()
-      require('mini.pairs').setup()
-    end,
+    opts = {}
   },
   {
     "kylechui/nvim-surround",
@@ -227,9 +219,11 @@ require('lazy').setup({
     }
   },
   {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter'
+    'timtro/glslView-nvim',
+    opts = { viewer_path = 'glslviewer.exe' }
   },
+  require('plugin.ai').copilot,
+  require('plugin.ai').codeium,
   require('plugin.theme').bluloco,
   require('plugin.theme').github,
   require('plugin.theme').catppuccin,

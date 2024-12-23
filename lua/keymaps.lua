@@ -1,3 +1,4 @@
+local codeium = require "codeium"
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -106,6 +107,11 @@ Snacks.toggle.option("background", {
 if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map("<leader>uh")
 end
+
+-- codeium keymap
+vim.keymap.set('i', 'jj', require('codeium.virtual_text').cycle_or_complete, { desc = 'Codeium help me' })
+-- copilot keymap
+vim.keymap.set('i', 'kk', require("copilot.suggestion").next, { desc = "Copilot help me" })
 
 require('which-key').add {
   { '<leader>c', group = 'Code' },

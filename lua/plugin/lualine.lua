@@ -1,11 +1,17 @@
 local function codeiumStatus()
-  local suffix = '󱙺'
-  local codeium = vim.api.nvim_call_function("codeium#GetStatusString", {})
+  local suffix = '󱙺 '
+  local codeium = require('codeium.virtual_text').status_string()
   if codeium == nil or codeium == '' then
     return suffix
   else
     return suffix .. codeium
   end
+end
+
+local function copilotStatus()
+  local suffix = ' '
+  local status = require("copilot.api").status.data.status
+  return suffix .. ((status == "InProgress" and "...") or (status == "Warning" and "err") or "ok")
 end
 
 return {
@@ -16,7 +22,7 @@ return {
   },
   sections = {
     lualine_c = { 'filename' },
-    lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype', codeiumStatus },
+    lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype', codeiumStatus, copilotStatus },
     lualine_z = { { 'datetime', style = '%I:%M %p' } },
   },
 }
