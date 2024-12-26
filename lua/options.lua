@@ -17,8 +17,26 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
+-- Enable highlighting of the current line
+vim.o.cursorline = true
+
+-- Hide * markup for bold and italic, but not markers with substitutions
+vim.o.conceallevel = 2
+
 -- Enable break indent
 vim.o.breakindent = true
+
+-- Number of spaces tabs count for
+vim.o.tabstop = 2
+
+-- Size of an indent
+vim.o.shiftwidth = 2
+
+-- Round indent
+vim.o.shiftround = true
+
+-- Use spaces for tabs
+vim.o.expandtab = true
 
 -- Save undo history
 vim.o.undofile = true
@@ -35,12 +53,33 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
+vim.o.completeopt = 'menu,menuone,noselect'
+
+vim.o.jumpoptions = 'view'
+
+-- Show some invisible characters (tabs...
+vim.o.list = true
+
+-- Popup blend
+vim.o.pumblend = 10
+
+-- Maximum number of entries in a popup
+vim.o.pumheight = 10
+
+-- Lines of context
+vim.o.scrolloff = 5
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
--- vim: ts=2 sts=2 sw=2 et
+-- Put new windows below current
+vim.o.splitbelow = true
+vim.o.splitkeep = "screen"
+
+vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+
+-- Minimum window width
+vim.o.winminwidth = 5
 
 vim.cmd.colorscheme 'catppuccin'
 -- vim.cmd.colorscheme 'bluloco-light'

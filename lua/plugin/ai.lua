@@ -10,7 +10,7 @@ return {
       virtual_text = {
         enabled = true,
         manual = false,
-        idle_delay = 2500,
+        idle_delay = 1000,
         key_bindings = {
           accept = "<Tab>",
           accept_word = false,
@@ -27,8 +27,8 @@ return {
     cmd = "Copilot",
     opts = {
       suggestion = {
-        enabled = true,
-        auto_trigger = false,
+        enabled = false,
+        auto_trigger = true,
         hide_during_completion = true,
         debounce = 75,
         keymap = {
