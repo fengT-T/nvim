@@ -22,6 +22,7 @@ require('lazy').setup({
       'williamboman/mason-lspconfig.nvim',
       -- Additional lua configuration, makes nvim stuff amazing!
       { 'j-hui/fidget.nvim',       opts = {} },
+      { 'saghen/blink.cmp' },
     },
     config = require 'lsp-setup',
   },
@@ -51,25 +52,47 @@ require('lazy').setup({
     end,
   },
 
+  -- {
+  --   -- Autocompletion
+  --   'hrsh7th/nvim-cmp',
+  --   dependencies = {
+  --     -- Snippet Engine & its associated nvim-cmp source
+  --     {
+  --       'garymjr/nvim-snippets',
+  --       opts = {
+  --         friendly_snippets = true,
+  --         global_snippets = { 'all', 'global' },
+  --         create_cmp_source = true,
+  --       },
+  --       dependencies = { 'rafamadriz/friendly-snippets' },
+  --     },
+  --     -- Adds LSP completion capabilities
+  --     'hrsh7th/cmp-nvim-lsp',
+  --     'hrsh7th/cmp-path',
+  --     'hrsh7th/cmp-buffer',
+  --   },
+  -- },
   {
-    -- Autocompletion
-    'hrsh7th/nvim-cmp',
+    'saghen/blink.cmp',
+    -- optional: provides snippets for the snippet source
     dependencies = {
-      -- Snippet Engine & its associated nvim-cmp source
-      {
-        'garymjr/nvim-snippets',
-        opts = {
-          friendly_snippets = true,
-          global_snippets = { 'all', 'global' },
-          create_cmp_source = true,
-        },
-        dependencies = { 'rafamadriz/friendly-snippets' },
-      },
-      -- Adds LSP completion capabilities
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-buffer',
+      'rafamadriz/friendly-snippets'
     },
+    -- version = '*',
+    build = 'cargo build --release',
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = { preset = 'enter' },
+      appearance = {
+        use_nvim_cmp_as_default = true,
+        nerd_font_variant = 'normal'
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+    },
+    opts_extend = { "sources.default" }
   },
 
   -- Useful plugin to show you pending keybinds.

@@ -81,6 +81,8 @@ vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 -- Minimum window width
 vim.o.winminwidth = 5
 
+vim.o.winblend = 20
+
 vim.cmd.colorscheme 'catppuccin'
 -- vim.cmd.colorscheme 'bluloco-light'
 -- vim.cmd.colorscheme 'github_light_colorblind'

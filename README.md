@@ -1,2 +1,2 @@
 # NYA-VIM
-![](doc/assets/screenshot.jpg)
+![screen](doc/assets/screenshot.jpg)
