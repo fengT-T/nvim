@@ -44,33 +44,6 @@ vim.keymap.set('n', '<leader>cf', function()
   require('conform').format { async = true, lsp_fallback = true }
 end, { desc = 'Format buffer' })
 
--- telescope keymap
--- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
-vim.keymap.set('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-vim.keymap.set('n', '<leader>s/', function()
-  require('telescope.builtin').live_grep {
-    grep_open_files = true,
-    prompt_title = 'Live Grep in Open Files',
-  }
-end, { desc = '[S]earch [/] in Open Files' })
-
-vim.keymap.set('n', '<leader>sf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
--- vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
-vim.keymap.set('n', '<leader>f', require('telescope.builtin').find_files, { desc = 'Search Files' })
-vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Search Help' })
-vim.keymap.set('n', '<leader>sg', require('telescope.builtin').grep_string, { desc = 'Search current Word' })
-vim.keymap.set('n', '<leader>sw', require('telescope.builtin').live_grep, { desc = 'Search by Grep' })
-vim.keymap.set('n', '<leader>sG', ':LiveGrepGitRoot<cr>', { desc = 'Search by Grep on Git Root' })
-vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 'Search Resume' })
-
 vim.keymap.set('n', '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
   { desc = "LSP Definitions / references / ... (Trouble)" })
 vim.keymap.set('n', '<leader>cQ', '<cmd>Trouble qflist toggle<cr>', { desc = "Quickfix list (Trouble)" })
@@ -118,6 +91,51 @@ vim.keymap.set('i', 'kk', function()
   require("copilot.suggestion").next()
   require("codeium.virtual_text").clear()
 end, { desc = "Copilot help me" })
+
+-- fzf-lua
+local function searhBuf()
+  require('fzf-lua').buffers { sort_mru = true, sort_lastused = true }
+end
+vim.keymap.set('n', '<leader>so', require('fzf-lua').builtin, { desc = '[S]earch [O]pen' })
+-- lsp
+vim.keymap.set('n', 'gd', require('fzf-lua').lsp_definitions, { desc = '[G]oto [D]efinition' })
+vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, { desc = '[G]oto [R]eferences' })
+vim.keymap.set('n', 'gI', require('fzf-lua').lsp_implementations, { desc = '[G]oto [I]mplementation' })
+vim.keymap.set('n', 'gy', require('fzf-lua').lsp_typedefs, { desc = '[G]oto [Y]pe Definition' })
+vim.keymap.set('n', '<leader>cs', require('fzf-lua').lsp_document_symbols, { desc = '[C]ode [S]ymbols' })
+vim.keymap.set('n', '<leader>cd', require('fzf-lua').lsp_document_diagnostics, { desc = '[C]ode [D]iagnostics' })
+vim.keymap.set('n', '<leader>ca', require('fzf-lua').lsp_code_actions, { desc = '[C]ode [A]ctions' })
+
+-- workspace lsp
+vim.keymap.set('n', '<leader>ss', require('fzf-lua').lsp_workspace_symbols, { desc = '[S]earch [S]ymbols' })
+vim.keymap.set('n', '<leader>sd', require('fzf-lua').lsp_workspace_diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>sS', require('fzf-lua').lsp_live_workspace_symbols,
+  { desc = '[S]earch [W]orkspace Symbols' })
+
+-- grep workspace word
+vim.keymap.set('n', '<leader>s/', require('fzf-lua').live_grep, { desc = '[S]earch [G]rep' })
+vim.keymap.set('n', '<leader>sw', require('fzf-lua').grep_cword, { desc = '[S]earch current [W]ord' })
+vim.keymap.set('n', '<leader>s"', require('fzf-lua').registers, { desc = '[S]earch [R]egisters' })
+vim.keymap.set('n', '<leader>sr', require('fzf-lua').resume, { desc = '[S]earch [R]esume' })
+vim.keymap.set('n', '<leader>sj', require('fzf-lua').jumps, { desc = '[S]earch [J]umplist' })
+vim.keymap.set('n', '<leader>sk', require('fzf-lua').keymaps, { desc = '[S]earch [K]eymaps' })
+vim.keymap.set('n', '<leader>sl', require('fzf-lua').loclist, { desc = '[S]earch [L]ocation list' })
+vim.keymap.set('n', '<leader>sm', require('fzf-lua').marks, { desc = '[S]earch [M]arks' })
+vim.keymap.set('n', '<leader>sh', require('fzf-lua').help_tags, { desc = '[S]earch [H]elp' })
+vim.keymap.set('n', '<leader>sc', require('fzf-lua').commands, { desc = '[S]earch [C]ommands' })
+vim.keymap.set('n', '<leader>sC', require('fzf-lua').command_history, { desc = '[S]earch [C]ommand [H]istory' })
+vim.keymap.set('n', '<leader>sg', require('fzf-lua').git_status, { desc = '[S]earch [G]it [S]tatus' })
+vim.keymap.set('n', '<leader>sgc', require('fzf-lua').git_commits, { desc = '[S]earch [G]it [C]ommits' })
+vim.keymap.set('n', '<leader>sgb', require('fzf-lua').git_branches, { desc = '[S]earch [G]it [B]ranches' })
+
+-- search workspace file
+vim.keymap.set('n', '<leader>sb', searhBuf, { desc = 'Search [B]uffers' })
+vim.keymap.set('n', '<leader>sO', require('fzf-lua').oldfiles, { desc = 'Search [O]ldfiles' })
+vim.keymap.set('n', '<leader>f', require('fzf-lua').files, { desc = 'Search Files' })
+vim.keymap.set('n', '<leader><space>', searhBuf, { desc = 'Search Buffers' })
+
+-- grep current buff
+vim.keymap.set('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Search current Buffer' })
 
 require('which-key').add {
   { '<leader>c', group = 'Code' },

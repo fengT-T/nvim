@@ -51,39 +51,23 @@ require('lazy').setup({
       vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
-
-  -- {
-  --   -- Autocompletion
-  --   'hrsh7th/nvim-cmp',
-  --   dependencies = {
-  --     -- Snippet Engine & its associated nvim-cmp source
-  --     {
-  --       'garymjr/nvim-snippets',
-  --       opts = {
-  --         friendly_snippets = true,
-  --         global_snippets = { 'all', 'global' },
-  --         create_cmp_source = true,
-  --       },
-  --       dependencies = { 'rafamadriz/friendly-snippets' },
-  --     },
-  --     -- Adds LSP completion capabilities
-  --     'hrsh7th/cmp-nvim-lsp',
-  --     'hrsh7th/cmp-path',
-  --     'hrsh7th/cmp-buffer',
-  --   },
-  -- },
   {
     'saghen/blink.cmp',
-    -- optional: provides snippets for the snippet source
     dependencies = {
       'rafamadriz/friendly-snippets'
     },
-    -- version = '*',
     build = 'cargo build --release',
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
-      keymap = { preset = 'enter' },
+      signature = { enabled = true },
+      keymap = {
+        preset = 'default',
+        ['<CR>'] = { 'accept', 'fallback' },
+        cmdline = {
+          preset = 'default'
+        }
+      },
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'normal'
@@ -110,25 +94,25 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', lazy = false },
 
-  {
-    'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-      -- Only load if `make` is available. Make sure you have the system
-      -- requirements installed.
-      {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
-      },
-      { 'nvim-telescope/telescope-ui-select.nvim' },
-    },
-    config = require 'telescope-setup',
-  },
+  -- {
+  --   'nvim-telescope/telescope.nvim',
+  --   branch = '0.1.x',
+  --   dependencies = {
+  --     'nvim-lua/plenary.nvim',
+  --     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
+  --     -- Only load if `make` is available. Make sure you have the system
+  --     -- requirements installed.
+  --     {
+  --       'nvim-telescope/telescope-fzf-native.nvim',
+  --       build = 'make',
+  --       cond = function()
+  --         return vim.fn.executable 'make' == 1
+  --       end,
+  --     },
+  --     { 'nvim-telescope/telescope-ui-select.nvim' },
+  --   },
+  --   config = require 'telescope-setup',
+  -- },
 
   { 'RRethy/vim-illuminate' },
 
@@ -244,6 +228,14 @@ require('lazy').setup({
   {
     'timtro/glslView-nvim',
     opts = { viewer_path = 'glslviewer.exe' }
+  },
+  {
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      'default-title',
+      fzf_colors = true,
+    }
   },
   require('plugin.ai').copilot,
   require('plugin.ai').codeium,

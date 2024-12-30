@@ -9,13 +9,8 @@ return function()
       end
 
       nmap('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
-      nmap('<leader>cs', require('telescope.builtin').lsp_document_symbols, 'docuement [C]ode [S]ymbols')
-      nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
       nmap('<leader>ck', vim.lsp.buf.signature_help, 'Signature Documentation')
 
-      nmap('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-      nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-      nmap('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
       nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
       nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -25,12 +20,8 @@ return function()
       })
 
       -- Lesser used LSP functionality
-      nmap('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch [S]ymbols')
-      nmap('<leader>sd', require('telescope.builtin').diagnostics, '[S]earch [D]iagnostics')
-      nmap('<leader>cd', vim.diagnostic.open_float, 'Open floating diagnostic message')
       nmap('<leader>cq', vim.diagnostic.setloclist, 'Open diagnostics list')
       -- workspace
-      nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
       nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
       nmap('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
       nmap('<leader>wl', function()
@@ -96,8 +87,6 @@ return function()
   require('mason').setup()
 
   -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
-  -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
   local capabilities = require('blink.cmp').get_lsp_capabilities()
 
   -- Ensure the servers above are installed
