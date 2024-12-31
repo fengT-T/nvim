@@ -18,7 +18,7 @@ return {
       diagnostics_indicator = function(_, _, diag)
         local icons = util.diagnostics_icon
         local ret = (diag.error and icons.Error .. diag.error .. ' ' or '') -- just show error
-        -- .. (diag.warning and icons.Warn .. diag.warning or "")
+            .. (diag.warning and icons.Warn .. diag.warning or "")
         return vim.trim(ret)
       end,
       offsets = {

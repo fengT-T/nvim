@@ -77,6 +77,7 @@ vim.o.splitbelow = true
 vim.o.splitkeep = "screen"
 
 vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+vim.o.laststatus = 3
 
 -- Minimum window width
 vim.o.winminwidth = 5
