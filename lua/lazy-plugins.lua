@@ -12,7 +12,7 @@ require('lazy').setup({
   -- 'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
+  -- 'tpope/vim-sleuth',
 
   -- LSP Configuration & Plugins
   {
@@ -33,51 +33,16 @@ require('lazy').setup({
     cmd = 'LazyDev',
     opts = {
       library = {
-        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
         { path = 'LazyVim',            words = { 'LazyVim' } },
         { path = 'lazy.nvim',          words = { 'LazyVim' } },
+        { path = "snacks.nvim",        words = { "Snacks" } },
+        { path = "flash.nvim",         words = { "Flash" } },
       },
     },
   },
 
   { 'b0o/schemastore.nvim' },
-  {
-    'stevearc/conform.nvim',
-    dependencies = { 'mason.nvim' },
-    lazy = true,
-    cmd = 'ConformInfo',
-    opts = require 'plugin.conform',
-    init = function()
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
-  },
-  {
-    'saghen/blink.cmp',
-    dependencies = {
-      'rafamadriz/friendly-snippets'
-    },
-    build = 'cargo build --release',
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      signature = { enabled = true },
-      keymap = {
-        preset = 'default',
-        ['<CR>'] = { 'accept', 'fallback' },
-        cmdline = {
-          preset = 'default'
-        }
-      },
-      appearance = {
-        use_nvim_cmp_as_default = true,
-        nerd_font_variant = 'normal'
-      },
-      sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
-      },
-    },
-    opts_extend = { "sources.default" }
-  },
 
   -- Useful plugin to show you pending keybinds.
   { 'folke/which-key.nvim',    opts = {} },
@@ -93,26 +58,6 @@ require('lazy').setup({
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', lazy = false },
-
-  -- {
-  --   'nvim-telescope/telescope.nvim',
-  --   branch = '0.1.x',
-  --   dependencies = {
-  --     'nvim-lua/plenary.nvim',
-  --     -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-  --     -- Only load if `make` is available. Make sure you have the system
-  --     -- requirements installed.
-  --     {
-  --       'nvim-telescope/telescope-fzf-native.nvim',
-  --       build = 'make',
-  --       cond = function()
-  --         return vim.fn.executable 'make' == 1
-  --       end,
-  --     },
-  --     { 'nvim-telescope/telescope-ui-select.nvim' },
-  --   },
-  --   config = require 'telescope-setup',
-  -- },
 
   { 'RRethy/vim-illuminate' },
 
@@ -178,22 +123,6 @@ require('lazy').setup({
   },
 
   {
-    'akinsho/bufferline.nvim',
-    event = 'VeryLazy',
-    opts = require('plugin.bufferline').opts,
-    keys = require('plugin.bufferline').keys,
-    config = require('plugin.bufferline').config,
-  },
-  {
-    'folke/flash.nvim',
-    event = 'VeryLazy',
-    vscode = true,
-    ---@type Flash.Config
-    opts = {},
-    keys = require 'plugin.flash',
-  },
-
-  {
     'akinsho/toggleterm.nvim',
     version = "*",
     opts = {
@@ -207,25 +136,6 @@ require('lazy').setup({
     opts = {},
   },
   {
-    "folke/snacks.nvim",
-    priority = 1000,
-    lazy = false,
-    opts = {
-      bufdelete    = { enabled = true },
-      input        = { enabled = true },
-      bigfile      = { enabled = true },
-      dashboard    = require "plugin.dashboard",
-      lazygit      = { enabled = true },
-      indent       = { enabled = true },
-      quickfile    = { enabled = true },
-      scope        = { enabled = true },
-      statuscolumn = { enabled = true },
-      toggle       = { enabled = true },
-      notifier     = { enabled = true },
-      notify       = { enabled = true }
-    }
-  },
-  {
     'timtro/glslView-nvim',
     opts = { viewer_path = 'glslviewer.exe' }
   },
@@ -237,11 +147,17 @@ require('lazy').setup({
       fzf_colors = true,
     }
   },
+
   require('plugin.ai').copilot,
   require('plugin.ai').codeium,
   require('plugin.theme').bluloco,
   require('plugin.theme').github,
   require('plugin.theme').catppuccin,
+  require 'plugin.conform',
+  require 'plugin.flash',
+  require 'plugin.cmp',
+  require 'plugin.bufferline',
+  require 'plugin.snacks'
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

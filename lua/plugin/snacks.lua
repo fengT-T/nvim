@@ -1,4 +1,4 @@
-return {
+local dashboard = {
   preset = {
     header = [[
 ███╗   ██╗██╗   ██╗ █████╗       ██╗   ██╗██╗███╗   ███╗
@@ -20,4 +20,24 @@ return {
     { section = "keys",   gap = 1, padding = 1 },
     { section = "startup" },
   },
+}
+
+return {
+  "folke/snacks.nvim",
+  priority = 1000,
+  lazy = false,
+  opts = {
+    bufdelete    = { enabled = true },
+    input        = { enabled = true },
+    bigfile      = { enabled = true },
+    dashboard    = dashboard,
+    lazygit      = { enabled = true },
+    indent       = { enabled = true },
+    quickfile    = { enabled = true },
+    scope        = { enabled = true },
+    statuscolumn = { enabled = true },
+    toggle       = { enabled = true },
+    notifier     = { enabled = true },
+    notify       = { enabled = true }
+  }
 }

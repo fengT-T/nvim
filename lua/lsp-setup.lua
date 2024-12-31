@@ -20,6 +20,7 @@ return function()
       })
 
       -- Lesser used LSP functionality
+      nmap('<leader>cd', vim.diagnostic.open_float, '[C]ode [D]iagnostics')
       nmap('<leader>cq', vim.diagnostic.setloclist, 'Open diagnostics list')
       -- workspace
       nmap('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
@@ -93,6 +94,7 @@ return function()
   local mason_lspconfig = require 'mason-lspconfig'
 
   mason_lspconfig.setup {
+    automatic_installation = true,
     ensure_installed = lsp_option.ensure_installed,
     handlers = {
       function(server_name)

@@ -3,7 +3,6 @@ return {
     "Exafunction/codeium.nvim",
     requires = {
       "nvim-lua/plenary.nvim",
-      -- "hrsh7th/nvim-cmp",
     },
     opts = {
       enable_cmp_source = false,

@@ -1,4 +1,3 @@
-local codeium = require "codeium"
 -- [[ Basic Keymaps ]]
 
 -- Keymaps for better default experience
@@ -60,8 +59,6 @@ if vim.fn.executable("lazygit") == 1 then
 end
 
 -- toggle options
--- LazyVim.format.snacks_toggle():map("<leader>uf")
--- LazyVim.format.snacks_toggle(true):map("<leader>uF")
 Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
 Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 Snacks.toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
@@ -103,15 +100,13 @@ vim.keymap.set('n', 'gr', require('fzf-lua').lsp_references, { desc = '[G]oto [R
 vim.keymap.set('n', 'gI', require('fzf-lua').lsp_implementations, { desc = '[G]oto [I]mplementation' })
 vim.keymap.set('n', 'gy', require('fzf-lua').lsp_typedefs, { desc = '[G]oto [Y]pe Definition' })
 vim.keymap.set('n', '<leader>cs', require('fzf-lua').lsp_document_symbols, { desc = '[C]ode [S]ymbols' })
-vim.keymap.set('n', '<leader>cd', require('fzf-lua').lsp_document_diagnostics, { desc = '[C]ode [D]iagnostics' })
+vim.keymap.set('n', '<leader>cD', require('fzf-lua').lsp_document_diagnostics, { desc = '[C]ode [D]iagnostics' })
 vim.keymap.set('n', '<leader>ca', require('fzf-lua').lsp_code_actions, { desc = '[C]ode [A]ctions' })
-
 -- workspace lsp
 vim.keymap.set('n', '<leader>ss', require('fzf-lua').lsp_workspace_symbols, { desc = '[S]earch [S]ymbols' })
 vim.keymap.set('n', '<leader>sd', require('fzf-lua').lsp_workspace_diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sS', require('fzf-lua').lsp_live_workspace_symbols,
   { desc = '[S]earch [W]orkspace Symbols' })
-
 -- grep workspace word
 vim.keymap.set('n', '<leader>s/', require('fzf-lua').live_grep, { desc = '[S]earch [G]rep' })
 vim.keymap.set('n', '<leader>sw', require('fzf-lua').grep_cword, { desc = '[S]earch current [W]ord' })
@@ -127,13 +122,11 @@ vim.keymap.set('n', '<leader>sC', require('fzf-lua').command_history, { desc = '
 vim.keymap.set('n', '<leader>sg', require('fzf-lua').git_status, { desc = '[S]earch [G]it [S]tatus' })
 vim.keymap.set('n', '<leader>sgc', require('fzf-lua').git_commits, { desc = '[S]earch [G]it [C]ommits' })
 vim.keymap.set('n', '<leader>sgb', require('fzf-lua').git_branches, { desc = '[S]earch [G]it [B]ranches' })
-
 -- search workspace file
 vim.keymap.set('n', '<leader>sb', searhBuf, { desc = 'Search [B]uffers' })
 vim.keymap.set('n', '<leader>sO', require('fzf-lua').oldfiles, { desc = 'Search [O]ldfiles' })
 vim.keymap.set('n', '<leader>f', require('fzf-lua').files, { desc = 'Search Files' })
 vim.keymap.set('n', '<leader><space>', searhBuf, { desc = 'Search Buffers' })
-
 -- grep current buff
 vim.keymap.set('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Search current Buffer' })
 
