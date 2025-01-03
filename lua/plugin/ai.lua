@@ -9,12 +9,12 @@ return {
       virtual_text = {
         enabled = true,
         manual = false,
-        idle_delay = 1000,
+        idle_delay = 500,
         key_bindings = {
           accept = "<Tab>",
           accept_word = false,
           accept_line = false,
-          clear = "<C-]>",
+          clear = "<C-l>",
           next = "<M-]>",
           prev = "<M-[>",
         }
@@ -26,17 +26,17 @@ return {
     cmd = "Copilot",
     opts = {
       suggestion = {
-        enabled = false,
+        enabled = true,
         auto_trigger = true,
         hide_during_completion = true,
-        debounce = 75,
+        debounce = 1000,
         keymap = {
-          accept = "<M-l>",
+          accept = "<Tab>",
           accept_word = false,
           accept_line = false,
-          next = "<M-}>",
-          prev = "<M-{>",
-          dismiss = "<C-}>"
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<C-l>"
         },
       }
     }

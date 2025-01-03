@@ -78,17 +78,6 @@ if vim.lsp.inlay_hint then
   Snacks.toggle.inlay_hints():map("<leader>uh")
 end
 
--- codeium keymap
-vim.keymap.set('i', 'jj', function()
-  require('codeium.virtual_text').cycle_or_complete()
-  require('copilot.suggestion').dismiss()
-end, { desc = 'Codeium help me' })
--- copilot keymap
-vim.keymap.set('i', 'kk', function()
-  require("copilot.suggestion").next()
-  require("codeium.virtual_text").clear()
-end, { desc = "Copilot help me" })
-
 -- fzf-lua
 local function searhBuf()
   require('fzf-lua').buffers { sort_mru = true, sort_lastused = true }
