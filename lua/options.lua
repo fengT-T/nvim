@@ -61,7 +61,7 @@ vim.o.jumpoptions = 'view'
 vim.o.list = true
 
 -- Popup blend
-vim.o.pumblend = 10
+vim.o.pumblend = 20
 
 -- Maximum number of entries in a popup
 vim.o.pumheight = 10

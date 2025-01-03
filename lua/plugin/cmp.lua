@@ -10,10 +10,10 @@ return {
     signature = { enabled = true },
     keymap = {
       preset = 'default',
-      ['<CR>'] = { 'accept', 'fallback' },
-      cmdline = {
-        preset = 'default'
-      }
+      -- ['<CR>'] = { 'accept', 'fallback' },
+      -- cmdline = {
+      --   preset = 'default'
+      -- }
     },
     appearance = {
       use_nvim_cmp_as_default = true,
@@ -22,6 +22,9 @@ return {
     sources = {
       default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
+    completion = {
+      menu = { winblend = 30 }
+    }
   },
   opts_extend = { "sources.default" }
 }
