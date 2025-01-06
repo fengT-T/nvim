@@ -122,9 +122,38 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_scroll_animation_far_lines = 1
   vim.g.neovide_padding_left = 5
-  -- vim.g.neovide_transparency = 0.95
+  -- vim.g.neovide_transparency = 0.8
+  -- vim.g.neovide_normal_opacity = 0.8
   vim.g.neovide_cursor_vfx_mode = "railgun"
-  vim.g.neovide_hide_mouse_when_typing = false
+  vim.g.neovide_cursor_vfx_opacity = 200.0
+  vim.g.neovide_cursor_vfx_particle_density = 10
+  vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_floating_corner_radius = 0.2
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_title_background_color = string.format(
+    "%x",
+    vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
+  )
+
+  -- neovide IME
+  local function set_ime(args)
+    if args.event:match("Enter$") then
+      vim.g.neovide_input_ime = true
+    else
+      vim.g.neovide_input_ime = false
+    end
+  end
+  local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
+  vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+    group = ime_input,
+    pattern = "*",
+    callback = set_ime
+  })
+  vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
+    group = ime_input,
+    pattern = "[/\\?]",
+    callback = set_ime
+  })
 end
 
 -- will hidden cmd line

@@ -119,6 +119,12 @@ vim.keymap.set('n', '<leader><space>', searhBuf, { desc = 'Search Buffers' })
 -- grep current buff
 vim.keymap.set('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Search current Buffer' })
 
+if vim.g.neovide then
+  vim.keymap.set('n', '<F11>', function ()
+    vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
+  end)
+end
+
 require('which-key').add {
   { '<leader>c', group = 'Code' },
   { '<leader>g', group = 'Git' },
