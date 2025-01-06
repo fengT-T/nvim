@@ -147,6 +147,12 @@ require('lazy').setup({
       fzf_colors = true,
     }
   },
+  {
+    "zk-org/zk-nvim",
+    config = function()
+      require("zk").setup({})
+    end
+  },
 
   -- require('plugin.ai').copilot,
   require('plugin.ai').codeium,
