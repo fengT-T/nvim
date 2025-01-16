@@ -154,7 +154,7 @@ require('lazy').setup({
     end
   },
 
-  -- require('plugin.ai').copilot,
+  -- require('plugin.ai').supermaven,
   require('plugin.ai').codeium,
   require('plugin.theme').bluloco,
   require('plugin.theme').github,

@@ -1,4 +1,16 @@
 return {
+  supermaven = {
+    {
+      "supermaven-inc/supermaven-nvim",
+      opts = {
+        keymaps = {
+          accept_suggestion = "<Tab>",
+          clear_suggestion = "<C-l>",
+          accept_word = "<C-j>",
+        }
+      },
+    },
+  },
   codeium = {
     "Exafunction/codeium.nvim",
     requires = {
@@ -9,7 +21,7 @@ return {
       virtual_text = {
         enabled = true,
         manual = false,
-        idle_delay = 500,
+        idle_delay = 70,
         key_bindings = {
           accept = "<Tab>",
           accept_word = false,
