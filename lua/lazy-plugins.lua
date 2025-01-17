@@ -153,9 +153,14 @@ require('lazy').setup({
       require("zk").setup({})
     end
   },
-
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    lazy = true,
+  },
   -- require('plugin.ai').supermaven,
-  require('plugin.ai').codeium,
+  -- require('plugin.ai').codeium,
+  require('plugin.ai').copilot,
+  require('plugin.ai').avante,
   require('plugin.theme').bluloco,
   require('plugin.theme').github,
   require('plugin.theme').catppuccin,
