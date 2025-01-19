@@ -1,4 +1,12 @@
 return {
+  aider = {
+    "joshuavial/aider.nvim",
+    opts = {
+      auto_manage_context = true, -- automatically manage buffer context
+      default_bindings = true,  -- use default <leader>A keybindings
+      debug = false,            -- enable debug logging
+    },
+  },
   avante = {
     "yetone/avante.nvim",
     event = "VeryLazy",
