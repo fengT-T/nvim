@@ -134,15 +134,9 @@ map('n', '<C-\\>', Snacks.terminal.toggle, { desc = 'Oen terminal' })
 map('t', '<C-\\>', Snacks.terminal.toggle, { desc = 'Open terminal' })
 map('n', '<leader>t', Snacks.terminal.open, { desc = 'Open terminal' })
 
-local function toggleTerminal(cmd)
-  if Snacks.terminal.get(cmd) then
-    Snacks.terminal.toggle(cmd)
-  end
-end
-
 -- Aider AI assistant
-map('n', '<leader>a', function() toggleTerminal("aider") end, { desc = 'Open Aider AI assistant' })
-map('t', '<leader>a', function() toggleTerminal("aider") end, { desc = 'Open Aider AI assistant' })
+map('n', '<leader>a', function() Snacks.terminal.toggle("aider") end, { desc = 'Open Aider AI assistant' })
+map('t', '<leader>a', function() Snacks.terminal.toggle("aider") end, { desc = 'Open Aider AI assistant' })
 
 -- Neovide fullscreen toggle
 if vim.g.neovide then
