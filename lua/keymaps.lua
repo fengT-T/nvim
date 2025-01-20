@@ -113,10 +113,6 @@ map('n', '<leader><space>', searchBuf, { desc = 'Search Buffers' })
 map('n', '<leader>/', fzf.lgrep_curbuf, { desc = 'Search current Buffer' })
 
 
--- aider
-vim.api.nvim_set_keymap('n', '<leader>ao', ':AiderOpen<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<leader>am', ':AiderAddModifiedFiles<CR>', {noremap = true, silent = true})
-
 -- Neovide fullscreen toggle
 if vim.g.neovide then
   map('n', '<F11>', function()
