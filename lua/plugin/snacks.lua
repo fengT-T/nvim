@@ -38,6 +38,7 @@ return {
     statuscolumn = { enabled = true },
     toggle       = { enabled = true },
     notifier     = { enabled = true },
-    notify       = { enabled = true }
+    notify       = { enabled = true },
+    terminal     = { enabled = true }
   }
 }

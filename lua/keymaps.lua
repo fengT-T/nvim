@@ -47,7 +47,8 @@ end, { desc = 'Format buffer' })
 
 -- Trouble
 local trouble = require('trouble')
-map('n', '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>', { desc = "LSP Definitions / references / ... (Trouble)" })
+map('n', '<leader>cl', '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
+  { desc = "LSP Definitions / references / ... (Trouble)" })
 map('n', '<leader>cQ', '<cmd>Trouble qflist toggle<cr>', { desc = "Quickfix list (Trouble)" })
 map('n', '<leader>cL', '<cmd>Trouble loclist toggle<cr>', { desc = "Location list (Trouble)" })
 map('n', '<leader>cX', '<cmd>Trouble diagnostics toggle<cr>', { desc = "Diagnostics (Trouble)" })
@@ -67,8 +68,10 @@ toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
 toggle.option("relativenumber", { name = "Relative Number" }):map("<leader>uL")
 toggle.diagnostics():map("<leader>ud")
 toggle.line_number():map("<leader>ul")
-toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }):map("<leader>uc")
-toggle.option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" }):map("<leader>uA")
+toggle.option("conceallevel",
+  { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2, name = "Conceal Level" }):map("<leader>uc")
+toggle.option("showtabline", { off = 0, on = vim.o.showtabline > 0 and vim.o.showtabline or 2, name = "Tabline" }):map(
+  "<leader>uA")
 toggle.treesitter():map("<leader>uT")
 toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
 if vim.lsp.inlay_hint then
@@ -84,14 +87,21 @@ end
 map('n', '<leader>so', fzf.builtin, { desc = '[S]earch [O]pen' })
 map('n', 'gd', function() fzf.lsp_definitions { jump_to_single_result = true } end, { desc = '[G]oto [D]efinition' })
 map('n', 'gr', function() fzf.lsp_references { jump_to_single_result = true } end, { desc = '[G]oto [R]eferences' })
-map('n', 'gI', function() fzf.lsp_implementations { jump_to_single_result = true } end, { desc = '[G]oto [I]mplementation' })
+map('n', 'gI', function() fzf.lsp_implementations { jump_to_single_result = true } end,
+  { desc = '[G]oto [I]mplementation' })
 map('n', 'gy', function() fzf.lsp_typedefs { jump_to_single_result = true } end, { desc = '[G]oto [Y]pe Definition' })
-map('n', '<leader>cs', function() fzf.lsp_document_symbols { jump_to_single_result = true } end, { desc = '[C]ode [S]ymbols' })
-map('n', '<leader>cD', function() fzf.lsp_document_diagnostics { jump_to_single_result = true } end, { desc = '[C]ode [D]iagnostics' })
-map('n', '<leader>ca', function() fzf.lsp_code_actions { jump_to_single_result = true } end, { desc = '[C]ode [A]ctions' })
-map('n', '<leader>ss', function() fzf.lsp_workspace_symbols { jump_to_single_result = true } end, { desc = '[S]earch [S]ymbols' })
-map('n', '<leader>sd', function() fzf.lsp_workspace_diagnostics { jump_to_single_result = true } end, { desc = '[S]earch [D]iagnostics' })
-map('n', '<leader>sS', function() fzf.lsp_live_workspace_symbols { jump_to_single_result = true } end, { desc = '[S]earch [W]orkspace Symbols' })
+map('n', '<leader>cs', function() fzf.lsp_document_symbols { jump_to_single_result = true } end,
+  { desc = '[C]ode [S]ymbols' })
+map('n', '<leader>cD', function() fzf.lsp_document_diagnostics { jump_to_single_result = true } end,
+  { desc = '[C]ode [D]iagnostics' })
+map('n', '<leader>ca', function() fzf.lsp_code_actions { jump_to_single_result = true } end,
+  { desc = '[C]ode [A]ctions' })
+map('n', '<leader>ss', function() fzf.lsp_workspace_symbols { jump_to_single_result = true } end,
+  { desc = '[S]earch [S]ymbols' })
+map('n', '<leader>sd', function() fzf.lsp_workspace_diagnostics { jump_to_single_result = true } end,
+  { desc = '[S]earch [D]iagnostics' })
+map('n', '<leader>sS', function() fzf.lsp_live_workspace_symbols { jump_to_single_result = true } end,
+  { desc = '[S]earch [W]orkspace Symbols' })
 map('n', '<leader>s/', fzf.live_grep, { desc = '[S]earch [G]rep' })
 map('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
 map('n', '<leader>s"', fzf.registers, { desc = '[S]earch [R]egisters' })
@@ -112,6 +122,27 @@ map('n', '<leader>f', fzf.files, { desc = 'Search Files' })
 map('n', '<leader><space>', searchBuf, { desc = 'Search Buffers' })
 map('n', '<leader>/', fzf.lgrep_curbuf, { desc = 'Search current Buffer' })
 
+-- terminal
+map('t', '<esc>', [[<C-\><C-n>]])
+-- map('t', 'jk', [[<C-\><C-n>]])
+map('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
+map('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
+map('t', '<C-k>', [[<Cmd>wincmd k<CR>]])
+map('t', '<C-l>', [[<Cmd>wincmd l<CR>]])
+
+map('n', '<C-\\>', Snacks.terminal.toggle, { desc = 'Oen terminal' })
+map('t', '<C-\\>', Snacks.terminal.toggle, { desc = 'Open terminal' })
+map('n', '<leader>t', Snacks.terminal.open, { desc = 'Open terminal' })
+
+local function toggleTerminal(cmd)
+  if Snacks.terminal.get(cmd) then
+    Snacks.terminal.toggle(cmd)
+  end
+end
+
+-- Aider AI assistant
+map('n', '<leader>a', function() toggleTerminal("aider") end, { desc = 'Open Aider AI assistant' })
+map('t', '<leader>a', function() toggleTerminal("aider") end, { desc = 'Open Aider AI assistant' })
 
 -- Neovide fullscreen toggle
 if vim.g.neovide then
@@ -129,7 +160,7 @@ require('which-key').add {
   { '<leader>u', group = 'UI Toggle' },
   { '<leader>w', group = 'Workspace' },
   { '<leader>q', group = 'Project' },
-  { '<leader>a', group = 'AI'}
+  { '<leader>a', group = 'AI' }
 }
 
 -- Highlight on yank
