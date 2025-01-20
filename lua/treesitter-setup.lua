@@ -39,10 +39,10 @@ vim.defer_fn(function()
     incremental_selection = {
       enable = true,
       keymaps = {
-        init_selection = '<S-space>',
-        node_incremental = '<S-space>',
-        scope_incremental = '<c-a>',
-        node_decremental = '<M-space>',
+        init_selection = "<C-space>",
+        node_incremental = "<C-space>",
+        scope_incremental = false,
+        node_decremental = "<bs>",
       },
     },
     textobjects = {
@@ -61,30 +61,30 @@ vim.defer_fn(function()
       },
       move = {
         enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
-          [']m'] = '@function.outer',
-          [']]'] = '@class.outer',
-        },
+          ["]f"] = "@function.outer",
+          ["]c"] = "@class.outer",
+          ["]a"] = "@parameter.inner" },
         goto_next_end = {
-          [']M'] = '@function.outer',
-          [']['] = '@class.outer',
+          ["]F"] = "@function.outer",
+          ["]C"] = "@class.outer",
+          ["]A"] = "@parameter.inner"
         },
         goto_previous_start = {
-          ['[m'] = '@function.outer',
-          ['[['] = '@class.outer',
-        },
+          ["[f"] = "@function.outer",
+          ["[c"] = "@class.outer",
+          ["[a"] = "@parameter.inner" },
         goto_previous_end = {
-          ['[M'] = '@function.outer',
-          ['[]'] = '@class.outer',
-        },
+          ["[F"] = "@function.outer",
+          ["[C"] = "@class.outer",
+          ["[A"] = "@parameter.inner" },
       },
       swap = {
         enable = true,
         -- 默认快捷键
         keymaps = {
           ["<leader>sa"] = "@parameter.inner", -- 交换参数
-          ["<leader>sf"] = "@function.outer", -- 交换函数
+          ["<leader>sf"] = "@function.outer",  -- 交换函数
         },
       },
     },
