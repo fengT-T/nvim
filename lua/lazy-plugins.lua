@@ -57,7 +57,7 @@ require('lazy').setup({
 
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', lazy = false },
+  { 'numToStr/Comment.nvim', lazy = false, },
 
   { 'RRethy/vim-illuminate' },
 
@@ -91,7 +91,7 @@ require('lazy').setup({
     opts = { enable_autocmd = false }
   },
 
-  { 'windwp/nvim-ts-autotag',                 opts = {} },
+  { 'windwp/nvim-ts-autotag', opts = {} },
 
   {
     'nvim-tree/nvim-tree.lua',

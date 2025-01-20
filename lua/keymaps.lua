@@ -112,6 +112,11 @@ map('n', '<leader>f', fzf.files, { desc = 'Search Files' })
 map('n', '<leader><space>', searchBuf, { desc = 'Search Buffers' })
 map('n', '<leader>/', fzf.lgrep_curbuf, { desc = 'Search current Buffer' })
 
+
+-- aider
+vim.api.nvim_set_keymap('n', '<leader>ao', ':AiderOpen -3 hsplit<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>am', ':AiderAddModifiedFiles<CR>', {noremap = true, silent = true})
+
 -- Neovide fullscreen toggle
 if vim.g.neovide then
   map('n', '<F11>', function()
@@ -128,6 +133,7 @@ require('which-key').add {
   { '<leader>u', group = 'UI Toggle' },
   { '<leader>w', group = 'Workspace' },
   { '<leader>q', group = 'Project' },
+  { '<leader>a', group = 'AI'}
 }
 
 -- Highlight on yank

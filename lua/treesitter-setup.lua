@@ -81,12 +81,11 @@ vim.defer_fn(function()
       },
       swap = {
         enable = true,
-        -- swap_next = {
-        --   ['<leader>a'] = '@parameter.inner',
-        -- },
-        -- swap_previous = {
-        --   ['<leader>A'] = '@parameter.inner',
-        -- },
+        -- 默认快捷键
+        keymaps = {
+          ["<leader>sa"] = "@parameter.inner", -- 交换参数
+          ["<leader>sf"] = "@function.outer", -- 交换函数
+        },
       },
     },
   }
