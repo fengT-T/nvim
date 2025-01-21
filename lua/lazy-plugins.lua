@@ -122,14 +122,6 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   'akinsho/toggleterm.nvim',
-  --   version = "*",
-  --   opts = {
-  --     open_mapping = [[<c-\>]],
-  --     direction = 'float'
-  --   }
-  -- },
   {
     "chentoast/marks.nvim",
     event = "VeryLazy",
