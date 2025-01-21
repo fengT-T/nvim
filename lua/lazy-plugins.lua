@@ -132,22 +132,11 @@ require('lazy').setup({
     opts = { viewer_path = 'glslviewer.exe' }
   },
   {
-    "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      'default-title',
-      fzf_colors = true,
-    }
-  },
-  {
-    "zk-org/zk-nvim",
-    config = function()
-      require("zk").setup({})
-    end
-  },
-  {
     'MeanderingProgrammer/render-markdown.nvim',
-    lazy = true,
+    lazy = false,
+    ---@module 'render-markdown'
+    ---@type render.md.UserConfig
+    opts = {},
   },
   -- require('plugin.ai').supermaven,
   -- require('plugin.ai').codeium,
