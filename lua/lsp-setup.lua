@@ -9,6 +9,7 @@ return function()
       end
 
       nmap('<leader>cr', vim.lsp.buf.rename, '[C]ode [R]ename')
+      nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
       nmap('<leader>ck', vim.lsp.buf.signature_help, 'Signature Documentation')
 
       nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')

@@ -82,7 +82,7 @@ vim.o.laststatus = 3
 -- Minimum window width
 vim.o.winminwidth = 5
 
-vim.o.winblend = 20
+vim.o.winblend = 10
 
 vim.cmd.colorscheme 'catppuccin'
 -- vim.cmd.colorscheme 'bluloco-light'

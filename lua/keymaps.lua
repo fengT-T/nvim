@@ -78,49 +78,58 @@ if vim.lsp.inlay_hint then
   toggle.inlay_hints():map("<leader>uh")
 end
 
--- Fzf-lua
-local fzf = require('fzf-lua')
-local function searchBuf()
-  fzf.buffers { sort_mru = true, sort_lastused = true }
-end
-
-map('n', '<leader>so', fzf.builtin, { desc = '[S]earch [O]pen' })
-map('n', 'gd', function() fzf.lsp_definitions { jump_to_single_result = true } end, { desc = '[G]oto [D]efinition' })
-map('n', 'gr', function() fzf.lsp_references { jump_to_single_result = true } end, { desc = '[G]oto [R]eferences' })
-map('n', 'gI', function() fzf.lsp_implementations { jump_to_single_result = true } end,
-  { desc = '[G]oto [I]mplementation' })
-map('n', 'gy', function() fzf.lsp_typedefs { jump_to_single_result = true } end, { desc = '[G]oto [Y]pe Definition' })
-map('n', '<leader>cs', function() fzf.lsp_document_symbols { jump_to_single_result = true } end,
-  { desc = '[C]ode [S]ymbols' })
-map('n', '<leader>cD', function() fzf.lsp_document_diagnostics { jump_to_single_result = true } end,
-  { desc = '[C]ode [D]iagnostics' })
-map('n', '<leader>ca', function() fzf.lsp_code_actions { jump_to_single_result = true } end,
-  { desc = '[C]ode [A]ctions' })
-map('n', '<leader>ss', function() fzf.lsp_workspace_symbols { jump_to_single_result = true } end,
-  { desc = '[S]earch [S]ymbols' })
-map('n', '<leader>sd', function() fzf.lsp_workspace_diagnostics { jump_to_single_result = true } end,
-  { desc = '[S]earch [D]iagnostics' })
-map('n', '<leader>sS', function() fzf.lsp_live_workspace_symbols { jump_to_single_result = true } end,
-  { desc = '[S]earch [W]orkspace Symbols' })
-map('n', '<leader>s/', fzf.live_grep, { desc = '[S]earch [G]rep' })
-map('n', '<leader>sw', fzf.grep_cword, { desc = '[S]earch current [W]ord' })
-map('n', '<leader>s"', fzf.registers, { desc = '[S]earch [R]egisters' })
-map('n', '<leader>sr', fzf.resume, { desc = '[S]earch [R]esume' })
-map('n', '<leader>sj', fzf.jumps, { desc = '[S]earch [J]umplist' })
-map('n', '<leader>sk', fzf.keymaps, { desc = '[S]earch [K]eymaps' })
-map('n', '<leader>sl', fzf.loclist, { desc = '[S]earch [L]ocation list' })
-map('n', '<leader>sm', fzf.marks, { desc = '[S]earch [M]arks' })
-map('n', '<leader>sh', fzf.help_tags, { desc = '[S]earch [H]elp' })
-map('n', '<leader>sc', fzf.commands, { desc = '[S]earch [C]ommands' })
-map('n', '<leader>sC', fzf.command_history, { desc = '[S]earch [C]ommand [H]istory' })
-map('n', '<leader>sg', fzf.git_status, { desc = '[S]earch [G]it [S]tatus' })
-map('n', '<leader>sgc', fzf.git_commits, { desc = '[S]earch [G]it [C]ommits' })
-map('n', '<leader>sgb', fzf.git_branches, { desc = '[S]earch [G]it [B]ranches' })
-map('n', '<leader>sb', searchBuf, { desc = 'Search [B]uffers' })
-map('n', '<leader>sO', fzf.oldfiles, { desc = 'Search [O]ldfiles' })
-map('n', '<leader>f', fzf.files, { desc = 'Search Files' })
-map('n', '<leader><space>', searchBuf, { desc = 'Search Buffers' })
-map('n', '<leader>/', fzf.lgrep_curbuf, { desc = 'Search current Buffer' })
+map('n', "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+map('n', "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
+map('n', "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
+map('n', "<leader><space>", function() Snacks.picker.files() end, { desc = "Find Files" })
+-- find
+map('n', "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
+map('n', "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
+  { desc = "Find Config File" })
+map('n', "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
+map('n', "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
+map('n', "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
+-- git
+map('n', "<leader>gc", function() Snacks.picker.git_log() end, { desc = "Git Log" })
+map('n', "<leader>gs", function() Snacks.picker.git_status() end, { desc = "Git Status" })
+-- Grep
+map('n', "<leader>sb", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
+map('n', "<leader>sB", function() Snacks.picker.grep_buffers() end, { desc = "Grep Open Buffers" })
+map('n', "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep" })
+map({ 'n', 'x' }, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
+-- search
+map('n', '<leader>s"', function() Snacks.picker.registers() end, { desc = "Registers" })
+map('n', "<leader>sa", function() Snacks.picker.autocmds() end, { desc = "Autocmds" })
+map('n', "<leader>sc", function() Snacks.picker.command_history() end, { desc = "Command History" })
+map('n', "<leader>sC", function() Snacks.picker.commands() end, { desc = "Commands" })
+map('n', "<leader>sd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostics" })
+map('n', "<leader>sh", function() Snacks.picker.help() end, { desc = "Help Pages" })
+map('n', "<leader>sH", function() Snacks.picker.highlights() end, { desc = "Highlights" })
+map('n', "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
+map('n', "<leader>sk", function() Snacks.picker.keymaps() end, { desc = "Keymaps" })
+map('n', "<leader>sl", function() Snacks.picker.loclist() end, { desc = "Location List" })
+map('n', "<leader>sM", function() Snacks.picker.man() end, { desc = "Man Pages" })
+map('n', "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
+map('n', "<leader>sR", function() Snacks.picker.resume() end, { desc = "Resume" })
+map('n', "<leader>sq", function() Snacks.picker.qflist() end, { desc = "Quickfix List" })
+map('n', "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Colorschemes" })
+map('n', "<leader>qp", function() Snacks.picker.projects() end, { desc = "Projects" })
+-- LSP
+map('n', "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
+map('n', "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
+map('n', "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
+map('n', "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
+map('n', "<leader>ss", function()
+  Snacks.picker.lsp_symbols({
+    finder = "lsp_symbols",
+    format = "lsp_symbol",
+    workspace = true,
+    hierarchy = false,
+    supports_live = true,
+    live = true, -- live by default
+  })
+end, { desc = "LSP Symbols" })
+map('n', '<leader>cs', function() Snacks.picker.lsp_symbols() end, { desc = 'docuement [C]ode [S]ymbols' })
 
 -- terminal
 map('t', '<esc>', [[<C-\><C-n>]])
@@ -154,6 +163,7 @@ require('which-key').add {
   { '<leader>u', group = 'UI Toggle' },
   { '<leader>w', group = 'Workspace' },
   { '<leader>q', group = 'Project' },
+  { '<leader>f', group = 'File' },
   { '<leader>a', group = 'AI' }
 }
 

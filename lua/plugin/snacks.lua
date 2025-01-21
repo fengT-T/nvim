@@ -39,6 +39,7 @@ return {
     toggle       = { enabled = true },
     notifier     = { enabled = true },
     notify       = { enabled = true },
-    terminal     = { enabled = true }
+    terminal     = { enabled = true },
+    picker       = { enabled = true },
   }
 }
