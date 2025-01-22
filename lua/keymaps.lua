@@ -84,7 +84,14 @@ map('n', "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 map('n', "<leader><space>", function() Snacks.picker.files() end, { desc = "Find Files" })
 -- find
 map('n', "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
-map('n', "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end,
+map('n', "<leader>fc", function()
+    Snacks.picker.files({
+      finder = "files",
+      format = "file",
+      supports_live = true,
+      cwd = vim.fn.stdpath("config")
+    })
+  end,
   { desc = "Find Config File" })
 map('n', "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
 map('n', "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
@@ -145,7 +152,6 @@ map('n', '<leader>t', Snacks.terminal.open, { desc = 'Open terminal' })
 
 -- Aider AI assistant
 map('n', '<leader>a', function() Snacks.terminal.toggle("aider") end, { desc = 'Open Aider AI assistant' })
-map('t', '<leader>a', function() Snacks.terminal.toggle("aider") end, { desc = 'Open Aider AI assistant' })
 
 -- Neovide fullscreen toggle
 if vim.g.neovide then
