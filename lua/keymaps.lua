@@ -78,6 +78,8 @@ if vim.lsp.inlay_hint then
   toggle.inlay_hints():map("<leader>uh")
 end
 
+-- snacks
+Snacks.picker.sources.lsp_symbols.filter.default = true
 map('n', "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
 map('n', "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
 map('n', "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
@@ -89,6 +91,7 @@ map('n', "<leader>fc", function()
       finder = "files",
       format = "file",
       supports_live = true,
+      ---@diagnostic disable-next-line: assign-type-mismatch
       cwd = vim.fn.stdpath("config")
     })
   end,
@@ -127,14 +130,8 @@ map('n', "gr", function() Snacks.picker.lsp_references() end, { nowait = true, d
 map('n', "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
 map('n', "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
 map('n', "<leader>ss", function()
-  Snacks.picker.lsp_symbols({
-    finder = "lsp_symbols",
-    format = "lsp_symbol",
-    workspace = true,
-    hierarchy = false,
-    supports_live = true,
-    live = true, -- live by default
-  })
+  ---@diagnostic disable-next-line: param-type-mismatch
+  Snacks.picker.lsp_symbols(Snacks.picker.sources.lsp_workspace_symbols)
 end, { desc = "LSP Symbols" })
 map('n', '<leader>cs', function() Snacks.picker.lsp_symbols() end, { desc = 'docuement [C]ode [S]ymbols' })
 
@@ -159,6 +156,11 @@ if vim.g.neovide then
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
   end)
 end
+
+-- 在所有窗口打开当前 buffer
+map('n', '<leader>bA', function()
+  vim.cmd.windo("edit " .. vim.fn.expand("%"))
+end, { desc = 'Open current buffer in all windows' })
 
 -- Which-key groups
 require('which-key').add {
