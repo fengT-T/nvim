@@ -91,7 +91,7 @@ require('lazy').setup({
     opts = { enable_autocmd = false }
   },
 
-  { 'windwp/nvim-ts-autotag', opts = {} },
+  { 'windwp/nvim-ts-autotag',                 opts = {} },
 
   {
     'nvim-tree/nvim-tree.lua',
@@ -138,12 +138,8 @@ require('lazy').setup({
     ---@type render.md.UserConfig
     opts = {},
   },
-  -- require('plugin.ai').supermaven,
-  -- require('plugin.ai').codeium,
-  require('plugin.ai').copilot,
-  require('plugin.theme').bluloco,
-  require('plugin.theme').github,
-  require('plugin.theme').catppuccin,
+  require 'plugin.ai',
+  require 'plugin.theme',
   require 'plugin.conform',
   require 'plugin.flash',
   require 'plugin.cmp',

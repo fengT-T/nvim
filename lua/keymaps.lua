@@ -16,8 +16,8 @@ map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic mes
 map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 
 -- File tree
-map('n', '<leader>e', '<cmd>NvimTreeToggle<cr>', { desc = 'nvim tree toggle' })
-map('n', '<leader>E', '<cmd>NvimTreeFindFile<cr>', { desc = 'nvim tree find File' })
+map('n', '<leader>e', Snacks.explorer.open, { desc = 'Open file explorer' })
+map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
 
 -- Save
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })

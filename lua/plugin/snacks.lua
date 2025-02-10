@@ -41,5 +41,6 @@ return {
     notify       = { enabled = true },
     terminal     = { enabled = true },
     picker       = { enabled = true },
+    explorer     = { enabled = true }
   }
 }

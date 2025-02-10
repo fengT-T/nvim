@@ -1,4 +1,4 @@
-return {
+local themes = {
   onedark = {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -35,3 +35,5 @@ return {
     },
   },
 }
+
+return { themes.catppuccin }

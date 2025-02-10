@@ -1,4 +1,4 @@
-return {
+local ai_list = {
   supermaven = {
     {
       "supermaven-inc/supermaven-nvim",
@@ -54,3 +54,5 @@ return {
     }
   }
 }
+
+return { ai_list.copilot }
