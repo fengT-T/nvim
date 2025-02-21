@@ -99,6 +99,8 @@ map('n', "<leader>fc", function()
 map('n', "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
 map('n', "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
 map('n', "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
+map('n', "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
+
 -- git
 map('n', "<leader>gc", function() Snacks.picker.git_log() end, { desc = "Git Log" })
 map('n', "<leader>gs", function() Snacks.picker.git_status() end, { desc = "Git Status" })
@@ -124,6 +126,12 @@ map('n', "<leader>sR", function() Snacks.picker.resume() end, { desc = "Resume" 
 map('n', "<leader>sq", function() Snacks.picker.qflist() end, { desc = "Quickfix List" })
 map('n', "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Colorschemes" })
 map('n', "<leader>qp", function() Snacks.picker.projects() end, { desc = "Projects" })
+map('n', "<leader>sT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
+  { desc = "Todo Comments" })
+map('n', "<leader>st", function() Snacks.picker.todo_comments() end, { desc = "Tags" })
+map('n', "<leader>su", function() Snacks.picker.undotree() end, { desc = "Undotree" })
+map('n', "<leader>so", function() Snacks.picker.pick() end, { desc = "Snacks Picker" })
+
 -- LSP
 map('n', "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
 map('n', "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
