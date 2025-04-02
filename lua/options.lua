@@ -84,10 +84,13 @@ vim.o.winminwidth = 5
 
 vim.o.winblend = 10
 
--- vim.cmd.colorscheme 'bluloco-light'
--- vim.cmd.colorscheme 'github_light_colorblind'
+vim.o.background = "light"
+-- vim.cmd.colorscheme "onenord"
+-- vim.cmd.colorscheme "onehalflight"
+vim.cmd.colorscheme 'bluloco-light'
+-- vim.cmd.colorscheme 'github_light_tritanopia'
 -- vim.cmd.colorscheme "material"
-vim.cmd.colorscheme 'catppuccin'
+-- vim.cmd.colorscheme 'catppuccin'
 
 vim.opt.fillchars = {
   foldopen = "",

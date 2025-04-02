@@ -1,45 +1,52 @@
 return {
-  'saghen/blink.cmp',
-  dependencies = {
-    'rafamadriz/friendly-snippets'
-  },
-  build = 'cargo build --release',
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
-  opts = {
-    signature = { enabled = true },
-    keymap = {
-      preset = 'default',
-      -- ['<CR>'] = { 'accept', 'fallback' },
-      -- cmdline = {
-      --   preset = 'default'
-      -- }
+  {
+    'saghen/blink.cmp',
+    dependencies = {
+      'rafamadriz/friendly-snippets'
     },
-    appearance = {
-      use_nvim_cmp_as_default = false,
-      nerd_font_variant = 'mono'
-    },
-    sources = {
-      default = { 'lsp', 'path', 'snippets', 'buffer' },
-    },
-    completion = {
-      accept = {
-        -- experimental auto-brackets support
-        auto_brackets = {
-          enabled = true,
+    version = '*',
+    -- build = 'cargo build --release',
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        preset = 'default',
+      },
+      sources = {
+        -- with blink.compat
+        -- compat = {},
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+      completion = {
+        accept = {
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          winblend = 30,
+          draw = {
+            treesitter = { 'lsp' }
+          }
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+        ghost_text = {
+          enabled = true
         },
       },
-      menu = {
-        winblend = 30,
-        draw = {
-          treesitter = { 'lsp' }
-        }
-      },
-      documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 200,
-      },
+      cmdline = {
+        enabled = false,
+      }
     },
+    opts_extend = { "sources.default" }
   },
-  opts_extend = { "sources.default" }
+  {
+    "saghen/blink.compat",
+    optional = true, -- make optional so it's only enabled if any extras need it
+    opts = {},
+    version = not vim.g.lazyvim_blink_main and "*",
+  }
 }

@@ -45,7 +45,12 @@ require('lazy').setup({
   { 'b0o/schemastore.nvim' },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',    opts = {} },
+  {
+    'folke/which-key.nvim',
+    opts = {
+      preset = 'helix'
+    }
+  },
   { 'lewis6991/gitsigns.nvim', opts = require 'plugin.gitsigins' },
   {
     'nvim-lualine/lualine.nvim',

@@ -48,7 +48,6 @@ local themes = {
         which_key = true,
       }
     }
-
   },
   bluloco = {
     'uloco/bluloco.nvim',
@@ -56,9 +55,18 @@ local themes = {
     priority = 1000,
     dependencies = { 'rktjmp/lush.nvim' },
     opts = {
-      transparent = true,
+      guicursor = true,
+      terminal = true
     },
+  },
+  onehalf = {
+    'clearaspect/onehalf',
+    lazy = false,
+    priority = 1000,
+    opts = {
+      terminal_colors = true,
+    }
   },
 }
 
-return { themes.catppuccin }
+return { themes.catppuccin, themes.bluloco }
