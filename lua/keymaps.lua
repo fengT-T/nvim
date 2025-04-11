@@ -11,10 +11,20 @@ end
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
--- Diagnostic keymaps
-map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
-
+-- diagnostic
+local diagnostic_goto = function(count, severity)
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    vim.diagnostic.jump({ count = count, float = true, severity = severity })
+  end
+end
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(1), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(-1), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(1, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(-1, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(1, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(-1, "WARN"), { desc = "Prev Warning" })
 -- File tree
 map('n', '<leader>e', Snacks.explorer.open, { desc = 'Open file explorer' })
 map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
@@ -22,8 +32,6 @@ map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
 -- Save
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 
--- Remove buffer copy from lazyvim
-map('n', '<leader>d', function() Snacks.bufdelete() end, { desc = 'Delete Buffer' })
 
 -- Persistence
 local persistence = require('persistence')
@@ -170,6 +178,17 @@ map('n', '<leader>bA', function()
   vim.cmd.windo("edit " .. vim.fn.expand("%"))
 end, { desc = 'Open current buffer in all windows' })
 
+map('n', '<leader>bp', '<Cmd>BufferLineTogglePin<CR>', { desc = 'Toggle Pin' })
+map('n', '<leader>bP', '<Cmd>BufferLineGroupClose ungrouped<CR>', { desc = 'Delete Non-Pinned Buffers' })
+map('n', '<leader>bo', '<Cmd>BufferLineCloseOthers<CR>', { desc = 'Delete Other Buffers' })
+map('n', '<leader>br', '<Cmd>BufferLineCloseRight<CR>', { desc = 'Delete Buffers to the Right' })
+map('n', '<leader>bl', '<Cmd>BufferLineCloseLeft<CR>', { desc = 'Delete Buffers to the Left' })
+map('n', '<leader>bd', function() Snacks.bufdelete() end, { desc = 'Delete Buffer' })
+map('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Prev Buffer' })
+map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' })
+map('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Prev Buffer' })
+map('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' })
+
 -- Which-key groups
 require('which-key').add {
   { '<leader>c', group = 'Code' },
@@ -180,7 +199,8 @@ require('which-key').add {
   { '<leader>w', group = 'Workspace' },
   { '<leader>q', group = 'Project' },
   { '<leader>f', group = 'File' },
-  { '<leader>a', group = 'AI' }
+  { '<leader>a', group = 'AI' },
+  { '<leader>d', group = 'Debug' }
 }
 
 -- Highlight on yank
