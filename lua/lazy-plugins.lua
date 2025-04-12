@@ -149,7 +149,9 @@ require('lazy').setup({
   require 'plugin.flash',
   require 'plugin.cmp',
   require 'plugin.bufferline',
-  require 'plugin.snacks'
+  require 'plugin.snacks',
+  require 'plugin.dap',
+  require 'plugin.clangd',
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et
