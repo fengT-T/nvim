@@ -52,14 +52,6 @@ require('lazy').setup({
     }
   },
   { 'lewis6991/gitsigns.nvim', opts = require 'plugin.gitsigins' },
-  {
-    'nvim-lualine/lualine.nvim',
-    opts = require 'plugin.lualine',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', lazy = false, },
@@ -152,6 +144,7 @@ require('lazy').setup({
   require 'plugin.snacks',
   require 'plugin.dap',
   require 'plugin.clangd',
+  require 'plugin.lualine'
 }, {})
 
 -- vim: ts=2 sts=2 sw=2 et

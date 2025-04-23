@@ -13,7 +13,7 @@ local dashboard = {
     { section = "header" },
     {
       section = "terminal",
-      cmd = "chafa ~/wall --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
+      cmd = "chafa ~/.wall --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
       height = 17,
       padding = 1,
     },
