@@ -55,7 +55,6 @@ local themes = {
     priority = 1000,
     dependencies = { 'rktjmp/lush.nvim' },
     opts = {
-      transparent = true,
       guicursor = true,
       terminal = true
     },
