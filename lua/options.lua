@@ -117,18 +117,18 @@ vim.opt.foldenable = true
 vim.opt.fileformats = 'unix,dos'
 vim.opt.termguicolors = true
 
-vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13'
+vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12'
 --- neovide config
 if vim.g.neovide then
-  vim.opt.guifont = 'CaskaydiaCove Nerd Font:h13:e-subpixelantialias'
+  vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12.6:#e-subpixelantialias:#h-slight'
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_scroll_animation_far_lines = 1
   vim.g.neovide_padding_left = 5
-  -- vim.g.neovide_transparency = 0.8
-  -- vim.g.neovide_normal_opacity = 0.8
-  vim.g.neovide_cursor_vfx_mode = "torpedo"
+  vim.g.neovide_opacity = 0.85
+  vim.g.neovide_normal_opacity = 0.85
+  vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_cursor_vfx_opacity = 200.0
   vim.g.neovide_cursor_vfx_particle_density = 10
   vim.g.neovide_hide_mouse_when_typing = true
