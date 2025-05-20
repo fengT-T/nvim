@@ -16,8 +16,9 @@ local themes = {
     lazy = true,
     opts = {
       flavour = 'latte',
+      transparent_background = true,
       color_overrides = {
-        transparent_background = false,
+        transparent_background = true,
         latte = {
           base = '#ffffff',
         },
@@ -69,4 +70,4 @@ local themes = {
   },
 }
 
-return { themes.catppuccin, themes.bluloco }
+return { themes.catppuccin, themes.bluloco ,themes.catppuccin }

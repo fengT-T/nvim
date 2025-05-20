@@ -87,10 +87,10 @@ vim.o.winblend = 10
 vim.o.background = "light"
 -- vim.cmd.colorscheme "onenord"
 -- vim.cmd.colorscheme "onehalflight"
-vim.cmd.colorscheme 'bluloco-light'
+-- vim.cmd.colorscheme 'bluloco-light'
 -- vim.cmd.colorscheme 'github_light_tritanopia'
 -- vim.cmd.colorscheme "material"
--- vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'catppuccin'
 
 vim.opt.fillchars = {
   foldopen = "",
@@ -134,10 +134,10 @@ if vim.g.neovide then
   vim.g.neovide_hide_mouse_when_typing = true
   vim.g.neovide_floating_corner_radius = 0.2
   vim.g.neovide_cursor_animate_in_insert_mode = false
-  vim.g.neovide_title_background_color = string.format(
-    "%x",
-    vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
-  )
+  -- vim.g.neovide_title_background_color = string.format(
+  --   "%x",
+  --   vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
+  -- )
 
   -- neovide IME
   local function set_ime(args)

@@ -1,7 +1,7 @@
 local mason_registry = require 'mason-registry'
 local vue_package_path = vim.fn.expand("$MASON/packages/vue-language-server")
--- local ts_package_path = vim.fn.expand("$MASON/packages/typescript-language-server")
--- local ts_language_path = ts_package_path .. '/node_modules/typescript'
+local ts_package_path = vim.fn.expand("$MASON/packages/typescript-language-server")
+local ts_language_path = ts_package_path .. '/node_modules/typescript'
 local vue_language_server_path = vue_package_path .. '/node_modules/@vue/language-server'
 local vue_ts_path = vue_package_path .. '/node_modules/typescript'
 
@@ -55,7 +55,6 @@ local servers = {
   ts_ls = {
     enabled = false,
     filetypes = {},
-    -- filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
       plugins = {
         {
@@ -77,8 +76,6 @@ local servers = {
   },
 
   vtsls = {
-    -- explicitly add default filetypes, so that we can extend
-    -- them in related extras
     filetypes = {
       "javascript",
       "javascriptreact",
