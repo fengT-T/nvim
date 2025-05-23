@@ -95,11 +95,7 @@ return function()
   local mason_lspconfig = require 'mason-lspconfig'
 
   mason_lspconfig.setup {
-    automatic_enable = {
-      exclude = {
-        "ts_ls"
-      }
-    },
+    automatic_enable = true,
     automatic_installation = true,
     ensure_installed = lsp_option.ensure_installed,
   }

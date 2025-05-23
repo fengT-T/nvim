@@ -24,7 +24,7 @@ return {
           },
         },
         menu = {
-          winblend = 30,
+          winblend = 10,
           draw = {
             treesitter = { 'lsp' }
           }

@@ -72,7 +72,7 @@ local ai_list = {
           api_key = function()
             return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
           end,
-          model= "Pro/Qwen/Qwen2.5-Coder-7B-Instruct",
+          model= "Qwen/Qwen2.5-Coder-32B-Instruct",
           name = ' ',
           optional = {
             max_tokens = 512,

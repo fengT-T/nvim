@@ -16,7 +16,7 @@ local servers = {
     },
   },
 
-  volar = {
+  vue_ls = {
     formatting = false,
     -- capabilities = {
     --   workspace = {
