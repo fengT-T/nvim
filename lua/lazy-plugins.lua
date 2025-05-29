@@ -54,7 +54,7 @@ require('lazy').setup({
   { 'lewis6991/gitsigns.nvim', opts = require 'plugin.gitsigins' },
   -- { 'lukas-reineke/indent-blankline.nvim', main = 'ibl', opts = require 'plugin.indent-blankline' },
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', lazy = false, },
+  { 'numToStr/Comment.nvim',   lazy = false, },
 
   { 'RRethy/vim-illuminate' },
 

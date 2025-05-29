@@ -130,12 +130,17 @@ local servers = {
     },
     cmd = {
       "clangd",
-      "--background-index",
-      "--clang-tidy",
-      "--header-insertion=iwyu",
-      "--completion-style=detailed",
-      "--function-arg-placeholders",
-      "--fallback-style=llvm",
+      "--background-index",            -- 在后台自动分析文件
+      "--clang-tidy",                  -- 启用 Clang-Tidy 以提供「静态检查」
+      "--header-insertion=iwyu",       -- 允许补充头文件
+      "--completion-style=detailed",   --
+      "--function-arg-placeholders",   -- 启用这项时，补全函数时，将会给参数提供占位符，键入后按 Tab 可以切换到下一占位符，乃至函数末
+      "--fallback-style=llvm",         -- 默认格式化风格: llvm
+      "--pretty",                      -- 输出的 JSON 文件更美观
+      "--all-scopes-completion",       --  全局补全(输入时弹出的建议将会提供 CMakeLists.txt 里配置的所有文件中可能的符号，会自动补充头文件)
+      "--cross-file-rename",           -- 跨文件重命名变量
+      "--header-insertion-decorators", -- 输入建议中，已包含头文件的项与还未包含头文件的项会以圆点加以区分
+      "-j=8",                          -- 同时开启的任务数量
     },
     init_options = {
       usePlaceholders = true,
