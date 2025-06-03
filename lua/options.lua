@@ -121,7 +121,7 @@ vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12'
 --- neovide config
 if vim.g.neovide then
   -- vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12.6:#e-subpixelantialias'
-  vim.opt.guifont = 'Maple Mono CN:h12.6:#e-subpixelantialias'
+  vim.opt.guifont = 'Maple Mono NF CN:h12.6:#e-subpixelantialias'
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_cursor_antialiasing = true
   vim.g.neovide_scroll_animation_length = 0.1
