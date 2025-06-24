@@ -18,7 +18,7 @@ local diagnostic_goto = function(count, severity)
     vim.diagnostic.jump({ count = count, float = true, severity = severity })
   end
 end
-map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+-- map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 map("n", "]d", diagnostic_goto(1), { desc = "Next Diagnostic" })
 map("n", "[d", diagnostic_goto(-1), { desc = "Prev Diagnostic" })
 map("n", "]e", diagnostic_goto(1, "ERROR"), { desc = "Next Error" })
@@ -26,12 +26,12 @@ map("n", "[e", diagnostic_goto(-1, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(1, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(-1, "WARN"), { desc = "Prev Warning" })
 -- File tree
-map('n', '<leader>e', Snacks.explorer.open, { desc = 'Open file explorer' })
-map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
+-- map('n', '<leader>e', Snacks.explorer.open, { desc = 'Open file explorer' })
+-- map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
+map('n', '<leader>e', '<cmd>Yazi<cr>', { desc = 'yazi file explorer' })
 
 -- Save
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
-
 
 -- Persistence
 local persistence = require('persistence')
@@ -163,7 +163,7 @@ map('n', 'gr', require('fzf-lua').lsp_references, { desc = '[G]oto [R]eferences'
 map('n', 'gI', require('fzf-lua').lsp_implementations, { desc = '[G]oto [I]mplementation' })
 map('n', 'gy', require('fzf-lua').lsp_typedefs, { desc = '[G]oto [Y]pe Definition' })
 map('n', '<leader>cs', require('fzf-lua').lsp_document_symbols, { desc = '[C]ode [S]ymbols' })
-map('n', '<leader>cd', require('fzf-lua').lsp_document_diagnostics, { desc = '[C]ode [D]iagnostics' })
+map('n', '<leader>ce', require('fzf-lua').diagnostics_document, { desc = '[C]ode Diagnostics [E]rror' })
 map('n', '<leader>ca', require('fzf-lua').lsp_code_actions, { desc = '[C]ode [A]ctions' })
 
 -- workspace lsp
@@ -194,6 +194,8 @@ map('n', '<leader>sb', searhBuf, { desc = 'Search [B]uffers' })
 map('n', '<leader>sO', require('fzf-lua').oldfiles, { desc = 'Search [O]ldfiles' })
 map('n', '<leader><space>', require('fzf-lua').files, { desc = 'Search Files' })
 map('n', '<leader>,', searhBuf, { desc = 'Search Buffers' })
+map({ "n", "v", "i" }, "<C-x><C-f>", function() require("fzf-lua").complete_path() end,
+  { silent = true, desc = "Fuzzy complete path" })
 
 -- grep current buff
 map('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Search current Buffer' })
