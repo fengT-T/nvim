@@ -12,6 +12,12 @@ return {
       keymap = {
         preset = 'default',
       },
+      fuzzy = {
+        sorts = {
+          "score", "exact", "sort_text"
+        }
+      },
+      signature = {enabled = true},
       sources = {
         -- with blink.compat
         -- compat = {},

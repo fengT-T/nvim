@@ -9,6 +9,9 @@ return {
         code_actions = {
           previewer = "codeaction_native"
         },
+      },
+      files = {
+        formatter = "path.filename_first"
       }
     },
     init = function()
