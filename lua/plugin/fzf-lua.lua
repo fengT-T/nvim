@@ -12,7 +12,13 @@ return {
       },
       files = {
         formatter = "path.filename_first"
+      },
+      winopts = {
+        preview = {
+          horizontal = "right:50%"
+        }
       }
+
     },
     init = function()
       require("fzf-lua").register_ui_select()
