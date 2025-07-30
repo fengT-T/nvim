@@ -17,7 +17,7 @@ local servers = {
   },
 
   vue_ls = {
-    formatting = false,
+    -- formatting = false,
     -- capabilities = {
     --   workspace = {
     --     -- make volar auto reload
@@ -26,14 +26,14 @@ local servers = {
     --     },
     --   },
     -- },
-    init_options = {
-      vue = {
-        hybridMode = true,
-        typescript = {
-          tsdk = vue_ts_path, -- delete this will use project ts version
-        },
-      },
-    },
+    -- init_options = {
+    --   vue = {
+    --     hybridMode = true,
+    --     typescript = {
+    --       tsdk = vue_ts_path, -- delete this will use project ts version
+    --     },
+    --   },
+    -- },
   },
 
   yamlls = {
@@ -52,19 +52,19 @@ local servers = {
     },
   },
 
-  ts_ls = {
-    enabled = false,
-    filetypes = {},
-    init_options = {
-      plugins = {
-        {
-          name = '@vue/typescript-plugin',
-          location = vue_language_server_path,
-          languages = { 'vue' },
-        },
-      },
-    },
-  },
+  -- ts_ls = {
+  --   enabled = false,
+  --   filetypes = {},
+  --   init_options = {
+  --     plugins = {
+  --       {
+  --         name = '@vue/typescript-plugin',
+  --         location = vue_language_server_path,
+  --         languages = { 'vue' },
+  --       },
+  --     },
+  --   },
+  -- },
 
   jsonls = {
     settings = {
