@@ -101,6 +101,7 @@ return function()
     ensure_installed = lsp_option.ensure_installed,
   }
 
+  vim.lsp.enable({"vue_ls"}, false)
   for server_name, config in pairs(lsp_option.servers) do
     config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
     vim.lsp.config(server_name, config)

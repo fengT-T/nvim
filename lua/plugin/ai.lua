@@ -8,60 +8,6 @@ local function get_key(filename, match)
 end
 
 local ai_list = {
-  supermaven = {
-    {
-      "supermaven-inc/supermaven-nvim",
-      opts = {
-        keymaps = {
-          accept_suggestion = "<Tab>",
-          clear_suggestion = "<C-l>",
-          accept_word = "<C-j>",
-        }
-      },
-    },
-  },
-  codeium = {
-    "Exafunction/windsurf.nvim",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      enable_cmp_source = false,
-      virtual_text = {
-        enabled = true,
-        manual = false,
-        idle_delay = 70,
-        key_bindings = {
-          accept = "<Tab>",
-          accept_word = false,
-          accept_line = false,
-          clear = "<C-l>",
-          next = "<M-]>",
-          prev = "<M-[>",
-        }
-      }
-    }
-  },
-  copilot = {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    opts = {
-      suggestion = {
-        enabled = true,
-        auto_trigger = false,
-        hide_during_completion = true,
-        debounce = 1000,
-        keymap = {
-          accept = "<Tab>",
-          accept_word = false,
-          accept_line = false,
-          next = "<M-]>",
-          prev = "<M-[>",
-          dismiss = "<C-l>"
-        },
-      }
-    }
-  },
   minuet = {
     'milanglacier/minuet-ai.nvim',
     opts = {
@@ -125,7 +71,46 @@ local ai_list = {
       }
     }
     -- config = true,
-  }
+  },
+  cc = {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    opts = {
+      language = "Chinese",
+      adapters = {
+        qwen3 = function()
+          return require("codecompanion.adapters").extend("openai_compatible", {
+            env = {
+              -- api_key = "cmd:op read op://personal/OpenAI/credential --no-newline",
+              api_key = function()
+                return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
+              end,
+              url = "https://dashscope.aliyuncs.com/compatible-mode"
+            },
+            schema = {
+              model = {
+                default = "qwen3-coder-480b-a35b-instruct"
+              }
+            },
+          })
+        end,
+      },
+      strategies = {
+        chat = {
+          adapter = "qwen3",
+        },
+        inline = {
+          adapter = "qwen3",
+        },
+        cmd = {
+          adapter = "qwen3",
+        }
+      }
+    },
+  },
 }
 
-return { ai_list.minuet, ai_list.aider }
+return { ai_list.aider, ai_list.minuet, ai_list.cc }
