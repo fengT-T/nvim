@@ -14,11 +14,11 @@ local ai_list = {
       provider = 'openai_fim_compatible',
       provider_options = {
         openai_fim_compatible = {
-          end_point = 'https://api.siliconflow.cn/v1/completions',
+          end_point = 'https://dashscope.aliyuncs.com/compatible-mode/v1/completions',
           api_key = function()
             return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
           end,
-          model = "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+          model = "qwen-coder-turbo",
           name = ' ',
           optional = {
             max_tokens = 512,
