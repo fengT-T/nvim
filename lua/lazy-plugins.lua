@@ -134,6 +134,7 @@ require('lazy').setup({
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {},
+    ft = { "markdown", "codecompanion" }
   },
   require 'plugin.yazi',
   require 'plugin.fzf-lua',

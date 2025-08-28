@@ -6,6 +6,9 @@ local function get_key(filename, match)
   end
   return nil, '未找到 deepseek 密钥'
 end
+local function openai_key()
+  return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
+end
 
 local ai_list = {
   minuet = {
@@ -15,9 +18,7 @@ local ai_list = {
       provider_options = {
         openai_fim_compatible = {
           end_point = 'https://api.siliconflow.cn/v1/completions',
-          api_key = function()
-            return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
-          end,
+          api_key = openai_key,
           model = "Qwen/Qwen3-Coder-30B-A3B-Instruct",
           name = ' ',
           optional = {
@@ -72,45 +73,6 @@ local ai_list = {
     }
     -- config = true,
   },
-  cc = {
-    "olimorris/codecompanion.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {
-      language = "Chinese",
-      adapters = {
-        qwen3 = function()
-          return require("codecompanion.adapters").extend("openai_compatible", {
-            env = {
-              -- api_key = "cmd:op read op://personal/OpenAI/credential --no-newline",
-              api_key = function()
-                return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
-              end,
-              url = "https://dashscope.aliyuncs.com/compatible-mode"
-            },
-            schema = {
-              model = {
-                default = "qwen3-coder-480b-a35b-instruct"
-              }
-            },
-          })
-        end,
-      },
-      strategies = {
-        chat = {
-          adapter = "qwen3",
-        },
-        inline = {
-          adapter = "qwen3",
-        },
-        cmd = {
-          adapter = "qwen3",
-        }
-      }
-    },
-  },
 }
 
-return { ai_list.aider, ai_list.minuet, ai_list.cc }
+return { ai_list.aider, ai_list.minuet }
