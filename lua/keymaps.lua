@@ -167,9 +167,9 @@ map('n', '<leader>ce', require('fzf-lua').diagnostics_document, { desc = '[C]ode
 map('n', '<leader>ca', require('fzf-lua').lsp_code_actions, { desc = '[C]ode [A]ctions' })
 
 -- workspace lsp
-map('n', '<leader>ss', require('fzf-lua').lsp_workspace_symbols, { desc = '[S]earch [S]ymbols' })
+map('n', '<leader>sS', require('fzf-lua').lsp_workspace_symbols, { desc = '[S]earch [S]ymbols' })
 map('n', '<leader>sd', require('fzf-lua').lsp_workspace_diagnostics, { desc = '[S]earch [D]iagnostics' })
-map('n', '<leader>sS', require('fzf-lua').lsp_live_workspace_symbols,
+map('n', '<leader>ss', require('fzf-lua').lsp_live_workspace_symbols,
   { desc = '[S]earch [W]orkspace Symbols' })
 
 -- grep workspace word

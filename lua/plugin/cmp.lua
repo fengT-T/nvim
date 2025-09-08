@@ -14,7 +14,7 @@ return {
       },
       fuzzy = {
         sorts = {
-          "score", "exact", "sort_text"
+          "score", "sort_text", "label"
         }
       },
       signature = {enabled = true},
