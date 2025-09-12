@@ -46,33 +46,60 @@ local ai_list = {
       },
     }
   },
-  aider = {
-    "GeorgesAlkhouri/nvim-aider",
-    cmd = "Aider",
-    -- Example key mappings for common actions:
-    keys = {
-      { "<leader>a/", "<cmd>Aider toggle<cr>",       desc = "Toggle Aider" },
-      { "<leader>as", "<cmd>Aider send<cr>",         desc = "Send to Aider",                  mode = { "n", "v" } },
-      { "<leader>ac", "<cmd>Aider command<cr>",      desc = "Aider Commands" },
-      { "<leader>ab", "<cmd>Aider buffer<cr>",       desc = "Send Buffer" },
-      { "<leader>a+", "<cmd>Aider add<cr>",          desc = "Add File" },
-      { "<leader>a-", "<cmd>Aider drop<cr>",         desc = "Drop File" },
-      { "<leader>ar", "<cmd>Aider add readonly<cr>", desc = "Add Read-Only" },
-      { "<leader>aR", "<cmd>Aider reset<cr>",        desc = "Reset Session" },
-      -- Example nvim-tree.lua integration if needed
-      { "<leader>a+", "<cmd>AiderTreeAddFile<cr>",   desc = "Add File from Tree to Aider",    ft = "NvimTree" },
-      { "<leader>a-", "<cmd>AiderTreeDropFile<cr>",  desc = "Drop File from Tree from Aider", ft = "NvimTree" },
-    },
+  cc = {
+    "olimorris/codecompanion.nvim",
     dependencies = {
-      "folke/snacks.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      win = {
-        position = "float"
+      language = "Chinese",
+      adapters = {
+        http = {
+          siliconflow = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              env = {
+                api_key = openai_key(),
+                url = "https://api.siliconflow.cn"
+              },
+              schema = {
+                model = {
+                  default = "zai-org/GLM-4.5"
+                }
+              },
+            })
+          end,
+        },
+        acp = {
+          claude_code = function()
+            return require("codecompanion.adapters").extend("claude_code", {
+              env = {
+                ANTHROPIC_BASE_URL = "https://open.bigmodel.cn/api/anthropic",
+                ANTHROPIC_API_KEY = "ANTHROPIC_API_KEY"
+              },
+            })
+          end,
+        },
+      },
+      strategies = {
+        chat = {
+          adapter = "claude_code",
+        },
+        inline = {
+          adapter = {
+            name = "siliconflow",
+            model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+          }
+        },
+        cmd = {
+          adapter = {
+            name = "siliconflow",
+            model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+          }
+        }
       }
-    }
-    -- config = true,
+    },
   },
 }
 
-return { ai_list.aider, ai_list.minuet }
+return { ai_list.minuet, ai_list.cc }

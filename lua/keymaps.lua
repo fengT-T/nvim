@@ -214,9 +214,6 @@ map('n', '<C-\\>', Snacks.terminal.toggle, { desc = 'Oen terminal' })
 map('t', '<C-\\>', Snacks.terminal.toggle, { desc = 'Open terminal' })
 map('n', '<leader>t', Snacks.terminal.open, { desc = 'Open terminal' })
 
--- Aider AI assistant
--- map('n', '<leader>a', function() Snacks.terminal.toggle("aider") end, { desc = 'Open Aider AI assistant' })
-
 -- Neovide fullscreen toggle
 if vim.g.neovide then
   map('n', '<F11>', function()
@@ -240,6 +237,14 @@ map('n', '<S-h>', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Prev Buffer' })
 map('n', '<S-l>', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' })
 map('n', '[b', '<cmd>BufferLineCyclePrev<cr>', { desc = 'Prev Buffer' })
 map('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' })
+
+
+map({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+-- Expand 'cc' into 'CodeCompanion' in the command line
+vim.cmd([[cab cc CodeCompanion]])
 
 -- Which-key groups
 require('which-key').add {
