@@ -53,7 +53,16 @@ local ai_list = {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
-      language = "Chinese",
+      opts = {
+        language = "Chinese",
+      },
+      memory = {
+        opts = {
+          chat = {
+            enabled = true
+          }
+        }
+      },
       adapters = {
         http = {
           siliconflow = function()
@@ -88,13 +97,13 @@ local ai_list = {
         inline = {
           adapter = {
             name = "siliconflow",
-            model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+            model = "Qwen/Qwen3-Coder-480B-A35B-Instruct"
           }
         },
         cmd = {
           adapter = {
             name = "siliconflow",
-            model = "Qwen/Qwen3-30B-A3B-Instruct-2507"
+            model = "Qwen/Qwen3-Coder-480B-A35B-Instruct"
           }
         }
       }
