@@ -100,6 +100,8 @@ vim.opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
+
+-- if lsp fold supports,will use lsp fold
 if vim.fn.has("nvim-0.10") == 1 then
   vim.opt.smoothscroll = true
   vim.opt.foldexpr = "v:lua.require'util'.foldexpr()"

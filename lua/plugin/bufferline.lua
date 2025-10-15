@@ -7,12 +7,11 @@ return {
   event = 'VeryLazy',
   opts = {
     options = {
-      close_command = function(n)
-        util.bufremove(n)
-      end,
-      right_mouse_command = function(n)
-        util.bufremove(n)
-      end,
+      -- close_command = function(n)
+      -- end,
+      -- right_mouse_command = function(n)
+      --   util.bufremove(n)
+      -- end,
       diagnostics = 'nvim_lsp',
       always_show_bufferline = false,
       diagnostics_indicator = function(_, _, diag)
@@ -32,7 +31,7 @@ return {
     },
   },
   config = function(_, opts)
-    opts.highlights = require("catppuccin.groups.integrations.bufferline").get_theme()
+    opts.highlights = require("catppuccin.special.bufferline").get_theme()
     require('bufferline').setup(opts)
     -- Fix bufferline when restoring a session
     vim.api.nvim_create_autocmd({ 'BufAdd', 'BufDelete' }, {

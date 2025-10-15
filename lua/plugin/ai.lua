@@ -17,9 +17,9 @@ local ai_list = {
       provider = 'openai_fim_compatible',
       provider_options = {
         openai_fim_compatible = {
-          end_point = 'https://api.siliconflow.cn/v1/completions',
+          end_point = 'https://api.ppinfra.com/openai/v1/completions',
           api_key = openai_key,
-          model = "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+          model = "qwen/qwen3-coder-480b-a35b-instruct",
           name = ' ',
           optional = {
             max_tokens = 131072,
@@ -111,4 +111,4 @@ local ai_list = {
   },
 }
 
-return { ai_list.minuet, ai_list.cc }
+return { ai_list.minuet }
