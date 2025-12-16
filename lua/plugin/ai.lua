@@ -14,16 +14,17 @@ local ai_list = {
   minuet = {
     'milanglacier/minuet-ai.nvim',
     opts = {
-      provider = 'openai_fim_compatible',
+      provider = 'openai_compatible',
       provider_options = {
-        openai_fim_compatible = {
-          end_point = 'https://api.ppinfra.com/openai/v1/completions',
+        openai_compatible = {
+          end_point = 'https://api.ppinfra.com/openai/v1/chat/completions',
           api_key = openai_key,
-          model = "qwen/qwen3-coder-480b-a35b-instruct",
+          model = "deepseek/deepseek-v3.2",
           name = ' ',
           optional = {
-            max_tokens = 131072,
-            top_p = 0.9,
+            reasoning_effort = 'none'
+            --   max_tokens = 131072,
+            --   top_p = 0.9,
           },
         },
       },

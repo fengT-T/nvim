@@ -244,7 +244,10 @@ map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = 
 map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
+-- vim.cmd([[cab cc CodeCompanion]])
+
+map('n', '<leader>mr', '<cmd>CMakeRun<cr>', { desc = 'cmake run' })
+map('n', '<leader>mb', '<cmd>CMakeBuild<cr>', { desc = 'cmake build' })
 
 -- Which-key groups
 require('which-key').add {
@@ -257,7 +260,8 @@ require('which-key').add {
   { '<leader>q', group = 'Project' },
   { '<leader>f', group = 'File' },
   { '<leader>a', group = 'AI' },
-  { '<leader>d', group = 'Debug' }
+  { '<leader>d', group = 'Debug' },
+  { '<leader>m', group = 'CMake' }
 }
 
 -- Highlight on yank
