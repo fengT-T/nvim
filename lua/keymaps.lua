@@ -247,7 +247,7 @@ map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true
 -- vim.cmd([[cab cc CodeCompanion]])
 
 map('n', '<leader>mr', '<cmd>CMakeRun<cr>', { desc = 'cmake run' })
-map('n', '<leader>mb', '<cmd>CMakeBuild<cr>', { desc = 'cmake build' })
+map('n', '<leader>mb', '<cmd>CMakeBuildCurrentFile<cr>', { desc = 'cmake build' })
 
 -- Which-key groups
 require('which-key').add {
