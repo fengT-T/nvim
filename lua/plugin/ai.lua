@@ -19,17 +19,20 @@ local ai_list = {
         openai_compatible = {
           end_point = 'https://api.ppinfra.com/openai/v1/chat/completions',
           api_key = openai_key,
-          model = "deepseek/deepseek-v3.2",
+          model = "xiaomimimo/mimo-v2-flash",
           name = ' ',
           optional = {
-            reasoning_effort = 'none'
+            -- reasoning_effort = 'none'
             --   max_tokens = 131072,
             --   top_p = 0.9,
           },
         },
       },
+      debounce = 5000,
       virtualtext = {
-        auto_trigger_ft = {},
+        auto_trigger_ft = {
+          '*'
+        },
         keymap = {
           -- accept whole completion
           accept = '<A-y>',

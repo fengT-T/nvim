@@ -26,9 +26,9 @@ map("n", "[e", diagnostic_goto(-1, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(1, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(-1, "WARN"), { desc = "Prev Warning" })
 -- File tree
--- map('n', '<leader>e', Snacks.explorer.open, { desc = 'Open file explorer' })
--- map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
-map('n', '<leader>e', '<cmd>Yazi<cr>', { desc = 'yazi file explorer' })
+map('n', '<leader>e', Snacks.explorer.open, { desc = 'Open file explorer' })
+map('n', '<leader>E', Snacks.explorer.reveal, { desc = 'Find File explorer' })
+-- map('n', '<leader>e', '<cmd>Yazi<cr>', { desc = 'yazi file explorer' })
 
 -- Save
 map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
