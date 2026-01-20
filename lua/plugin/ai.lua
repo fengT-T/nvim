@@ -19,10 +19,10 @@ local ai_list = {
         openai_compatible = {
           end_point = 'https://api.ppinfra.com/openai/v1/chat/completions',
           api_key = openai_key,
-          model = "xiaomimimo/mimo-v2-flash",
+          model = "deepseek/deepseek-v3.2",
           name = ' ',
           optional = {
-            -- reasoning_effort = 'none'
+            reasoning_effort = 'none'
             --   max_tokens = 131072,
             --   top_p = 0.9,
           },
