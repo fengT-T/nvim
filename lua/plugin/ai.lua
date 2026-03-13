@@ -17,14 +17,15 @@ local ai_list = {
       provider = 'openai_compatible',
       provider_options = {
         openai_compatible = {
-          end_point = 'https://api.ppinfra.com/openai/v1/chat/completions',
+          end_point = 'https://api.ppio.com/openai/v1/chat/completions',
           api_key = openai_key,
-          model = "zai-org/glm-4.7-flash",
+          model = "deepseek/deepseek-v3.2",
           name = ' ',
+          stream = true,
           optional = {
-            reasoning_effort = 'none'
-            --   max_tokens = 131072,
-            --   top_p = 0.9,
+            -- reasoning_effort = 'none',
+            -- max_tokens = 131072,
+            -- top_p = 0.9,
           },
         },
       },
@@ -60,54 +61,54 @@ local ai_list = {
       opts = {
         language = "Chinese",
       },
-      memory = {
-        opts = {
-          chat = {
-            enabled = true
-          }
-        }
-      },
+      -- memory = {
+      --   opts = {
+      --     chat = {
+      --       enabled = true
+      --     }
+      --   }
+      -- },
       adapters = {
         http = {
-          siliconflow = function()
+          ppio = function()
             return require("codecompanion.adapters").extend("openai_compatible", {
               env = {
                 api_key = openai_key(),
-                url = "https://api.siliconflow.cn"
               },
+              url = "https://api.ppio.com/openai/v1/chat/completions",
               schema = {
                 model = {
-                  default = "zai-org/GLM-4.5"
+                  default = "zai-org/glm-5"
                 }
               },
             })
           end,
         },
-        acp = {
-          claude_code = function()
-            return require("codecompanion.adapters").extend("claude_code", {
-              env = {
-                ANTHROPIC_BASE_URL = "https://open.bigmodel.cn/api/anthropic",
-                ANTHROPIC_API_KEY = "ANTHROPIC_API_KEY"
-              },
-            })
-          end,
-        },
+        -- acp = {
+        --   claude_code = function()
+        --     return require("codecompanion.adapters").extend("claude_code", {
+        --       env = {
+        --         ANTHROPIC_BASE_URL = "https://open.bigmodel.cn/api/anthropic",
+        --         ANTHROPIC_API_KEY = "ANTHROPIC_API_KEY"
+        --       },
+        --     })
+        --   end,
+        -- },
       },
       strategies = {
         chat = {
-          adapter = "claude_code",
+          adapter = "ppio",
         },
         inline = {
           adapter = {
-            name = "siliconflow",
-            model = "Qwen/Qwen3-Coder-480B-A35B-Instruct"
+            name = "ppio",
+            model = "zai-org/glm-5"
           }
         },
         cmd = {
           adapter = {
-            name = "siliconflow",
-            model = "Qwen/Qwen3-Coder-480B-A35B-Instruct"
+            name = "ppio",
+            model = "zai-org/glm-5"
           }
         }
       }
@@ -115,4 +116,4 @@ local ai_list = {
   },
 }
 
-return { ai_list.minuet }
+return { ai_list.cc }

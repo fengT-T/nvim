@@ -244,7 +244,9 @@ map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = 
 map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
--- vim.cmd([[cab cc CodeCompanion]])
+vim.cmd([[cab cc CodeCompanion]])
+vim.cmd([[cab ccc CodeCompanionChat]])
+vim.cmd([[cab cca CodeCompanionActions]])
 
 map('n', '<leader>mr', '<cmd>CMakeRun<cr>', { desc = 'cmake run' })
 map('n', '<leader>mb', '<cmd>CMakeBuildCurrentFile<cr>', { desc = 'cmake build' })

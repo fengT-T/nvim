@@ -11,7 +11,7 @@ return {
         sections = {
           lualine_c = { 'filename', 'codecompainon' },
           lualine_x = {
-            { require("minuet.lualine"), display_name = "provider", display_on_idle = true },
+            -- { require("minuet.lualine"), display_name = "provider", display_on_idle = true },
             'searchcount', 'encoding', 'fileformat', 'filetype',
           },
           lualine_z = { { 'datetime', style = '%I:%M %p' } },
