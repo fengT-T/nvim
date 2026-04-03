@@ -129,8 +129,8 @@ if vim.g.neovide then
   vim.g.neovide_scroll_animation_length = 0.1
   vim.g.neovide_scroll_animation_far_lines = 1
   vim.g.neovide_padding_left = 5
-  vim.g.neovide_opacity = 0.85
-  vim.g.neovide_normal_opacity = 0.85
+  vim.g.neovide_opacity = 0.92
+  vim.g.neovide_normal_opacity = 0.92
   vim.g.neovide_cursor_vfx_mode = "railgun"
   vim.g.neovide_cursor_vfx_opacity = 200.0
   vim.g.neovide_cursor_vfx_particle_density = 10
