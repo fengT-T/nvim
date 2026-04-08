@@ -1,5 +1,5 @@
-local themes = {
-  catppuccin = {
+return {
+  {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = false,
@@ -37,7 +37,7 @@ local themes = {
       },
     },
   },
-  bluloco = {
+  {
     'uloco/bluloco.nvim',
     lazy = false,
     priority = 1000,
@@ -45,5 +45,3 @@ local themes = {
     opts = { guicursor = true, transparent = true },
   },
 }
-
-return { themes.catppuccin, themes.bluloco, themes.catppuccin }

@@ -186,10 +186,32 @@ return {
       })
 
       local diagnostic_icon = require('util').diagnostics_icon
-      for name, icon in pairs(diagnostic_icon) do
-        name = 'DiagnosticSign' .. name
-        vim.fn.sign_define(name, { text = icon, texthl = name, numhl = '' })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = diagnostic_icon.Error,
+            [vim.diagnostic.severity.WARN] = diagnostic_icon.Warn,
+            [vim.diagnostic.severity.INFO] = diagnostic_icon.Info,
+            [vim.diagnostic.severity.HINT] = diagnostic_icon.Hint,
+          },
+          linehl = {
+            [vim.diagnostic.severity.ERROR] = "Error",
+            [vim.diagnostic.severity.WARN] = "Warn",
+            [vim.diagnostic.severity.INFO] = "Info",
+            [vim.diagnostic.severity.HINT] = "Hint",
+          },
+        },
+        virtual_text = {
+          prefix = function(diagnostic)
+            for d, icon in pairs(diagnostic_icon) do
+              if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+                return icon
+              end
+            end
+            return "●"
+          end
+        }
+      })
 
       require('mason').setup()
       local capabilities = require('blink.cmp').get_lsp_capabilities()
