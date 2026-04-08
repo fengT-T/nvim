@@ -76,7 +76,7 @@ vim.o.termguicolors = true
 vim.o.splitbelow = true
 vim.o.splitkeep = "screen"
 
-vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
+-- vim.o.statuscolumn = [[%!v:lua.require'snacks.statuscolumn'.get()]]
 vim.o.laststatus = 3
 
 -- Minimum window width
@@ -93,23 +93,23 @@ vim.o.background = "light"
 vim.cmd.colorscheme 'catppuccin'
 
 vim.opt.fillchars = {
-  foldopen = "",
-  foldclose = "",
-  fold = " ",
-  foldsep = " ",
-  diff = "╱",
-  eob = " ",
+	foldopen = "",
+	foldclose = "",
+	fold = " ",
+	foldsep = " ",
+	diff = "╱",
+	eob = " ",
 }
 
 -- if lsp fold supports,will use lsp fold
 if vim.fn.has("nvim-0.10") == 1 then
-  vim.opt.smoothscroll = true
-  vim.opt.foldexpr = "v:lua.require'util'.foldexpr()"
-  vim.opt.foldmethod = "expr"
-  vim.opt.foldtext = ""
+	vim.opt.smoothscroll = true
+	vim.opt.foldexpr = "v:lua.require'util'.foldexpr()"
+	vim.opt.foldmethod = "expr"
+	vim.opt.foldtext = ""
 else
-  vim.opt.foldmethod = "indent"
-  vim.opt.foldtext = "v:lua.require'util'.foldtext()"
+	vim.opt.foldmethod = "indent"
+	vim.opt.foldtext = "v:lua.require'util'.foldtext()"
 end
 
 vim.opt.foldlevel = 99
@@ -122,64 +122,64 @@ vim.opt.termguicolors = true
 vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12'
 --- neovide config
 if vim.g.neovide then
-  -- vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12.6:#e-subpixelantialias'
-  vim.opt.guifont = 'Maple Mono NF CN:h12:#e-subpixelantialias'
-  vim.g.neovide_remember_window_size = true
-  vim.g.neovide_cursor_antialiasing = true
-  vim.g.neovide_scroll_animation_length = 0.1
-  vim.g.neovide_scroll_animation_far_lines = 1
-  vim.g.neovide_padding_left = 5
-  vim.g.neovide_opacity = 0.92
-  vim.g.neovide_normal_opacity = 0.92
-  vim.g.neovide_cursor_vfx_mode = "railgun"
-  vim.g.neovide_cursor_vfx_opacity = 200.0
-  vim.g.neovide_cursor_vfx_particle_density = 10
-  vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_floating_corner_radius = 0.2
-  vim.g.neovide_cursor_animate_in_insert_mode = false
-  -- vim.g.neovide_title_background_color = string.format(
-  --   "%x",
-  --   vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
-  -- )
+	-- vim.opt.guifont = 'CaskaydiaCove Nerd Font:h12.6:#e-subpixelantialias'
+	vim.opt.guifont = 'Maple Mono NF CN:h12:#e-subpixelantialias'
+	vim.g.neovide_remember_window_size = true
+	vim.g.neovide_cursor_antialiasing = true
+	vim.g.neovide_scroll_animation_length = 0.1
+	vim.g.neovide_scroll_animation_far_lines = 1
+	vim.g.neovide_padding_left = 5
+	vim.g.neovide_opacity = 0.92
+	vim.g.neovide_normal_opacity = 0.92
+	vim.g.neovide_cursor_vfx_mode = "railgun"
+	vim.g.neovide_cursor_vfx_opacity = 200.0
+	vim.g.neovide_cursor_vfx_particle_density = 10
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_floating_corner_radius = 0.2
+	vim.g.neovide_cursor_animate_in_insert_mode = false
+	-- vim.g.neovide_title_background_color = string.format(
+	--   "%x",
+	--   vim.api.nvim_get_hl(0, { id = vim.api.nvim_get_hl_id_by_name("Normal") }).bg
+	-- )
 
-  -- neovide IME
-  local function set_ime(args)
-    if args.event:match("Enter$") then
-      vim.g.neovide_input_ime = true
-    else
-      vim.g.neovide_input_ime = false
-    end
-  end
-  local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
-  vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
-    group = ime_input,
-    pattern = "*",
-    callback = set_ime
-  })
-  vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
-    group = ime_input,
-    pattern = "[/\\?]",
-    callback = set_ime
-  })
+	-- neovide IME
+	local function set_ime(args)
+		if args.event:match("Enter$") then
+			vim.g.neovide_input_ime = true
+		else
+			vim.g.neovide_input_ime = false
+		end
+	end
+	local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
+	vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+		group = ime_input,
+		pattern = "*",
+		callback = set_ime
+	})
+	vim.api.nvim_create_autocmd({ "CmdlineEnter", "CmdlineLeave" }, {
+		group = ime_input,
+		pattern = "[/\\?]",
+		callback = set_ime
+	})
 end
 
 -- will hidden cmd line
 vim.opt.cmdheight = 0
 -- auto hide cmdline
 vim.api.nvim_create_autocmd({ 'RecordingEnter' }, {
-  callback = function()
-    vim.opt.cmdheight = 1
-  end,
+	callback = function()
+		vim.opt.cmdheight = 1
+	end,
 })
 vim.api.nvim_create_autocmd({ 'RecordingLeave' }, {
-  callback = function()
-    vim.opt.cmdheight = 0
-  end,
+	callback = function()
+		vim.opt.cmdheight = 0
+	end,
 })
 
 vim.filetype.add({
-  extension = {
-    frag = "glsl",
-    vert = "glsl",
-  },
+	extension = {
+		frag = "glsl",
+		vert = "glsl",
+	},
 })
