@@ -13,8 +13,6 @@ return {
       html = { 'prettier' },
       css = { 'prettier' },
     },
-    -- just disable auto save
-    -- format_on_save = { timeout_ms = 500, lsp_fallback = true },
     format_on_save = false,
     formatters = {},
   },
