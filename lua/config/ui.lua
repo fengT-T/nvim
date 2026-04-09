@@ -58,7 +58,7 @@ function M.ui()
     },
     sections = {
       lualine_c = { 'filename', 'codecompainon' },
-      lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype' },
+      lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype', 'lsp_status' },
       lualine_z = { { 'datetime', style = '%I:%M %p' } },
     },
   })
