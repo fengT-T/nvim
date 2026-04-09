@@ -36,8 +36,9 @@ map({ 'i', 'x', 'n', 's' }, '<C-s>', '<cmd>w<cr><esc>', { desc = 'Save file' })
 -- Persistence
 local persistence = require('persistence')
 map('n', '<leader>qs', persistence.load, { desc = 'restore current session' })
-map('n', '<leader>ql', persistence.load, { desc = 'restore last session' })
-map('n', '<leader>qd', persistence.load, { desc = 'stop persistence' })
+map('n', '<leader>ql', function() persistence.load({ last = true }) end, { desc = 'restore last session' })
+map('n', '<leader>qd', persistence.stop, { desc = 'stop persistence' })
+map('n', '<leader>qS', persistence.select, { desc = 'stop persistence' })
 
 -- Move to window using the <ctrl> hjkl keys
 map('n', '<C-h>', '<C-w>h', { desc = 'Go to left window', remap = true })
@@ -85,71 +86,6 @@ toggle.option("background", { off = "light", on = "dark", name = "Dark Backgroun
 if vim.lsp.inlay_hint then
   toggle.inlay_hints():map("<leader>uh")
 end
-
--- snacks
--- Snacks.picker.sources.lsp_symbols.filter.default = true
--- map('n', "<leader>,", function() Snacks.picker.buffers() end, { desc = "Buffers" })
--- map('n', "<leader>/", function() Snacks.picker.grep() end, { desc = "Grep" })
--- map('n', "<leader>:", function() Snacks.picker.command_history() end, { desc = "Command History" })
--- map('n', "<leader><space>", function() Snacks.picker.files() end, { desc = "Find Files" })
--- -- find
--- map('n', "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Buffers" })
--- map('n', "<leader>fc", function()
---     Snacks.picker.files({
---       finder = "files",
---       format = "file",
---       supports_live = true,
---       ---@diagnostic disable-next-line: assign-type-mismatch
---       cwd = vim.fn.stdpath("config")
---     })
---   end,
---   { desc = "Find Config File" })
--- map('n', "<leader>ff", function() Snacks.picker.files() end, { desc = "Find Files" })
--- map('n', "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Find Git Files" })
--- map('n', "<leader>fr", function() Snacks.picker.recent() end, { desc = "Recent" })
--- map('n', "<leader>fp", function() Snacks.picker.projects() end, { desc = "Projects" })
---
--- -- git
--- map('n', "<leader>gc", function() Snacks.picker.git_log() end, { desc = "Git Log" })
--- map('n', "<leader>gs", function() Snacks.picker.git_status() end, { desc = "Git Status" })
--- -- Grep
--- map('n', "<leader>sb", function() Snacks.picker.lines() end, { desc = "Buffer Lines" })
--- map('n', "<leader>sB", function() Snacks.picker.grep_buffers() end, { desc = "Grep Open Buffers" })
--- map('n', "<leader>sg", function() Snacks.picker.grep() end, { desc = "Grep" })
--- map({ 'n', 'x' }, "<leader>sw", function() Snacks.picker.grep_word() end, { desc = "Visual selection or word" })
--- -- search
--- map('n', '<leader>s"', function() Snacks.picker.registers() end, { desc = "Registers" })
--- map('n', "<leader>sa", function() Snacks.picker.autocmds() end, { desc = "Autocmds" })
--- map('n', "<leader>sc", function() Snacks.picker.command_history() end, { desc = "Command History" })
--- map('n', "<leader>sC", function() Snacks.picker.commands() end, { desc = "Commands" })
--- map('n', "<leader>sd", function() Snacks.picker.diagnostics() end, { desc = "Diagnostics" })
--- map('n', "<leader>sh", function() Snacks.picker.help() end, { desc = "Help Pages" })
--- map('n', "<leader>sH", function() Snacks.picker.highlights() end, { desc = "Highlights" })
--- map('n', "<leader>sj", function() Snacks.picker.jumps() end, { desc = "Jumps" })
--- map('n', "<leader>sk", function() Snacks.picker.keymaps() end, { desc = "Keymaps" })
--- map('n', "<leader>sl", function() Snacks.picker.loclist() end, { desc = "Location List" })
--- map('n', "<leader>sM", function() Snacks.picker.man() end, { desc = "Man Pages" })
--- map('n', "<leader>sm", function() Snacks.picker.marks() end, { desc = "Marks" })
--- map('n', "<leader>sR", function() Snacks.picker.resume() end, { desc = "Resume" })
--- map('n', "<leader>sq", function() Snacks.picker.qflist() end, { desc = "Quickfix List" })
--- map('n', "<leader>uC", function() Snacks.picker.colorschemes() end, { desc = "Colorschemes" })
--- map('n', "<leader>qp", function() Snacks.picker.projects() end, { desc = "Projects" })
--- map('n', "<leader>sT", function() Snacks.picker.todo_comments({ keywords = { "TODO", "FIX", "FIXME" } }) end,
---   { desc = "Todo Comments" })
--- map('n', "<leader>st", function() Snacks.picker.todo_comments() end, { desc = "Tags" })
--- map('n', "<leader>su", function() Snacks.picker.undotree() end, { desc = "Undotree" })
--- map('n', "<leader>so", function() Snacks.picker.pick() end, { desc = "Snacks Picker" })
---
--- -- LSP
--- map('n', "gd", function() Snacks.picker.lsp_definitions() end, { desc = "Goto Definition" })
--- map('n', "gr", function() Snacks.picker.lsp_references() end, { nowait = true, desc = "References" })
--- map('n', "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Goto Implementation" })
--- map('n', "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Goto T[y]pe Definition" })
--- map('n', "<leader>ss", function()
---   ---@diagnostic disable-next-line: param-type-mismatch
---   Snacks.picker.lsp_symbols(Snacks.picker.sources.lsp_workspace_symbols)
--- end, { desc = "LSP Symbols" })
--- map('n', '<leader>cs', function() Snacks.picker.lsp_symbols() end, { desc = 'docuement [C]ode [S]ymbols' })
 
 -- fzf-lua
 local function searhBuf()
@@ -251,6 +187,98 @@ vim.cmd([[cab cca CodeCompanionActions]])
 map('n', '<leader>mr', '<cmd>CMakeRun<cr>', { desc = 'cmake run' })
 map('n', '<leader>mb', '<cmd>CMakeBuildCurrentFile<cr>', { desc = 'cmake build' })
 
+-- DAP
+local dap = require('dap')
+local dapui = require('dapui')
+map('n', '<leader>dB', function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
+  { desc = 'Breakpoint Condition' })
+map('n', '<leader>db', function() dap.toggle_breakpoint() end, { desc = 'Toggle Breakpoint' })
+map('n', '<leader>dc', function() dap.continue() end, { desc = 'Run/Continue' })
+local function get_args(config)
+  local args = type(config.args) == 'function' and (config.args() or {}) or config.args or {}
+  local args_str = type(args) == 'table' and table.concat(args, ' ') or args
+  config = vim.deepcopy(config)
+  config.args = function()
+    local new_args = vim.fn.expand(vim.fn.input('Run with args: ', args_str))
+    if config.type and config.type == 'java' then return new_args end
+    return require('dap.utils').splitstr(new_args)
+  end
+  return config
+end
+map('n', '<leader>da', function() dap.continue({ before = get_args }) end, { desc = 'Run with Args' })
+map('n', '<leader>dC', function() dap.run_to_cursor() end, { desc = 'Run to Cursor' })
+map('n', '<leader>dg', function() dap.goto_() end, { desc = 'Go to Line (No Execute)' })
+map('n', '<leader>di', function() dap.step_into() end, { desc = 'Step Into' })
+map('n', '<leader>dj', function() dap.down() end, { desc = 'Down' })
+map('n', '<leader>dk', function() dap.up() end, { desc = 'Up' })
+map('n', '<leader>dl', function() dap.run_last() end, { desc = 'Run Last' })
+map('n', '<leader>do', function() dap.step_out() end, { desc = 'Step Out' })
+map('n', '<leader>dO', function() dap.step_over() end, { desc = 'Step Over' })
+map('n', '<leader>dP', function() dap.pause() end, { desc = 'Pause' })
+map('n', '<leader>dr', function() dap.repl.toggle() end, { desc = 'Toggle REPL' })
+map('n', '<leader>ds', function() dap.session() end, { desc = 'Session' })
+map('n', '<leader>dt', function() dap.terminate() end, { desc = 'Terminate' })
+map('n', '<leader>dw', function() require('dap.ui.widgets').hover() end, { desc = 'Widgets' })
+map('n', '<leader>du', function() dapui.toggle({}) end, { desc = 'Dap UI' })
+map({ 'n', 'v' }, '<leader>de', function() dapui.eval() end, { desc = 'Eval' })
+
+-- Flash
+map({ 'n', 'x', 'o' }, 's', function() require('flash').jump() end, { desc = 'Flash' })
+map({ 'n', 'o', 'x' }, 'S', function() require('flash').treesitter() end, { desc = 'Flash Treesitter' })
+map('o', 'r', function() require('flash').remote() end, { desc = 'Remote Flash' })
+map({ 'o', 'x' }, 'R', function() require('flash').treesitter_search() end, { desc = 'Treesitter Search' })
+map('c', '<c-s>', function() require('flash').toggle() end, { desc = 'Toggle Flash Search' })
+
+-- Treesitter textobjects
+local ts_move = require("nvim-treesitter-textobjects.move")
+local ts_select = require('nvim-treesitter-textobjects.select')
+-- keymaps
+-- You can use the capture groups defined in `textobjects.scm`
+map({ "x", "o" }, "af", function() ts_select.select_textobject("@function.outer", "textobjects") end,
+  { desc = "select outer function" })
+map({ "x", "o" }, "if", function() ts_select("@function.inner", "textobjects") end, { desc = "select inner function" })
+map({ "x", "o" }, "ac", function() ts_select("@class.outer", "textobjects") end, { desc = "select class outer" })
+map({ "x", "o" }, "ic",
+  function() require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects") end,
+  { desc = "select outer class" })
+-- You can also use captures from other query groups like `locals.scm`
+map({ "x", "o" }, "as", function() ts_select("@local.scope", "locals") end, { desc = "select local" })
+
+-- keymaps
+map("n", "<leader>oa", function()
+  require("nvim-treesitter-textobjects.swap").swap_next "@parameter.inner"
+end, { desc = "swap inner parameter" })
+map("n", "<leader>oA", function()
+  require("nvim-treesitter-textobjects.swap").swap_previous "@parameter.outer"
+end, { desc = "swap outer parameter" })
+
+map({ "n", "x", "o" }, "]f", function() ts_move.goto_next_start("@function.outer", "textobjects") end,
+  { desc = "Next function start" })
+map({ "n", "x", "o" }, "]]", function() ts_move.goto_next_start("@class.outer", "textobjects") end,
+  { desc = "Next class start" })
+map({ "n", "x", "o" }, "]o", function() ts_move.goto_next_start({ "@loop.inner", "@loop.outer" }, "textobjects") end,
+  { desc = "Next loop start" })
+map({ "n", "x", "o" }, "]s", function() ts_move.goto_next_start("@local.scope", "locals") end,
+  { desc = "Next scope" })
+map({ "n", "x", "o" }, "]z", function() ts_move.goto_next_start("@fold", "folds") end,
+  { desc = "Next fold" })
+map({ "n", "x", "o" }, "]M", function() ts_move.goto_next_end("@function.outer", "textobjects") end,
+  { desc = "Next function end" })
+map({ "n", "x", "o" }, "][", function() ts_move.goto_next_end("@class.outer", "textobjects") end,
+  { desc = "Next class end" })
+map({ "n", "x", "o" }, "[f", function() ts_move.goto_previous_start("@function.outer", "textobjects") end,
+  { desc = "Prev function start" })
+map({ "n", "x", "o" }, "[[", function() ts_move.goto_previous_start("@class.outer", "textobjects") end,
+  { desc = "Prev class start" })
+map({ "n", "x", "o" }, "[M", function() ts_move.goto_previous_end("@function.outer", "textobjects") end,
+  { desc = "Prev function end" })
+map({ "n", "x", "o" }, "[]", function() ts_move.goto_previous_end("@class.outer", "textobjects") end,
+  { desc = "Prev class end" })
+map({ "n", "x", "o" }, "]c", function() ts_move.goto_next("@conditional.outer", "textobjects") end,
+  { desc = "Next conditional" })
+map({ "n", "x", "o" }, "[c", function() ts_move.goto_previous("@conditional.outer", "textobjects") end,
+  { desc = "Prev conditional" })
+
 -- Which-key groups
 require('which-key').add {
   { '<leader>c', group = 'Code' },
@@ -263,6 +291,7 @@ require('which-key').add {
   { '<leader>f', group = 'File' },
   { '<leader>a', group = 'AI' },
   { '<leader>d', group = 'Debug' },
+  { '<leader>o', group = 'Operate' },
   { '<leader>m', group = 'CMake' }
 }
 
@@ -273,5 +302,59 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+local function lsp_keymaps()
+  local smap = Snacks.keymap.set
 
+  smap('n', 'gD', vim.lsp.buf.declaration, { lsp = {}, desc = 'Goto Declaration' })
+  smap('n', 'K', vim.lsp.buf.hover, { lsp = {}, desc = 'Hover' })
+  smap('n', 'gK', vim.lsp.buf.signature_help, { lsp = { method = 'textDocument/signatureHelp' }, desc = 'Signature Help' })
+  smap('i', '<c-k>', vim.lsp.buf.signature_help,
+    { lsp = { method = 'textDocument/signatureHelp' }, desc = 'Signature Help' })
+
+  smap({ 'n', 'x' }, '<leader>cA', vim.lsp.buf.code_action,
+    { lsp = { method = 'textDocument/codeAction' }, desc = 'Code Action' })
+  smap('n', '<leader>cr', vim.lsp.buf.rename, { lsp = { method = 'textDocument/rename' }, desc = 'Rename' })
+
+  smap('n', '<leader>cR', function() Snacks.rename.rename_file() end, {
+    lsp = { method = { 'workspace/didRenameFiles', 'workspace/willRenameFiles' } },
+    desc = 'Rename File',
+  })
+
+  smap('n', '<leader>cc', vim.lsp.codelens.run, { lsp = { method = 'textDocument/codeLens' }, desc = 'Run Codelens' })
+  smap('n', '<leader>cC', function()
+      vim.lsp.codelens.enable(true)
+    end,
+    { lsp = { method = 'textDocument/codeLens' }, desc = 'Refresh Codelens' })
+
+  smap('n', '<leader>co', function()
+    vim.lsp.buf.code_action({
+      context = {
+        only = {
+          'source.organizeImports',
+        },
+      },
+      apply = true,
+    })
+  end, { lsp = { method = 'textDocument/codeAction' }, desc = 'Organize Imports' })
+
+  smap('n', '<M-n>', function() Snacks.words.jump(vim.v.count1) end, {
+    lsp = { method = 'textDocument/documentHighlight' },
+    desc = 'Next Reference',
+  })
+  smap('n', '<M-p>', function() Snacks.words.jump(-vim.v.count1) end, {
+    lsp = { method = 'textDocument/documentHighlight' },
+    desc = 'Prev Reference',
+  })
+
+  smap('n', '<leader>cd', vim.diagnostic.open_float, { desc = 'Line Diagnostics' })
+  smap('n', '<leader>cq', vim.diagnostic.setloclist, { desc = 'Diagnostics List' })
+
+  smap('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { desc = 'Workspace Add Folder' })
+  smap('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { desc = 'Workspace Remove Folder' })
+  smap('n', '<leader>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, { desc = 'Workspace List Folders' })
+end
+
+lsp_keymaps()
 -- vim: ts=2 sts=2 sw=2 et

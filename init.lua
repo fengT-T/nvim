@@ -1,6 +1,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-require('config.options')
-require('config.pack').setup()
-require('config.keymaps')
+require('options')
+require('pack').setup()
+require('keymaps')
+require('pack_ui')

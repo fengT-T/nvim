@@ -1,0 +1,838 @@
+--- Startup times for process: Primary (or UI client) ---
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.000  000.000: --- NVIM STARTING ---
+000.120  000.120: event init
+000.186  000.065: early init
+000.216  000.031: locale set
+000.270  000.054: init first window
+000.549  000.279: inits 1
+000.557  000.008: window checked
+000.559  000.002: parsing arguments
+000.978  000.040  000.040: require('vim._core.shared')
+001.042  000.004  000.004: require('string.buffer')
+001.064  000.040  000.036: require('vim.inspect')
+001.112  000.041  000.041: require('vim._core.options')
+001.114  000.133  000.052: require('vim._core.editor')
+001.149  000.034  000.034: require('vim._core.system')
+001.150  000.226  000.019: require('vim._init_packages')
+001.151  000.366: init lua interpreter
+003.220  002.069: nvim_ui_attach
+003.499  000.280: nvim_set_client_info
+003.500  000.001: --- NVIM STARTED ---
+
+--- Startup times for process: Embedded ---
+
+times in msec
+ clock   self+sourced   self:  sourced script
+ clock   elapsed:              other lines
+
+000.000  000.000: --- NVIM STARTING ---
+000.120  000.120: event init
+000.186  000.066: early init
+000.217  000.031: locale set
+000.259  000.041: init first window
+000.523  000.264: inits 1
+000.536  000.013: window checked
+000.537  000.001: parsing arguments
+000.945  000.039  000.039: require('vim._core.shared')
+001.016  000.005  000.005: require('string.buffer')
+001.037  000.046  000.041: require('vim.inspect')
+001.082  000.038  000.038: require('vim._core.options')
+001.086  000.136  000.052: require('vim._core.editor')
+001.112  000.026  000.026: require('vim._core.system')
+001.113  000.223  000.021: require('vim._init_packages')
+001.114  000.355: init lua interpreter
+001.162  000.048: expanding arguments
+001.198  000.036: inits 2
+001.398  000.201: init highlight
+001.399  000.001: waiting for UI
+001.520  000.121: done waiting for UI
+001.524  000.004: clear screen
+001.661  000.012  000.012: require('vim.keymap')
+002.302  000.106  000.106: sourcing nvim_exec2()
+002.322  000.004  000.004: require('vim._core.log')
+005.801  004.275  004.153: require('vim._core.defaults')
+005.803  000.004: init default mappings & autocommands
+006.161  000.039  000.039: sourcing /usr/share/nvim/runtime/ftplugin.vim
+006.216  000.022  000.022: sourcing /usr/share/nvim/runtime/indent.vim
+006.319  000.054  000.054: sourcing /usr/share/nvim/archlinux.lua
+006.322  000.081  000.027: sourcing /etc/xdg/nvim/sysinit.vim
+007.487  000.654  000.654: sourcing /usr/share/nvim/runtime/colors/vim.lua
+007.879  001.069  000.414: sourcing /usr/share/nvim/runtime/colors/catppuccin.vim
+007.965  000.044  000.044: require('util')
+009.449  001.406  001.406: require('vim.filetype')
+009.453  003.093  000.574: require('config.options')
+009.543  000.089  000.089: require('config.pack')
+010.275  000.069  000.069: require('vim._async')
+010.285  000.740  000.670: require('vim.pack')
+010.315  000.021  000.021: require('vim.fs')
+010.390  000.006  000.006: require('vim.F')
+010.670  000.212  000.212: require('vim.version')
+011.124  000.158  000.158: require('snacks')
+011.126  000.172  000.014: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/snacks.nvim/plugin/snacks.lua
+011.653  000.028  000.028: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/lush.nvim/plugin/lush.vim
+011.911  000.021  000.021: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-web-devicons/plugin/nvim-web-devicons.vim
+012.183  000.018  000.018: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/plenary.nvim/plugin/plenary.vim
+012.746  000.516  000.516: require('config.plugins')
+013.215  000.214  000.214: require('catppuccin')
+013.452  000.052  000.052: require('catppuccin.lib.hashing')
+013.661  000.109  000.109: require('catppuccin.lib.compiler')
+013.742  000.079  000.079: require('catppuccin.lib.mapper')
+013.788  000.044  000.044: require('catppuccin.palettes')
+013.828  000.038  000.038: require('catppuccin.palettes.frappe')
+014.332  000.316  000.316: require('catppuccin.lib.hsluv')
+014.336  000.465  000.149: require('catppuccin.utils.colors')
+014.499  000.151  000.151: require('catppuccin.groups.editor')
+014.629  000.103  000.103: require('catppuccin.groups.lsp')
+014.873  000.142  000.142: require('catppuccin.groups.syntax')
+014.952  000.039  000.039: require('catppuccin.groups.semantic_tokens')
+016.303  000.077  000.077: require('vim.treesitter.language')
+016.337  000.029  000.029: require('vim.func')
+016.422  000.083  000.083: require('vim.treesitter._range')
+016.482  000.055  000.055: require('vim.func._memoize')
+016.500  000.746  000.501: require('vim.treesitter.query')
+016.507  001.331  000.585: require('vim.treesitter.languagetree')
+016.512  001.558  000.227: require('vim.treesitter')
+016.757  000.244  000.244: require('vim.treesitter.highlighter')
+016.929  000.150  000.150: require('catppuccin.groups.treesitter')
+017.005  000.038  000.038: require('catppuccin.groups.integrations.neotest')
+017.054  000.037  000.037: require('catppuccin.groups.integrations.telescope')
+017.130  000.034  000.034: require('catppuccin.groups.integrations.treesitter_context')
+017.164  000.027  000.027: require('catppuccin.groups.integrations.which_key')
+017.194  000.024  000.024: require('catppuccin.groups.integrations.ufo')
+017.226  000.027  000.027: require('catppuccin.groups.integrations.rainbow_delimiters')
+017.268  000.037  000.037: require('catppuccin.groups.integrations.render_markdown')
+017.421  000.042  000.042: require('catppuccin.groups.integrations.illuminate')
+017.520  000.029  000.029: require('catppuccin.groups.integrations.flash')
+017.557  000.029  000.029: require('catppuccin.groups.integrations.alpha')
+017.653  000.089  000.089: require('catppuccin.groups.integrations.dropbar')
+017.706  000.029  000.029: require('catppuccin.groups.integrations.colorful_winsep')
+017.812  000.104  000.104: require('catppuccin.groups.integrations.mini')
+017.876  000.042  000.042: require('catppuccin.groups.integrations.lir')
+017.907  000.026  000.026: require('catppuccin.groups.integrations.dap')
+017.950  000.028  000.028: require('catppuccin.groups.integrations.dashboard')
+018.113  000.066  000.066: require('catppuccin.groups.integrations.cmp')
+018.189  000.047  000.047: require('catppuccin.groups.integrations.navic')
+018.227  000.037  000.037: require('catppuccin.groups.integrations.nvimtree')
+018.288  000.033  000.033: require('catppuccin.groups.integrations.fzf')
+018.394  000.051  000.051: require('catppuccin.groups.integrations.neotree')
+018.521  000.085  000.085: require('catppuccin.groups.integrations.neogit')
+018.710  000.072  000.072: require('catppuccin.groups.integrations.blink_cmp')
+018.794  000.045  000.045: require('catppuccin.groups.integrations.gitsigns')
+018.877  000.035  000.035: require('catppuccin.groups.integrations.indent_blankline')
+018.940  000.029  000.029: require('catppuccin.groups.integrations.lsp_trouble')
+019.074  000.045  000.045: require('catppuccin.groups.integrations.diffview')
+019.144  000.068  000.068: require('catppuccin.groups.integrations.snacks')
+019.380  000.174  000.174: require('catppuccin.groups.integrations.mason')
+019.447  000.033  000.033: require('catppuccin.groups.integrations.blink_indent')
+019.532  000.042  000.042: require('catppuccin.groups.integrations.dap_ui')
+019.605  000.029  000.029: require('catppuccin.groups.terminal')
+021.846  000.054  000.054: require('catppuccin.palettes.mocha')
+024.745  000.037  000.037: require('catppuccin.palettes.latte')
+027.330  000.041  000.041: require('catppuccin.palettes.macchiato')
+030.494  000.130  000.130: sourcing nvim_exec2() called at /home/feng/.local/share/nvim/site/pack/core/opt/catppuccin/colors/catppuccin.lua:0
+031.110  000.877  000.747: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/catppuccin/colors/catppuccin.lua
+031.570  000.096  000.096: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-ts-context-commentstring/plugin/ts_context_commentstring.lua
+031.809  000.018  000.018: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/which-key.nvim/plugin/which-key.lua
+032.644  000.197  000.197: require('nvim-surround')
+032.685  000.465  000.269: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-surround/plugin/nvim-surround.lua
+033.304  000.247  000.247: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/marks.nvim/plugin/marks.vim
+033.676  000.013  000.013: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/todo-comments.nvim/plugin/todo.vim
+034.377  000.417  000.417: require('render-markdown.settings')
+034.380  000.482  000.065: require('render-markdown')
+034.468  000.086  000.086: require('render-markdown.lib.presets')
+034.599  000.060  000.060: require('render-markdown.lib.compat')
+034.745  000.026  000.026: require('render-markdown.lib.list')
+034.748  000.148  000.121: require('render-markdown.lib.env')
+034.936  000.033  000.033: require('render-markdown.lib.interval')
+034.975  000.037  000.037: require('render-markdown.lib.str')
+034.977  000.117  000.047: require('render-markdown.lib.line')
+035.008  000.030  000.030: require('render-markdown.lib.resolved')
+035.055  000.027  000.027: require('render-markdown.lib.iter')
+035.057  000.254  000.079: require('render-markdown.lib.config')
+035.058  000.309  000.055: require('render-markdown.state')
+035.111  000.051  000.051: require('render-markdown.core.ts')
+035.244  000.033  000.033: require('render-markdown.request.context')
+035.313  000.067  000.067: require('render-markdown.core.log')
+035.316  000.204  000.103: require('render-markdown.core.ui')
+035.383  000.060  000.060: require('render-markdown.core.colors')
+035.540  000.041  000.041: require('render-markdown.api')
+035.542  000.098  000.057: require('render-markdown.core.command')
+035.649  000.089  000.089: require('render-markdown.core.manager')
+035.683  001.801  000.215: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/render-markdown.nvim/plugin/render-markdown.lua
+035.906  000.008  000.008: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/glslView-nvim/plugin/glslView.vim
+036.007  000.062  000.062: require('ts_context_commentstring')
+036.084  000.075  000.075: require('ts_context_commentstring.config')
+036.144  000.056  000.056: require('which-key')
+036.312  000.166  000.166: require('which-key.config')
+036.622  000.296  000.296: require('mini.pairs')
+037.272  000.047  000.047: require('nvim-surround.input')
+037.295  000.360  000.312: require('nvim-surround.config')
+037.488  000.036  000.036: require('persistence.config')
+037.492  000.155  000.119: require('persistence')
+037.919  000.083  000.083: require('marks.utils')
+037.923  000.264  000.181: require('marks.mark')
+038.101  000.177  000.177: require('marks.bookmark')
+038.121  000.611  000.170: require('marks')
+038.207  000.010  000.010: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+038.251  000.039  000.039: require('trouble')
+038.417  000.164  000.164: require('trouble.config')
+038.686  000.182  000.182: require('trouble.util')
+038.689  000.264  000.082: require('trouble.config.highlights')
+039.165  000.048  000.048: require('trouble.cache')
+039.323  000.156  000.156: require('trouble.format')
+039.383  000.058  000.058: require('trouble.view.indent')
+039.504  000.120  000.120: require('trouble.view.text')
+039.507  000.527  000.144: require('trouble.view.render')
+039.508  000.628  000.101: require('trouble.view.preview')
+039.511  000.708  000.080: require('trouble.view.main')
+039.837  000.076  000.076: require('todo-comments.util')
+039.855  000.276  000.200: require('todo-comments.config')
+040.212  000.297  000.297: require('todo-comments.highlight')
+040.214  000.358  000.061: require('todo-comments.jump')
+040.215  000.673  000.039: require('todo-comments')
+040.318  000.054  000.054: require('glslView')
+041.014  000.032  000.032: require('bufferline.lazy')
+041.364  000.315  000.315: require('bufferline.commands')
+041.641  000.274  000.274: require('bufferline.config')
+041.644  000.939  000.319: require('bufferline')
+042.063  000.136  000.136: require('bufferline.utils')
+042.066  000.418  000.282: require('bufferline.groups')
+042.106  000.032  000.032: require('bufferline.constants')
+042.163  000.055  000.055: require('bufferline.colors')
+042.347  000.103  000.103: require('bufferline.highlights')
+043.683  000.892  000.892: require('bufferline.hover')
+044.011  000.300  000.300: require('bufferline.ui')
+044.950  000.934  000.934: require('vim.diagnostic')
+045.291  000.059  000.059: require('lualine_require')
+045.447  000.478  000.419: require('lualine')
+045.630  000.007  000.007: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.077  000.082  000.082: require('catppuccin.utils.lualine')
+046.476  000.005  000.005: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.486  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.491  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.496  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.501  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.506  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.510  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.536  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.540  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.545  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.549  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.554  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.558  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.572  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.577  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.586  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.590  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+046.597  000.006  000.006: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.386  000.030  000.030: require('lualine.utils.mode')
+047.548  000.006  000.006: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.554  000.003  000.003: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.713  000.004  000.004: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.720  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.725  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.729  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.733  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.737  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.741  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.747  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.751  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.755  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.767  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.771  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.775  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.779  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.784  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.788  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.793  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.796  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.800  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.804  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.808  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.887  000.004  000.004: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.892  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.895  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+047.899  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.138  000.004  000.004: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.145  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.149  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.172  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.176  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.180  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.184  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.189  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.193  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.197  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.201  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.205  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.209  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.212  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.233  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.238  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.260  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.265  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.269  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.273  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.277  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.282  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.286  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.290  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.293  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.297  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.301  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.306  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.546  000.006  000.006: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.560  000.003  000.003: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.571  000.009  000.009: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.577  000.004  000.004: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.581  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+048.911  000.107  000.107: require('gitsigns')
+049.122  000.192  000.192: require('gitsigns.highlight')
+049.260  000.132  000.132: require('gitsigns.debug.log')
+049.621  000.208  000.208: require('gitsigns.util')
+049.627  000.366  000.158: require('gitsigns.config')
+049.915  000.056  000.056: require('gitsigns.debounce')
+049.922  001.128  000.276: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/gitsigns.nvim/plugin/gitsigns.lua
+051.917  000.680  000.680: require('vim.lsp.protocol')
+051.943  000.830  000.150: require('vim.lsp.log')
+052.943  000.997  000.997: require('vim.lsp.util')
+053.323  000.170  000.170: require('vim.lsp.sync')
+053.327  000.381  000.211: require('vim.lsp._changetracking')
+053.761  000.133  000.133: require('vim.lsp._transport')
+053.768  000.006  000.006: require('vim._core.stringbuffer')
+053.807  000.479  000.340: require('vim.lsp.rpc')
+053.866  003.285  000.597: require('vim.lsp')
+054.099  000.227  000.227: require('blink.cmp')
+054.399  000.130  000.130: require('blink.cmp.lib.async')
+054.550  000.046  000.046: require('blink.cmp.config.utils')
+054.607  000.053  000.053: require('blink.cmp.config.keymap')
+054.678  000.023  000.023: require('blink.cmp.config.completion.keyword')
+054.726  000.047  000.047: require('blink.cmp.config.completion.trigger')
+054.762  000.034  000.034: require('blink.cmp.config.completion.list')
+054.812  000.049  000.049: require('blink.cmp.config.completion.accept')
+054.956  000.143  000.143: require('blink.cmp.config.completion.menu')
+055.022  000.065  000.065: require('blink.cmp.config.completion.documentation')
+055.053  000.030  000.030: require('blink.cmp.config.completion.ghost_text')
+055.055  000.447  000.055: require('blink.cmp.config.completion')
+055.132  000.076  000.076: require('blink.cmp.config.fuzzy')
+055.204  000.072  000.072: require('blink.cmp.config.sources')
+055.269  000.063  000.063: require('blink.cmp.config.signature')
+055.349  000.079  000.079: require('blink.cmp.config.snippets')
+055.390  000.040  000.040: require('blink.cmp.config.appearance')
+055.421  000.029  000.029: require('blink.cmp.config.modes.cmdline')
+055.447  000.025  000.025: require('blink.cmp.config.modes.term')
+055.450  001.049  000.119: require('blink.cmp.config')
+055.573  000.122  000.122: require('blink.cmp.lib.utils')
+055.630  000.056  000.056: require('blink.cmp.lib.event_emitter')
+055.639  001.538  000.181: require('blink.cmp.sources.lib')
+055.651  005.113  000.063: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/blink.cmp/plugin/blink-cmp.lua
+056.589  000.075  000.075: require('blink.cmp.config.modes.types')
+057.263  000.097  000.097: require('blink.cmp.fuzzy.download.system')
+057.281  000.269  000.173: require('blink.cmp.fuzzy.download.files')
+057.283  000.327  000.058: require('blink.cmp.fuzzy.download.git')
+057.285  000.497  000.170: require('blink.cmp.fuzzy.download')
+059.923  000.272  000.272: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-lspconfig/plugin/lspconfig.lua
+061.962  000.059  000.059: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/clangd_extensions.nvim/plugin/clangd_extensions.lua
+065.976  000.156  000.156: require('plenary.bit')
+066.066  000.088  000.088: require('plenary.functional')
+066.080  000.008  000.008: require('ffi')
+066.092  000.810  000.558: require('plenary.path')
+066.128  000.034  000.034: require('cmake-tools.osys')
+066.152  000.023  000.023: require('cmake-tools.result')
+066.194  000.041  000.041: require('cmake-tools.types')
+066.395  000.199  000.199: require('cmake-tools.notification')
+066.425  000.029  000.029: require('cmake-tools.scratch')
+066.429  001.476  000.339: require('cmake-tools.utils')
+066.492  000.063  000.063: require('cmake-tools.const')
+067.071  000.071  000.071: require('plenary.compat')
+067.967  001.243  001.172: require('plenary.scandir')
+068.173  000.056  000.056: require('simpleyaml')
+068.180  000.210  000.154: require('cmake-tools.variants')
+068.425  000.124  000.124: require('cmake-tools.preset')
+068.456  000.029  000.029: require('cmake-tools.build_preset')
+068.475  000.018  000.018: require('cmake-tools.test_preset')
+068.478  000.295  000.124: require('cmake-tools.presets')
+068.541  000.063  000.063: require('cmake-tools.kits')
+068.548  002.055  000.243: require('cmake-tools.config')
+068.570  000.021  000.021: require('cmake-tools.log')
+068.602  000.031  000.031: require('cmake-tools.hints')
+068.687  000.083  000.083: require('cmake-tools.session')
+069.289  000.149  000.149: require('plenary.strings')
+069.291  000.318  000.169: require('plenary.window.border')
+069.367  000.075  000.075: require('plenary.window')
+069.438  000.070  000.070: require('plenary.popup.utils')
+069.440  000.685  000.222: require('plenary.popup')
+069.442  000.754  000.070: require('cmake-tools.window')
+069.475  000.032  000.032: require('cmake-tools.environment')
+069.530  000.054  000.054: require('cmake-tools.file_picker')
+069.861  000.272  000.272: require('plenary.job')
+069.863  000.331  000.060: require('cmake-tools.test.ctest')
+069.905  007.513  002.612: require('cmake-tools')
+070.165  000.159  000.159: require('cmake-tools.quickstart.etlua')
+070.170  000.229  000.070: require('cmake-tools.quickstart')
+070.174  007.891  000.149: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/cmake-tools.nvim/plugin/cmake-tools.lua
+070.529  000.017  000.017: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/conform.nvim/plugin/conform.lua
+070.954  000.160  000.160: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-treesitter/plugin/filetypes.lua
+071.033  000.055  000.055: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-treesitter/plugin/nvim-treesitter.lua
+071.079  000.025  000.025: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-treesitter/plugin/query_predicates.lua
+071.734  000.023  000.023: require('nvim-ts-autotag._log')
+071.769  000.033  000.033: require('nvim-ts-autotag.config.init')
+071.972  000.080  000.080: require('nvim-ts-autotag.utils')
+071.974  000.114  000.034: require('nvim-ts-autotag.config.ft')
+071.976  000.206  000.092: require('nvim-ts-autotag.config.plugin')
+071.980  000.484  000.221: require('nvim-ts-autotag.internal')
+071.981  000.518  000.034: require('nvim-ts-autotag')
+072.018  000.036  000.036: require('nvim-treesitter')
+072.019  000.565  000.012: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-ts-autotag/plugin/nvim-ts-autotag.lua
+072.259  000.029  000.029: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/fzf-lua/plugin/fzf-lua.lua
+072.907  000.270  000.270: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/codecompanion.nvim/plugin/codecompanion.lua
+073.071  000.103  000.103: require('nvim-treesitter.config')
+073.497  000.186  000.186: require('nvim-treesitter.async')
+073.564  000.065  000.065: require('nvim-treesitter.log')
+074.280  000.715  000.715: require('nvim-treesitter.parsers')
+074.318  000.036  000.036: require('nvim-treesitter.util')
+074.324  001.249  000.248: require('nvim-treesitter.install')
+075.004  000.657  000.657: require('nvim-treesitter.parsers')
+075.231  000.037  000.037: require('nvim-treesitter-textobjects')
+075.299  000.066  000.066: require('nvim-treesitter-textobjects.config')
+076.101  000.063  000.063: require('mason-core.path')
+076.381  000.050  000.050: require('mason-core.functional.data')
+076.471  000.088  000.088: require('mason-core.functional.function')
+076.608  000.133  000.133: require('mason-core.functional.list')
+076.702  000.068  000.068: require('mason-core.functional.relation')
+076.779  000.065  000.065: require('mason-core.functional.logic')
+076.837  000.052  000.052: require('mason-core.functional.number')
+076.924  000.084  000.084: require('mason-core.functional.string')
+076.999  000.072  000.072: require('mason-core.functional.table')
+077.049  000.048  000.048: require('mason-core.functional.type')
+077.051  000.816  000.156: require('mason-core.functional')
+077.070  000.966  000.151: require('mason-core.platform')
+077.617  000.546  000.546: require('mason.settings')
+077.620  001.662  000.086: require('mason-core.installer.InstallLocation')
+077.979  000.176  000.176: require('mason-core.log')
+077.982  000.242  000.066: require('mason-core.EventEmitter')
+078.115  000.132  000.132: require('mason-registry.sources')
+078.119  000.498  000.123: require('mason-registry')
+078.120  002.235  000.075: require('mason')
+078.365  000.192  000.192: require('mason.api.command')
+078.471  000.091  000.091: require('schemastore')
+082.182  003.709  003.709: require('schemastore.catalog')
+082.886  000.388  000.388: require('snacks.util')
+083.048  000.158  000.158: require('snacks.util.lsp')
+084.062  000.617  000.617: require('vim.lsp.completion')
+084.117  001.066  000.449: require('vim.lsp.handlers')
+084.791  000.657  000.657: require('vim.lsp.client')
+085.204  000.119  000.119: require('mason-core.result')
+085.492  000.162  000.162: require('mason-core.async')
+085.544  000.051  000.051: require('mason-core.async.uv')
+085.801  000.182  000.182: require('mason-core.process')
+085.939  000.137  000.137: require('mason-core.spawn')
+085.946  000.400  000.081: require('mason-core.installer.managers.powershell')
+085.994  000.047  000.047: require('mason.version')
+085.996  000.790  000.129: require('mason-core.fetch')
+086.132  000.135  000.135: require('mason-core.fs')
+086.213  000.079  000.079: require('mason-core.providers')
+086.415  000.137  000.137: require('mason-core.optional')
+086.917  000.224  000.224: require('mason-core.purl')
+087.041  000.121  000.121: require('mason-core.async.control')
+087.048  000.497  000.151: require('mason-core.package.AbstractPackage')
+087.694  000.122  000.122: require('mason-core.installer.compiler.expr')
+087.706  000.332  000.211: require('mason-core.installer.compiler.link')
+088.328  000.070  000.070: require('mason-core.installer.context.InstallContextCwd')
+088.441  000.112  000.112: require('mason-core.installer.context.InstallContextFs')
+088.533  000.089  000.089: require('mason-core.installer.context.InstallContextSpawn')
+088.714  000.178  000.178: require('mason-core.receipt')
+088.740  000.686  000.237: require('mason-core.installer.context')
+088.746  000.742  000.056: require('mason-core.installer')
+088.767  000.951  000.208: require('mason-core.installer.managers.std')
+088.769  001.062  000.111: require('mason-core.installer.compiler.schemas')
+088.891  000.121  000.121: require('mason-core.installer.compiler.util')
+088.902  001.693  000.178: require('mason-core.installer.compiler')
+089.086  000.182  000.182: require('mason-core.installer.linker')
+089.089  002.040  000.165: require('mason-core.installer.InstallRunner')
+089.356  000.265  000.265: require('mason-core.installer.UninstallRunner')
+089.373  002.956  000.154: require('mason-core.package')
+089.380  003.166  000.074: require('mason-registry.sources.util')
+089.402  004.512  000.222: require('mason-registry.sources.github')
+090.221  000.063  000.063: require('mason-lspconfig.settings')
+090.235  000.299  000.235: require('mason-lspconfig')
+090.634  000.389  000.389: require('mason-registry.installer')
+091.040  000.212  000.212: require('mason-registry.sources.synthesized')
+093.800  000.091  000.091: require('mason-lspconfig.mappings')
+093.803  000.221  000.130: require('mason-lspconfig.features.automatic_enable')
+103.853  000.044  000.044: require('mason-lspconfig.notify')
+103.871  000.182  000.137: require('mason-lspconfig.api.command')
+104.062  000.051  000.051: require('clangd_extensions.utils')
+104.065  000.101  000.050: require('clangd_extensions.config')
+104.066  000.145  000.044: require('clangd_extensions')
+104.263  000.187  000.187: require('snacks.keymap')
+104.902  000.636  000.636: require('vim.lsp.buf')
+105.565  000.148  000.148: require('vim.lsp._capability')
+105.576  000.439  000.290: require('vim.lsp.codelens')
+106.079  000.089  000.089: require('fidget.spinner.patterns')
+106.082  000.139  000.050: require('fidget.spinner')
+106.229  000.081  000.081: require('fidget.health')
+106.230  000.147  000.065: require('fidget.options')
+106.248  000.387  000.101: require('fidget.progress.display')
+106.478  000.108  000.108: require('fidget.logger')
+106.487  000.238  000.129: require('fidget.progress.lsp')
+106.963  000.099  000.099: require('fidget.poll')
+106.966  000.267  000.168: require('fidget.notification.model')
+107.204  000.237  000.237: require('fidget.notification.window')
+107.403  000.198  000.198: require('fidget.notification.view')
+107.438  000.873  000.172: require('fidget.notification')
+107.441  000.953  000.080: require('fidget.progress.handle')
+107.460  001.705  000.127: require('fidget.progress')
+107.700  000.239  000.239: require('fidget.commands')
+107.794  000.049  000.049: require('fidget.integration.nvim-tree')
+107.842  000.047  000.047: require('fidget.integration.xcodebuild-nvim')
+107.845  000.143  000.047: require('fidget.integration')
+107.869  002.175  000.089: require('fidget')
+108.250  000.340  000.340: require('conform')
+109.628  000.757  000.757: require('fzf-lua.utils')
+110.086  000.108  000.108: require('fzf-lua.lib.base64')
+110.361  000.273  000.273: require('fzf-lua.lib.serpent')
+110.367  000.736  000.355: require('fzf-lua.libuv')
+110.374  001.829  000.336: require('fzf-lua.path')
+111.598  000.711  000.711: require('fzf-lua.actions')
+111.884  000.040  000.040: require('fzf-lua.class')
+111.895  000.295  000.254: require('fzf-lua.devicons')
+112.690  000.073  000.073: require('fzf-lua.previewer')
+112.887  000.989  000.916: require('fzf-lua.defaults')
+112.924  002.548  000.554: require('fzf-lua.config')
+113.002  000.014  000.014: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/fzf-lua/autoload/fzf_lua.vim
+113.005  000.053  000.039: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+115.195  001.920  001.920: require('fzf-lua.win')
+115.821  000.090  000.090: require('fzf-lua.fzf')
+116.063  000.240  000.240: require('fzf-lua.shell')
+116.071  000.873  000.543: require('fzf-lua.core')
+116.483  000.389  000.389: require('fzf-lua.make_entry')
+116.518  008.248  000.636: require('fzf-lua')
+117.002  000.071  000.071: require('fzf-lua.ctx')
+117.104  000.100  000.100: require('fzf-lua.providers.ui_select')
+117.327  000.221  000.221: require('vim.ui')
+117.389  000.036  000.036: require('flash')
+117.514  000.123  000.123: require('flash.config')
+117.657  000.032  000.032: require('flash.require')
+117.663  000.137  000.105: require('flash.plugins.search')
+117.834  000.154  000.154: require('flash.plugins.char')
+117.878  000.042  000.042: require('flash.repeat')
+118.266  000.040  000.040: require('codecompanion._extensions')
+119.333  000.663  000.663: require('codecompanion.providers')
+120.062  000.091  000.091: require('plenary.tbl')
+120.065  000.205  000.114: require('plenary.vararg.rotate')
+120.066  000.286  000.081: require('plenary.vararg')
+120.154  000.087  000.087: require('plenary.errors')
+120.157  000.499  000.126: require('plenary.async.async')
+120.651  000.124  000.124: require('plenary.async.structs')
+120.656  000.277  000.152: require('plenary.async.control')
+120.659  000.411  000.134: require('plenary.async.util')
+120.662  000.505  000.094: require('plenary.async.tests')
+120.663  001.121  000.117: require('plenary.async')
+121.184  000.256  000.256: require('vim.health')
+121.186  000.371  000.115: require('vim.deprecated.health')
+121.579  000.358  000.358: require('vim.iter')
+121.635  000.971  000.242: require('codecompanion.utils.log')
+121.640  002.306  000.214: require('codecompanion.utils.ui')
+121.890  003.622  000.653: require('codecompanion.config')
+121.898  003.881  000.219: require('codecompanion')
+122.567  000.244  000.244: require('codecompanion.utils.files')
+122.810  000.181  000.181: require('codecompanion.utils.adapters')
+123.029  000.023  000.023: require('codecompanion.triggers')
+123.035  000.223  000.200: require('codecompanion.commands')
+123.362  000.031  000.031: require('codecompanion.utils.hash')
+123.364  000.110  000.079: require('codecompanion.interactions.chat.helpers.filter')
+123.376  000.142  000.032: require('codecompanion.interactions.chat.slash_commands.filter')
+123.457  000.080  000.080: require('codecompanion.interactions.chat.tools.filter')
+123.547  000.089  000.089: require('codecompanion.utils.buffers')
+123.562  000.513  000.201: require('codecompanion.providers.completion')
+123.618  000.054  000.054: require('codecompanion.providers.completion.blink.setup')
+124.318  000.109  000.109: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-dap/plugin/dap.lua
+126.077  000.224  000.224: require('dap.utils')
+126.178  001.006  000.781: require('dap')
+126.573  000.117  000.117: require('nio.tasks')
+126.685  000.110  000.110: require('nio.control')
+126.787  000.100  000.100: require('nio.uv')
+126.849  000.061  000.061: require('nio.tests')
+126.882  000.032  000.032: require('nio.ui')
+127.018  000.093  000.093: require('nio.streams')
+127.020  000.137  000.043: require('nio.file')
+127.211  000.024  000.024: require('nio.util')
+127.271  000.165  000.141: require('nio.logger')
+127.276  000.255  000.090: require('nio.lsp')
+127.355  000.078  000.078: require('nio.process')
+127.362  000.992  000.103: require('nio')
+128.034  000.011  000.011: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+128.039  000.094  000.084: require('dapui.config.highlights')
+128.066  000.024  000.024: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+128.085  000.350  000.232: require('dapui.config')
+128.093  000.579  000.229: require('dapui.util')
+128.219  000.125  000.125: require('dapui.windows.layout')
+128.224  000.860  000.156: require('dapui.windows')
+128.337  000.112  000.112: require('dapui.controls')
+128.341  002.161  000.196: require('dapui')
+128.565  000.158  000.158: require('dap.ext.vscode')
+128.724  000.157  000.157: require('plenary.json')
+128.788  000.021  000.021: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+129.226  000.240  000.240: require('dapui.client.types')
+129.236  000.429  000.188: require('dapui.client')
+129.397  000.160  000.160: require('dap.breakpoints')
+129.491  000.085  000.085: require('dapui.client.lib')
+129.683  000.145  000.145: require('dapui.render.canvas')
+129.685  000.188  000.043: require('dapui.elements.breakpoints')
+129.816  000.115  000.115: require('dapui.components.breakpoints')
+129.881  000.047  000.047: require('dapui.elements.repl')
+129.924  000.040  000.040: require('dapui.elements.scopes')
+130.001  000.063  000.063: require('dapui.components.scopes')
+130.096  000.094  000.094: require('dapui.components.variables')
+130.146  000.040  000.040: require('dapui.elements.stacks')
+130.297  000.067  000.067: require('dapui.components.frames')
+130.298  000.135  000.069: require('dapui.components.threads')
+130.384  000.057  000.057: require('dapui.elements.watches')
+130.506  000.109  000.109: require('dapui.components.watches')
+130.561  000.043  000.043: require('dapui.elements.hover')
+130.667  000.090  000.090: require('dapui.components.hover')
+130.741  000.066  000.066: require('dapui.elements.console')
+130.907  000.098  000.098: require('mason-nvim-dap')
+130.951  000.042  000.042: require('mason-nvim-dap.settings')
+131.057  000.067  000.067: require('mason-nvim-dap.automatic_installation')
+131.104  000.039  000.039: require('mason-nvim-dap.mappings.source')
+141.626  000.103  000.103: require('mason-core.notify')
+141.975  000.055  000.055: require('mason-nvim-dap.mappings.adapters')
+142.045  000.068  000.068: require('mason-nvim-dap.mappings.filetypes')
+142.547  000.500  000.500: require('mason-nvim-dap.mappings.configurations')
+142.590  000.040  000.040: require('mason-nvim-dap.mappings.adapters.codelldb')
+142.628  000.037  000.037: require('mason-nvim-dap.automatic_setup')
+142.734  000.093  000.093: require('mason-nvim-dap.api.command')
+142.833  000.097  000.097: require('nvim-dap-virtual-text')
+142.849  000.010  000.010: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+142.860  000.008  000.008: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+143.212  000.168  000.168: require('snacks.explorer')
+143.588  000.253  000.253: require('snacks.toggle')
+144.113  000.270  000.270: require('vim.lsp.inlay_hint')
+144.469  000.245  000.245: require('snacks.terminal')
+144.555  000.005  000.005: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+144.560  000.002  000.002: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+144.563  000.001  000.001: sourcing nvim_exec2() called at /home/feng/.config/nvim/init.lua:0
+144.576  001.703  000.761: require('config.keymaps')
+144.577  138.237  057.570: sourcing /home/feng/.config/nvim/init.lua
+144.584  000.403: sourcing vimrc file(s)
+145.092  000.012  000.012: sourcing /usr/share/vim/vimfiles/ftdetect/PKGBUILD.vim
+145.117  000.012  000.012: sourcing /usr/share/vim/vimfiles/ftdetect/SRCINFO.vim
+145.145  000.016  000.016: sourcing /usr/share/vim/vimfiles/ftdetect/meson.vim
+145.147  000.292  000.252: sourcing nvim_exec2() called at /usr/share/nvim/runtime/filetype.lua:0
+145.149  000.339  000.047: sourcing /usr/share/nvim/runtime/filetype.lua
+145.364  000.047  000.047: sourcing /usr/share/nvim/runtime/syntax/synload.vim
+145.411  000.226  000.179: sourcing /usr/share/nvim/runtime/syntax/syntax.vim
+145.681  000.083  000.083: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-dap/plugin/dap.lua
+145.817  000.078  000.078: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/codecompanion.nvim/plugin/codecompanion.lua
+145.900  000.022  000.022: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/fzf-lua/plugin/fzf-lua.lua
+145.990  000.009  000.009: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-ts-autotag/plugin/nvim-ts-autotag.lua
+146.188  000.110  000.110: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-treesitter/plugin/filetypes.lua
+146.247  000.036  000.036: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-treesitter/plugin/nvim-treesitter.lua
+146.290  000.024  000.024: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-treesitter/plugin/query_predicates.lua
+146.360  000.014  000.014: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/conform.nvim/plugin/conform.lua
+146.492  000.078  000.078: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/cmake-tools.nvim/plugin/cmake-tools.lua
+146.571  000.023  000.023: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/clangd_extensions.nvim/plugin/clangd_extensions.lua
+146.777  000.122  000.122: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-lspconfig/plugin/lspconfig.lua
+146.890  000.053  000.053: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/blink.cmp/plugin/blink-cmp.lua
+146.969  000.023  000.023: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/gitsigns.nvim/plugin/gitsigns.lua
+147.041  000.009  000.009: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/glslView-nvim/plugin/glslView.vim
+147.108  000.013  000.013: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/render-markdown.nvim/plugin/render-markdown.lua
+147.175  000.016  000.016: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/todo-comments.nvim/plugin/todo.vim
+147.241  000.006  000.006: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/marks.nvim/plugin/marks.vim
+147.475  000.174  000.174: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-surround/plugin/nvim-surround.lua
+147.560  000.017  000.017: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/which-key.nvim/plugin/which-key.lua
+147.646  000.022  000.022: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-ts-context-commentstring/plugin/ts_context_commentstring.lua
+147.718  000.018  000.018: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/plenary.nvim/plugin/plenary.vim
+147.778  000.006  000.006: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/nvim-web-devicons/plugin/nvim-web-devicons.vim
+147.850  000.020  000.020: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/lush.nvim/plugin/lush.vim
+147.918  000.009  000.009: sourcing /home/feng/.local/share/nvim/site/pack/core/opt/snacks.nvim/plugin/snacks.lua
+148.207  000.102  000.102: sourcing /usr/share/nvim/runtime/plugin/gzip.vim
+149.028  000.232  000.232: require('gitsigns.async')
+149.227  000.105  000.105: sourcing /usr/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim
+149.257  001.036  000.698: sourcing /usr/share/nvim/runtime/plugin/matchit.vim
+149.338  000.068  000.068: sourcing /usr/share/nvim/runtime/plugin/matchparen.vim
+150.089  000.133  000.133: sourcing /usr/share/nvim/runtime/pack/dist/opt/netrw/plugin/netrwPlugin.vim
+150.117  000.764  000.631: sourcing /usr/share/nvim/runtime/plugin/netrwPlugin.vim
+150.211  000.076  000.076: sourcing /usr/share/nvim/runtime/plugin/rplugin.vim
+150.281  000.052  000.052: sourcing /usr/share/nvim/runtime/plugin/tarPlugin.vim
+150.310  000.011  000.011: sourcing /usr/share/nvim/runtime/plugin/tutor.vim
+150.406  000.073  000.073: sourcing /usr/share/nvim/runtime/plugin/zipPlugin.vim
+150.451  000.027  000.027: sourcing /usr/share/nvim/runtime/plugin/editorconfig.lua
+150.504  000.037  000.037: sourcing /usr/share/nvim/runtime/plugin/man.lua
+150.595  000.075  000.075: sourcing /usr/share/nvim/runtime/plugin/net.lua
+150.670  000.053  000.053: sourcing /usr/share/nvim/runtime/plugin/osc52.lua
+150.754  000.068  000.068: sourcing /usr/share/nvim/runtime/plugin/shada.lua
+150.789  000.019  000.019: sourcing /usr/share/nvim/runtime/plugin/spellfile.lua
+151.106  000.262  000.262: sourcing /usr/share/vim/vimfiles/plugin/fzf.vim
+151.109  002.249: loading rtp plugins
+151.186  000.077: loading packages
+151.198  000.012: loading after plugins
+151.208  000.010: inits 3
+153.068  001.860: reading ShaDa
+153.116  000.048: opening buffers
+153.315  000.102  000.102: require('bufferline.state')
+153.483  000.129  000.129: require('codecompanion.utils')
+153.516  000.169: BufEnter autocommands
+153.517  000.001: editing files in windows
+153.705  000.008  000.008: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.125  000.003  000.003: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.130  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.133  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.135  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.137  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.140  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.142  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.144  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.146  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.149  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.151  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.153  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.155  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.158  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.160  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.162  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.164  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.166  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.168  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.170  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.187  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.189  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.191  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.193  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.195  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.198  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.200  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.202  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.204  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.206  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.208  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.210  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.211  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.213  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.215  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.217  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.219  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.221  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.242  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.244  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.246  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.248  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.250  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.253  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.254  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.256  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.258  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.260  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.262  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.264  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.266  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.268  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.270  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.272  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.274  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.276  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.278  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.280  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.282  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.284  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.286  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.288  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.290  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.292  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.294  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.296  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.309  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.317  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.322  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.328  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.332  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.337  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.342  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.346  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.350  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.355  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.359  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.363  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.368  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.372  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.376  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.380  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.385  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.393  000.005  000.005: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.947  000.003  000.003: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.953  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.978  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.984  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.989  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.993  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+154.997  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.001  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.006  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.012  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.016  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.020  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.024  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.027  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.031  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.035  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.040  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.044  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.049  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.053  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.056  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.060  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.065  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.070  000.003  000.003: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.074  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.076  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.079  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.130  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.135  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.139  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.143  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.148  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.152  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.156  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.162  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.166  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.171  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.175  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.179  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.200  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.204  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.210  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.214  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.217  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.221  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.225  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.281  000.002  000.002: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.287  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.293  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.297  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.301  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.305  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.308  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.312  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.318  000.001  000.001: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.376  000.010  000.010: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.386  000.003  000.003: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.395  000.007  000.007: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.401  000.004  000.004: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.406  000.003  000.003: sourcing nvim_exec2() called at OptionSet 自动命令 "background":0
+155.478  001.762: VimEnter autocommands
+156.230  000.745  000.745: require('snacks.dashboard')
+157.529  000.268  000.268: require('snacks.input')
+157.957  000.425  000.425: require('snacks.scope')
+158.013  001.098: UIEnter autocommands
+158.312  000.156  000.156: sourcing /usr/share/nvim/runtime/autoload/provider/clipboard.vim
+158.316  000.147: before starting main loop
+158.722  000.405: first screen update
+158.724  000.002: --- NVIM STARTED ---
+
