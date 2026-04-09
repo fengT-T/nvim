@@ -236,13 +236,14 @@ local ts_select = require('nvim-treesitter-textobjects.select')
 -- You can use the capture groups defined in `textobjects.scm`
 map({ "x", "o" }, "af", function() ts_select.select_textobject("@function.outer", "textobjects") end,
   { desc = "select outer function" })
-map({ "x", "o" }, "if", function() ts_select("@function.inner", "textobjects") end, { desc = "select inner function" })
-map({ "x", "o" }, "ac", function() ts_select("@class.outer", "textobjects") end, { desc = "select class outer" })
-map({ "x", "o" }, "ic",
-  function() require "nvim-treesitter-textobjects.select".select_textobject("@class.outer", "textobjects") end,
+map({ "x", "o" }, "if", function() ts_select.select_textobject("@function.inner", "textobjects") end,
+  { desc = "select inner function" })
+map({ "x", "o" }, "ac", function() ts_select.select_textobject("@class.outer", "textobjects") end,
+  { desc = "select class outer" })
+map({ "x", "o" }, "ic", function() ts_select.select_textobject("@class.outer", "textobjects") end,
   { desc = "select outer class" })
 -- You can also use captures from other query groups like `locals.scm`
-map({ "x", "o" }, "as", function() ts_select("@local.scope", "locals") end, { desc = "select local" })
+map({ "x", "o" }, "as", function() ts_select.select_textobject("@local.scope", "locals") end, { desc = "select local" })
 
 -- keymaps
 map("n", "<leader>oa", function()
@@ -307,7 +308,8 @@ local function lsp_keymaps()
 
   smap('n', 'gD', vim.lsp.buf.declaration, { lsp = {}, desc = 'Goto Declaration' })
   smap('n', 'K', vim.lsp.buf.hover, { lsp = {}, desc = 'Hover' })
-  smap('n', 'gK', vim.lsp.buf.signature_help, { lsp = { method = 'textDocument/signatureHelp' }, desc = 'Signature Help' })
+  smap('n', 'gK', vim.lsp.buf.signature_help,
+    { lsp = { method = 'textDocument/signatureHelp' }, desc = 'Signature Help' })
   smap('i', '<c-k>', vim.lsp.buf.signature_help,
     { lsp = { method = 'textDocument/signatureHelp' }, desc = 'Signature Help' })
 
