@@ -95,7 +95,7 @@ end
 map('n', '<leader>so', require('fzf-lua').builtin, { desc = '[S]earch [O]pen' })
 -- lsp
 map('n', 'gd', require('fzf-lua').lsp_definitions, { desc = '[G]oto [D]efinition' })
-map('n', 'gR', require('fzf-lua').lsp_references, { desc = '[G]oto [R]eferences' })
+map('n', 'gr', require('fzf-lua').lsp_references, { desc = '[G]oto [R]eferences', nowait = true })
 map('n', 'gI', require('fzf-lua').lsp_implementations, { desc = '[G]oto [I]mplementation' })
 map('n', 'gy', require('fzf-lua').lsp_typedefs, { desc = '[G]oto [Y]pe Definition' })
 map('n', '<leader>cs', require('fzf-lua').lsp_document_symbols, { desc = '[C]ode [S]ymbols' })
