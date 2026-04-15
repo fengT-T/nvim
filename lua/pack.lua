@@ -51,7 +51,7 @@ function M.setup()
     { src = gh('neovim/nvim-lspconfig'),             name = 'nvim-lspconfig' },
     { src = gh('williamboman/mason.nvim'),           name = 'mason.nvim' },
     { src = gh('williamboman/mason-lspconfig.nvim'), name = 'mason-lspconfig.nvim' },
-    { src = gh('j-hui/fidget.nvim'),                 name = 'fidget.nvim' },
+    -- { src = gh('j-hui/fidget.nvim'),                 name = 'fidget.nvim' },
     { src = gh('b0o/schemastore.nvim'),              name = 'schemastore.nvim' },
     { src = gh('p00f/clangd_extensions.nvim'),       name = 'clangd_extensions.nvim' },
   }, { load = true })

@@ -185,6 +185,8 @@ vim.filetype.add({
   extension = {
     frag = "glsl",
     vert = "glsl",
+    vs = "glsl",
+    fs = "glsl",
   },
 })
 -- Experimental UI2: floating cmdline and messages

@@ -224,7 +224,7 @@ function M.setup()
       if not loaded then check_cmake() end
     end,
   })
-  require("fidget").setup({})
+  -- require("fidget").setup({})
 end
 
 function M.cmp()
