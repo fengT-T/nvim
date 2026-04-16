@@ -144,12 +144,24 @@ function M.setup()
     },
   })
 
-  -- auto-completion (:help lsp-completion), trigger manually with ctrl+o ctrl+x
-  Snacks.util.lsp.on({ method = "textDocument/completion" },  function(buf, client)
-    client.server_capabilities.completionProvider.triggerCharacters =
-        vim.split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.", "")
-    vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
+  Snacks.util.lsp.on({ method = "textDocument/completion" }, function(buf, client)
+    if client.name ~= 'glsl_analyzer' then
+      client.server_capabilities.completionProvider.triggerCharacters =
+          vim.split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.", "")
+      vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
+    else
+      vim.lsp.completion.enable(true, client.id, buf, { autotrigger = false })
+    end
   end)
+
+  vim.api.nvim_create_autocmd("LspAttach", {
+    callback = function(args)
+      local client = vim.lsp.get_client_by_id(args.data.client_id)
+      if client and client.name == "glsl_analyzer" then
+        client.cancel_request = function() end
+      end
+    end,
+  })
 
   Snacks.util.lsp.on({ method = 'textDocument/foldingRange' }, function()
     vim.o.foldmethod = 'expr'

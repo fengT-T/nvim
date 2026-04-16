@@ -53,7 +53,7 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menu,menuone,noselect'
+-- vim.o.completeopt = 'menu,menuone,noselect'
 
 vim.o.jumpoptions = 'view'
 
@@ -65,6 +65,7 @@ vim.o.pumblend = 20
 
 -- Maximum number of entries in a popup
 vim.o.pumheight = 10
+vim.o.pummaxwidth = 60
 
 -- Lines of context
 vim.o.scrolloff = 5
