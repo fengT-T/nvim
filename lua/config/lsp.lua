@@ -144,6 +144,13 @@ function M.setup()
     },
   })
 
+  -- auto-completion (:help lsp-completion), trigger manually with ctrl+o ctrl+x
+  Snacks.util.lsp.on({ method = "textDocument/completion" },  function(buf, client)
+    client.server_capabilities.completionProvider.triggerCharacters =
+        vim.split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.", "")
+    vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
+  end)
+
   Snacks.util.lsp.on({ method = 'textDocument/foldingRange' }, function()
     vim.o.foldmethod = 'expr'
     vim.o.foldexpr = 'v:lua.vim.lsp.foldexpr()'
@@ -164,7 +171,7 @@ function M.setup()
   end)
 
   require('mason').setup()
-  local capabilities = require('blink.cmp').get_lsp_capabilities()
+  -- local capabilities = require('blink.cmp').get_lsp_capabilities()
   local mason_lspconfig = require('mason-lspconfig')
 
   mason_lspconfig.setup({
@@ -174,7 +181,7 @@ function M.setup()
   })
 
   for server_name, config in pairs(servers) do
-    config.capabilities = vim.tbl_deep_extend('force', {}, capabilities, config.capabilities or {})
+    config.capabilities = vim.tbl_deep_extend('force', {}, config.capabilities or {})
     vim.lsp.config(server_name, config)
   end
 

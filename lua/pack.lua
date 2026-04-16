@@ -35,17 +35,19 @@ function M.setup()
     { src = gh('nvim-lualine/lualine.nvim'), name = 'lualine.nvim' },
   }, { load = true })
   require('config.ui').ui()
+  require('config.ui').ui2()
 
   vim.pack.add({
     { src = gh('lewis6991/gitsigns.nvim'), name = 'gitsigns.nvim' },
   }, { load = true })
   require('config.git').setup()
 
-  vim.pack.add({
-    { src = gh('saghen/blink.cmp'),             name = 'blink.cmp',        version = vim.version.range('*') },
-    { src = gh('rafamadriz/friendly-snippets'), name = 'friendly-snippets' },
-  }, { load = true })
-  require('config.lsp').cmp()
+  -- vim.pack.add({
+    -- { src = gh('saghen/blink.cmp'),             name = 'blink.cmp',        version = vim.version.range('*') },
+   -- { src = gh('rafamadriz/friendly-snippets'), name = 'friendly-snippets' },
+  -- }, { load = true })
+--  require('config.lsp').cmp()
+
 
   vim.pack.add({
     { src = gh('neovim/nvim-lspconfig'),             name = 'nvim-lspconfig' },
