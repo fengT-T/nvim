@@ -147,7 +147,7 @@ function M.setup()
   Snacks.util.lsp.on({ method = "textDocument/completion" }, function(buf, client)
     if client.name ~= 'glsl_analyzer' then
       client.server_capabilities.completionProvider.triggerCharacters =
-          vim.split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.", "")
+          vim.split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.<>", "")
       vim.lsp.completion.enable(true, client.id, buf, { autotrigger = true })
     else
       vim.lsp.completion.enable(true, client.id, buf, { autotrigger = false })

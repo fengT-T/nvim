@@ -356,6 +356,8 @@ local function lsp_keymaps()
   smap('n', '<leader>wl', function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, { desc = 'Workspace List Folders' })
+
+  smap('i', '<C-v>', vim.lsp.completion.get, { desc = "Auto Complete" })
 end
 
 lsp_keymaps()
