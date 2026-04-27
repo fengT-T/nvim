@@ -171,20 +171,6 @@ if vim.g.neovide then
   })
 end
 
--- will hidden cmd line
-vim.opt.cmdheight = 0
--- auto hide cmdline
-vim.api.nvim_create_autocmd({ 'RecordingEnter' }, {
-  callback = function()
-    vim.opt.cmdheight = 1
-  end,
-})
-vim.api.nvim_create_autocmd({ 'RecordingLeave' }, {
-  callback = function()
-    vim.opt.cmdheight = 0
-  end,
-})
-
 vim.filetype.add({
   extension = {
     frag = "glsl",

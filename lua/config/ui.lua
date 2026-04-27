@@ -37,6 +37,15 @@ function M.theme()
   vim.cmd.colorscheme('catppuccin')
 end
 
+-- Show a little dot and the register char when recording a macro
+local function show_macro_recording()
+  local recording_register = vim.fn.reg_recording()
+  if recording_register == "" then
+    return ""
+  else
+    return " REC " .. recording_register
+  end
+end
 function M.ui()
   require('bufferline').setup({
     options = {
@@ -57,7 +66,7 @@ function M.ui()
       disabled_filetypes = { statusline = { 'dashboard', 'alpha', 'starter' } },
     },
     sections = {
-      lualine_c = { 'filename', 'codecompainon' },
+      lualine_c = { 'filename', 'codecompainon', { show_macro_recording, color = { fg = "#ff6666" } } },
       lualine_x = { 'searchcount', 'encoding', 'fileformat', 'filetype', 'lsp_status' },
       lualine_z = { { 'datetime', style = '%I:%M %p' } },
     },
@@ -99,7 +108,7 @@ function M.ui2()
         typed_cmd = 'cmd',
       },
       cmd = {
-        height = 0.6,
+        height = 0.5,
       },
       dialog = {
         height = 0.5,
@@ -166,7 +175,7 @@ function M.ui2()
           title = title,
           status = "success",
         })
-      else   -- "begin" or "report"
+      else -- "begin" or "report"
         vim.api.nvim_echo({ { msg } }, false, {
           id = msg_id,
           kind = "progress",
