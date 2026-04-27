@@ -150,6 +150,7 @@ function M.ui2()
         row = 1,
         col = vim.o.columns - 1,
         border = "rounded",
+        width = 50
       })
     end
   end
