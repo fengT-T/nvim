@@ -447,5 +447,8 @@ function M.list()
 end
 
 vim.api.nvim_create_user_command("PackList", M.list, { desc = "List installed plugins" })
+vim.api.nvim_create_user_command('PackUpdate', function()
+  vim.pack.update()
+end, {})
 
 return M

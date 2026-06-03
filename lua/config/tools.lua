@@ -48,36 +48,67 @@ function M.snacks()
 end
 
 function M.ai()
-  local function get_key(filename, match)
-    local content = vim.fn.readfile(filename)
-    for _, line in ipairs(content) do
-      local key = line:match(match)
-      if key then return key end
-    end
-    return nil, '未找到密钥'
-  end
-
-  local function openai_key()
-    return get_key('/home/feng/.aider.conf.yml', "openai%-api%-key:%s*['\"]?([%w%-_]+)['\"]?")
-  end
-
   require('codecompanion').setup({
     opts = { language = 'Chinese' },
     adapters = {
       http = {
-        ppio = function()
+        gpt = function()
           return require('codecompanion.adapters').extend('openai_compatible', {
-            env = { api_key = openai_key() },
-            url = 'https://api.ppio.com/openai/v1/chat/completions',
-            schema = { model = { default = 'zai-org/glm-5' } },
+            env = { api_key = "ZHUIYI_API_KEY" },
+            url = 'https://newapi.ibot.ai/v1',
+            schema = { model = { default = 'gpt-5.5' } },
           })
+        end,
+      },
+      acp = {
+        omp = function()
+          local helpers = require("codecompanion.adapters.acp.helpers")
+          return {
+            name = "omp",
+            formatted_name = "omp",
+            type = "acp",
+            roles = {
+              llm = "assistant",
+              user = "user",
+            },
+            commands = {
+              default = {
+                "omp",
+                "acp"
+              },
+            },
+            defaults = {
+              mcpServers = {},
+              timeout = 20000, -- 20 seconds
+            },
+            parameters = {
+              protocolVersion = 1,
+              clientCapabilities = {
+                fs = { readTextFile = true, writeTextFile = true },
+              },
+              clientInfo = {
+                name = "CodeCompanion.nvim",
+                version = "1.0.0",
+              },
+            },
+            handlers = {
+              setup = function(self)
+                return true
+              end,
+              auth = function(self)
+                return true
+              end,
+              form_messages = function(self, messages, capabilities)
+                return helpers.form_messages(self, messages, capabilities)
+              end,
+              on_exit = function(self, code) end,
+            },
+          }
         end,
       },
     },
     strategies = {
-      chat = { adapter = 'ppio' },
-      inline = { adapter = { name = 'ppio', model = 'zai-org/glm-5' } },
-      cmd = { adapter = { name = 'ppio', model = 'zai-org/glm-5' } },
+      chat = { adapter = 'omp' },
     },
   })
 end
