@@ -159,7 +159,7 @@ if vim.g.neovide then
     end
   end
   local ime_input = vim.api.nvim_create_augroup("ime_input", { clear = true })
-  vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
+  vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave", "TermEnter", "TermLeave" }, {
     group = ime_input,
     pattern = "*",
     callback = set_ime
