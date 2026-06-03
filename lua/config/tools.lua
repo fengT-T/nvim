@@ -107,9 +107,6 @@ function M.ai()
         end,
       },
     },
-    strategies = {
-      chat = { adapter = 'omp' },
-    },
   })
 end
 

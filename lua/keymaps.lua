@@ -176,12 +176,13 @@ map('n', ']b', '<cmd>BufferLineCycleNext<cr>', { desc = 'Next Buffer' })
 
 
 map({ "n", "v" }, "<C-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-map({ "n", "v" }, "<leader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-map("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+local function toggle_omp_terminal()
+  Snacks.terminal.toggle("omp", { count = 1, win = { position = "float" } })
+end
+map({ "n", "t" }, "<leader>a", toggle_omp_terminal, { desc = "Toggle OMP terminal", noremap = true, silent = true })
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
-vim.cmd([[cab ccc CodeCompanionChat]])
 vim.cmd([[cab cca CodeCompanionActions]])
 
 map('n', '<leader>mr', '<cmd>CMakeRun<cr>', { desc = 'cmake run' })
@@ -290,7 +291,6 @@ require('which-key').add {
   { '<leader>w', group = 'Workspace' },
   { '<leader>q', group = 'Project' },
   { '<leader>f', group = 'File' },
-  { '<leader>a', group = 'AI' },
   { '<leader>d', group = 'Debug' },
   { '<leader>o', group = 'Operate' },
   { '<leader>m', group = 'CMake' }

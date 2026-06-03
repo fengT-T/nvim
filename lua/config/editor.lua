@@ -36,7 +36,7 @@ function M.setup()
   require('todo-comments').setup()
 
   require('render-markdown').setup({
-    file_types = { 'markdown', 'codecompanion' },
+    file_types = { 'markdown' }
   })
 
   require('glslView').setup({ viewer_path = 'glslviewer.exe' })
