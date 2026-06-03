@@ -139,7 +139,17 @@ map('n', '<leader>/', require('fzf-lua').lgrep_curbuf, { desc = 'Search current 
 map("t", "<M-r>", [['<C-\><C-N>"'.nr2char(getchar()).'pi']], { expr = true })
 
 -- terminal
-map('t', '<esc>', [[<C-\><C-n>]])
+local terminal_esc_timer
+map('t', '<esc>', function()
+  terminal_esc_timer = terminal_esc_timer or (vim.uv or vim.loop).new_timer()
+  if terminal_esc_timer:is_active() then
+    terminal_esc_timer:stop()
+    vim.cmd.stopinsert()
+    return ""
+  end
+  terminal_esc_timer:start(200, 0, function() end)
+  return "<esc>"
+end, { expr = true, desc = 'Double escape to normal mode' })
 -- map('t', 'jk', [[<C-\><C-n>]])
 map('t', '<C-h>', [[<Cmd>wincmd h<CR>]])
 map('t', '<C-j>', [[<Cmd>wincmd j<CR>]])
