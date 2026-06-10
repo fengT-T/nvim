@@ -196,7 +196,7 @@ vim.cmd([[cab cc CodeCompanion]])
 vim.cmd([[cab cca CodeCompanionActions]])
 
 map('n', '<leader>mr', '<cmd>CMakeRun<cr>', { desc = 'cmake run' })
-map('n', '<leader>mb', '<cmd>CMakeBuildCurrentFile<cr>', { desc = 'cmake build' })
+map('n', '<leader>mb', '<cmd>CMakeBuild<cr>', { desc = 'cmake build' })
 
 -- DAP
 local dap = require('dap')
